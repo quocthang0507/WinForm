@@ -1,0 +1,10 @@
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\bin\Debug\Calendar.exe.config
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\bin\Debug\Calendar.exe
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\bin\Debug\Calendar.pdb
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.csprojResolveAssemblyReference.cache
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.Properties.Resources.resources
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.csproj.GenerateResource.Cache
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.exe
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.pdb
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.Form_Duong_Am.resources
+E:\OneDrive\Thang\HOC TAP\APP\Calendar\Calendar\obj\Debug\Calendar.Form_Am_Duong.resources
