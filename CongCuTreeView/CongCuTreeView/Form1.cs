@@ -22,7 +22,7 @@ namespace CongCuTreeView
 			treeView.ImageList = ilslcons;
 			////////////////////////
 			TreeNode goc = treeView.Nodes.Add("Kí tự đặc biệt"); //Khởi tạo nút 'goc' đầu tiên trong cây thư mục
-			//Lấy hình cho nút gốc trước và sau hi nhấn nút mở rộng hay thu gọn
+			//Lấy hình cho nút gốc trước và sau khi nhấn nút mở rộng hay thu gọn
 			goc.ImageIndex = 2;
 			goc.SelectedImageIndex = 2;
 			//Add các node con vào node cha với các kí hiệu +, -, *, /
@@ -44,17 +44,17 @@ namespace CongCuTreeView
 			TreeNode gockitu = treeView.Nodes.Add("Kí tự");
 			gockitu.SelectedImageIndex = 2;
 			gockitu.ImageIndex = 2;
-			for (char i='a';i<='z';i++)
+			for (char i = 'a'; i <= 'z'; i++)
 			{
 				TreeNode kitu = gockitu.Nodes.Add("" + i);
 				kitu.ImageIndex = 1;
 				kitu.SelectedImageIndex = 0;
-			////////////////////////
+				////////////////////////
 			}
 			TreeNode so = treeView.Nodes.Add("Dãy số");
 			so.ImageIndex = 2;
 			so.SelectedImageIndex = 2;
-			for (int i=0;i<10;i++)
+			for (int i = 0; i < 10; i++)
 			{
 				TreeNode dayso = so.Nodes.Add(i.ToString());
 				dayso.ImageIndex = 0;
@@ -70,22 +70,22 @@ namespace CongCuTreeView
 			anhChup.ImageIndex = anhChup.SelectedImageIndex = 2;
 			anhVe.ImageIndex = anhVe.SelectedImageIndex = 2;
 			anhDoHoa.ImageIndex = anhDoHoa.SelectedImageIndex = 2;
-			for (int i=0;i<10;++i)
+			for (int i = 0; i < 10; ++i)
 			{
-				TreeNode node_anhChup = anhChup.Nodes.Add(i.ToString() + ".JPG");
+				TreeNode node_anhChup = anhChup.Nodes.Add(i.ToString() + ".jpg");
 				node_anhChup.ImageIndex = 0;
 				node_anhChup.SelectedImageIndex = 1;
 			}
-			for (char i='A';i<='Z';++i)
+			for (char i = 'A'; i <= 'Z'; ++i)
 			{
-				TreeNode node_anhVe = anhVe.Nodes.Add(i + ".PNG");
+				TreeNode node_anhVe = anhVe.Nodes.Add(i + ".png");
 				node_anhVe.ImageIndex = 0;
 				node_anhVe.SelectedImageIndex = 1;
 			}
-			for (int i=3;i<=7;++i)
-				for (char j='k';j<='o';++j)
+			for (int i = 3; i <= 7; ++i)
+				for (char j = 'k'; j <= 'o'; ++j)
 				{
-					TreeNode node_anhDoHoa = anhDoHoa.Nodes.Add(j + i.ToString() + ".JPG");
+					TreeNode node_anhDoHoa = anhDoHoa.Nodes.Add(j + i.ToString() + ".bmp");
 					node_anhDoHoa.ImageIndex = 0;
 					node_anhDoHoa.SelectedImageIndex = 1;
 				}

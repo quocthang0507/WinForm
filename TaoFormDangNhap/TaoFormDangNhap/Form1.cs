@@ -20,11 +20,11 @@ namespace TaoFormDangNhap
 
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
-			string thongbao="";
+			string thongbao = "";
 			thongbao += this.txtUser.Text;
 			thongbao += "\nMật khẩu là: ";
 			thongbao += this.txtPass.Text;
-			if (this.chkNho.Checked==true)
+			if (this.chkNho.Checked == true)
 			{
 				thongbao += "\r\nBạn có ghi nhớ!";
 			}

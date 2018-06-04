@@ -53,9 +53,10 @@ namespace Calendar
 		}
 
 		//Đổi số ngày Julius jd ra ngày dd/mm/yyyy
-		public static Array jdToDate(int jd)
+		public static string jdToDate(int jd)
 		{
-			int[,,] arr;
+			//int[, ,] arr;
+			string kq;
 			int a, b, c, d, e, m, day, month, year;
 			if (jd > 2299160)
 			{
@@ -74,8 +75,9 @@ namespace Calendar
 			day = e - INT((153 * m + 2) / 5) + 1;
 			month = m + 3 - 12 * INT(m / 10);
 			year = b * 100 + d - 4800 + INT(m / 10);
-			arr = new int[day, month, year];
-			return arr;
+			//arr = new int[day, month, year];
+			kq = day.ToString() + '/' + month.ToString() + '/' + year.ToString();
+			return kq;
 		}
 
 		//Tính ngày Sóc
@@ -194,14 +196,13 @@ namespace Calendar
 				lunarMonth = lunarMonth - 12;
 			if (lunarMonth >= 11 && diff < 4)
 				lunarYear -= 1;
-			//return lunarDay.ToString() + " / " + lunarMonth.ToString() + " / " + lunarYear.ToString() + ", " + lunarLeap.ToString();
-			return lunarDay.ToString() + " / " + lunarMonth.ToString() + " / " + lunarYear.ToString();
+			return lunarDay.ToString() + " / " + lunarMonth.ToString() + " / " + lunarYear.ToString() + " , " + lunarLeap;
 		}
 
-			//Đổi âm lịch ra dương lịch
-		public static Array convertLunar2Solar(int lunarDay, int lunarMonth, int lunarYear, int lunarLeap, double timeZone = 7.0)
+		//Đổi âm lịch ra dương lịch
+		public static string convertLunar2Solar(int lunarDay, int lunarMonth, int lunarYear, int lunarLeap, double timeZone = 7.0)
 		{
-			int[,,] array;
+			//int[, ,] array;
 			int k, a11, b11, off, leapOff, leapMonth, monthStart;
 			if (lunarMonth < 11)
 			{
@@ -224,8 +225,8 @@ namespace Calendar
 					leapMonth += 12;
 				if (lunarLeap != 0 && lunarMonth != leapMonth)
 				{
-					array = new int[0, 0, 0];
-					return array;
+					//array = new int[0, 0, 0];
+					return null;
 				}
 				else if (lunarLeap != 0 || off >= leapOff)
 					off += 1;

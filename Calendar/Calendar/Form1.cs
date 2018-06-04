@@ -17,7 +17,6 @@ namespace Calendar
 		public Form_Duong_Am()
 		{
 			InitializeComponent();
-			tbNgay.Focus();
 		}
 
 		private void label2_Click(object sender, EventArgs e)
@@ -42,7 +41,7 @@ namespace Calendar
 		private void btnNhap_Click(object sender, EventArgs e)
 		{
 			int ngay, thang, nam;
-			if (tbNgay.Text=="" ||tbThang.Text==""||tbNam.Text=="")
+			if (tbNgay.Text == "" || tbThang.Text == "" || tbNam.Text == "")
 			{
 				rtbKetQua.Text = "Bạn chưa nhập đủ thông tin!";
 			}

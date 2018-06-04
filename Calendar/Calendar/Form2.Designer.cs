@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.cbxNhuan = new System.Windows.Forms.CheckBox();
 			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnTuDong = new System.Windows.Forms.Button();
 			this.btnNhap = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.rtbKetQua = new System.Windows.Forms.RichTextBox();
 			this.btnChuyen = new System.Windows.Forms.Button();
-			this.cbxNhuan = new System.Windows.Forms.CheckBox();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -66,6 +66,16 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Nhập ngày âm";
 			// 
+			// cbxNhuan
+			// 
+			this.cbxNhuan.AutoSize = true;
+			this.cbxNhuan.Location = new System.Drawing.Point(71, 117);
+			this.cbxNhuan.Name = "cbxNhuan";
+			this.cbxNhuan.Size = new System.Drawing.Size(72, 17);
+			this.cbxNhuan.TabIndex = 10;
+			this.cbxNhuan.Text = "Có nhuận";
+			this.cbxNhuan.UseVisualStyleBackColor = true;
+			// 
 			// btnXoa
 			// 
 			this.btnXoa.Location = new System.Drawing.Point(180, 27);
@@ -84,6 +94,7 @@
 			this.btnTuDong.TabIndex = 7;
 			this.btnTuDong.Text = "Lấy thời gian hiện tại";
 			this.btnTuDong.UseVisualStyleBackColor = true;
+			this.btnTuDong.Click += new System.EventHandler(this.btnTuDong_Click);
 			// 
 			// btnNhap
 			// 
@@ -170,16 +181,6 @@
 			this.btnChuyen.Text = " D";
 			this.btnChuyen.UseVisualStyleBackColor = true;
 			this.btnChuyen.Click += new System.EventHandler(this.btnChuyen_Click);
-			// 
-			// cbxNhuan
-			// 
-			this.cbxNhuan.AutoSize = true;
-			this.cbxNhuan.Location = new System.Drawing.Point(71, 117);
-			this.cbxNhuan.Name = "cbxNhuan";
-			this.cbxNhuan.Size = new System.Drawing.Size(72, 17);
-			this.cbxNhuan.TabIndex = 10;
-			this.cbxNhuan.Text = "Có nhuận";
-			this.cbxNhuan.UseVisualStyleBackColor = true;
 			// 
 			// Form_Am_Duong
 			// 
