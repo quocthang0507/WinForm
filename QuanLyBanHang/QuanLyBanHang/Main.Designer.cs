@@ -61,10 +61,10 @@
 			this.hướngDẫnSửDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -125,6 +125,7 @@
 			this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
 			this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.thoátToolStripMenuItem.Text = "Thoát";
+			this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
 			// 
 			// xemDanhMụcToolStripMenuItem
 			// 
@@ -144,36 +145,42 @@
 			this.thànhPhốToolStripMenuItem.Name = "thànhPhốToolStripMenuItem";
 			this.thànhPhốToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.thànhPhốToolStripMenuItem.Text = "Thành phố";
+			this.thànhPhốToolStripMenuItem.Click += new System.EventHandler(this.thànhPhốToolStripMenuItem_Click);
 			// 
 			// kháchHàngToolStripMenuItem
 			// 
 			this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
 			this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
+			this.kháchHàngToolStripMenuItem.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
 			// 
 			// nhânViênToolStripMenuItem
 			// 
 			this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
 			this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.nhânViênToolStripMenuItem.Text = "Nhân viên";
+			this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
 			// 
 			// sảnPhẩmToolStripMenuItem
 			// 
 			this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
 			this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.sảnPhẩmToolStripMenuItem.Text = "Sản phẩm";
+			this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
 			// 
 			// hoáĐơnToolStripMenuItem
 			// 
 			this.hoáĐơnToolStripMenuItem.Name = "hoáĐơnToolStripMenuItem";
 			this.hoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.hoáĐơnToolStripMenuItem.Text = "Hoá đơn";
+			this.hoáĐơnToolStripMenuItem.Click += new System.EventHandler(this.hoáĐơnToolStripMenuItem_Click);
 			// 
 			// chiTiếtHoáĐơnToolStripMenuItem
 			// 
 			this.chiTiếtHoáĐơnToolStripMenuItem.Name = "chiTiếtHoáĐơnToolStripMenuItem";
 			this.chiTiếtHoáĐơnToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.chiTiếtHoáĐơnToolStripMenuItem.Text = "Chi tiết hoá đơn";
+			this.chiTiếtHoáĐơnToolStripMenuItem.Click += new System.EventHandler(this.chiTiếtHoáĐơnToolStripMenuItem_Click);
 			// 
 			// quảnLýDanhMụcHoáĐơnToolStripMenuItem
 			// 
@@ -323,6 +330,26 @@
 			this.groupBox1.TabIndex = 2;
 			this.groupBox1.TabStop = false;
 			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Times New Roman", 16.25F, System.Drawing.FontStyle.Bold);
+			this.label5.Location = new System.Drawing.Point(207, 63);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(122, 25);
+			this.label5.TabIndex = 3;
+			this.label5.Text = "0987610260";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Times New Roman", 16.25F, System.Drawing.FontStyle.Bold);
+			this.label4.Location = new System.Drawing.Point(191, 25);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(161, 25);
+			this.label4.TabIndex = 2;
+			this.label4.Text = "La Quốc Thắng";
+			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
@@ -340,26 +367,6 @@
 			this.label2.Size = new System.Drawing.Size(119, 20);
 			this.label2.TabIndex = 0;
 			this.label2.Text = "Người thực hiện";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Times New Roman", 16.25F, System.Drawing.FontStyle.Bold);
-			this.label4.Location = new System.Drawing.Point(191, 25);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(161, 25);
-			this.label4.TabIndex = 2;
-			this.label4.Text = "La Quốc Thắng";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Times New Roman", 16.25F, System.Drawing.FontStyle.Bold);
-			this.label5.Location = new System.Drawing.Point(207, 63);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(122, 25);
-			this.label5.TabIndex = 3;
-			this.label5.Text = "0987610260";
 			// 
 			// Main
 			// 
