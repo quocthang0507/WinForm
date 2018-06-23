@@ -56,12 +56,14 @@
 			this.tbx_TrungTo.Name = "tbx_TrungTo";
 			this.tbx_TrungTo.Size = new System.Drawing.Size(120, 21);
 			this.tbx_TrungTo.TabIndex = 1;
+			this.tbx_TrungTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_TrungTo_KeyPress);
 			// 
 			// tbx_HauTo
 			// 
 			this.tbx_HauTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
 			this.tbx_HauTo.Location = new System.Drawing.Point(152, 62);
 			this.tbx_HauTo.Name = "tbx_HauTo";
+			this.tbx_HauTo.ReadOnly = true;
 			this.tbx_HauTo.Size = new System.Drawing.Size(120, 21);
 			this.tbx_HauTo.TabIndex = 3;
 			// 
@@ -81,6 +83,7 @@
 			this.tbx_KetQua.Location = new System.Drawing.Point(152, 97);
 			this.tbx_KetQua.Multiline = true;
 			this.tbx_KetQua.Name = "tbx_KetQua";
+			this.tbx_KetQua.ReadOnly = true;
 			this.tbx_KetQua.Size = new System.Drawing.Size(120, 20);
 			this.tbx_KetQua.TabIndex = 5;
 			// 

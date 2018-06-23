@@ -50,7 +50,7 @@ namespace Calculator_3
 				if (La_ToanTu(bieuThuc[i].ToString()) && La_ToanTu(bieuThuc[i + 1].ToString()))
 					throw new Exception("Bạn nhập sai cú pháp");
 			}
-			return false;
+			return true;
 		}
 
 		public static int Do_UuTien_ToanTu(string c)
