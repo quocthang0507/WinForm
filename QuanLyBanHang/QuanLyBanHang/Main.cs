@@ -71,5 +71,12 @@ namespace QuanLyBanHang
 		{
 			Application.Exit();
 		}
-	}
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            Form frm = new QuanLyDanhMucThanhPho();
+            frm.Text = "Quản lý danh mục thành phố";
+            frm.ShowDialog();
+        }
+    }
 }
