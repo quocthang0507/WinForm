@@ -39,7 +39,8 @@
             // 
             // btn_LogIn
             // 
-            this.btn_LogIn.Location = new System.Drawing.Point(435, 12);
+            this.btn_LogIn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_LogIn.Location = new System.Drawing.Point(418, 17);
             this.btn_LogIn.Name = "btn_LogIn";
             this.btn_LogIn.Size = new System.Drawing.Size(81, 23);
             this.btn_LogIn.TabIndex = 0;
@@ -49,6 +50,7 @@
             // 
             // tbx_UserName
             // 
+            this.tbx_UserName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tbx_UserName.Location = new System.Drawing.Point(283, 12);
             this.tbx_UserName.MaxLength = 10;
             this.tbx_UserName.Name = "tbx_UserName";
@@ -57,6 +59,7 @@
             // 
             // tbx_Password
             // 
+            this.tbx_Password.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tbx_Password.Location = new System.Drawing.Point(283, 38);
             this.tbx_Password.MaxLength = 50;
             this.tbx_Password.Name = "tbx_Password";
@@ -77,6 +80,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(217, 17);
             this.label1.Name = "label1";
@@ -86,6 +90,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(217, 41);
             this.label2.Name = "label2";

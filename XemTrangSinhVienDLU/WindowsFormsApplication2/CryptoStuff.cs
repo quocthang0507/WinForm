@@ -203,7 +203,7 @@ namespace EncryptAndDecryptFile
         {
             // Make a stream holding the input string.
             byte[] in_bytes = Encoding.ASCII.GetBytes(in_string);
-            using (MemoryStream in_stream = new MemoryStream(in_bytes))
+            using (MemoryStream in_stream = new MemoryStream())
             {
                 // Make an output stream.
                 using (MemoryStream out_stream = new MemoryStream())

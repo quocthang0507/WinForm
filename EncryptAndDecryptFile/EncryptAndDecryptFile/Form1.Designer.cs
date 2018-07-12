@@ -43,8 +43,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 18);
+            this.label1.Location = new System.Drawing.Point(306, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +53,8 @@
             // 
             // txt_pass
             // 
-            this.txt_pass.Location = new System.Drawing.Point(83, 15);
+            this.txt_pass.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_pass.Location = new System.Drawing.Point(367, 12);
             this.txt_pass.Name = "txt_pass";
             this.txt_pass.Size = new System.Drawing.Size(510, 20);
             this.txt_pass.TabIndex = 1;
@@ -60,31 +62,31 @@
             // 
             // txtPlaintextFile
             // 
-            this.txtPlaintextFile.Location = new System.Drawing.Point(3, 78);
+            this.txtPlaintextFile.Location = new System.Drawing.Point(12, 79);
             this.txtPlaintextFile.Name = "txtPlaintextFile";
-            this.txtPlaintextFile.Size = new System.Drawing.Size(220, 158);
+            this.txtPlaintextFile.Size = new System.Drawing.Size(350, 350);
             this.txtPlaintextFile.TabIndex = 2;
             this.txtPlaintextFile.Text = "";
             // 
             // txtCiphertextFile
             // 
-            this.txtCiphertextFile.Location = new System.Drawing.Point(298, 78);
+            this.txtCiphertextFile.Location = new System.Drawing.Point(437, 79);
             this.txtCiphertextFile.Name = "txtCiphertextFile";
-            this.txtCiphertextFile.Size = new System.Drawing.Size(288, 163);
+            this.txtCiphertextFile.Size = new System.Drawing.Size(350, 350);
             this.txtCiphertextFile.TabIndex = 3;
             this.txtCiphertextFile.Text = "";
             // 
             // txtDecipheredFile
             // 
-            this.txtDecipheredFile.Location = new System.Drawing.Point(661, 78);
+            this.txtDecipheredFile.Location = new System.Drawing.Point(862, 78);
             this.txtDecipheredFile.Name = "txtDecipheredFile";
-            this.txtDecipheredFile.Size = new System.Drawing.Size(288, 158);
+            this.txtDecipheredFile.Size = new System.Drawing.Size(350, 351);
             this.txtDecipheredFile.TabIndex = 4;
             this.txtDecipheredFile.Text = "";
             // 
             // btn_encrypt
             // 
-            this.btn_encrypt.Location = new System.Drawing.Point(229, 124);
+            this.btn_encrypt.Location = new System.Drawing.Point(368, 234);
             this.btn_encrypt.Name = "btn_encrypt";
             this.btn_encrypt.Size = new System.Drawing.Size(63, 23);
             this.btn_encrypt.TabIndex = 5;
@@ -94,7 +96,7 @@
             // 
             // btn_decrypt
             // 
-            this.btn_decrypt.Location = new System.Drawing.Point(592, 124);
+            this.btn_decrypt.Location = new System.Drawing.Point(793, 234);
             this.btn_decrypt.Name = "btn_decrypt";
             this.btn_decrypt.Size = new System.Drawing.Size(63, 23);
             this.btn_decrypt.TabIndex = 6;
@@ -104,7 +106,8 @@
             // 
             // btn_browser
             // 
-            this.btn_browser.Location = new System.Drawing.Point(624, 15);
+            this.btn_browser.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_browser.Location = new System.Drawing.Point(908, 12);
             this.btn_browser.Name = "btn_browser";
             this.btn_browser.Size = new System.Drawing.Size(83, 23);
             this.btn_browser.TabIndex = 7;
@@ -117,30 +120,30 @@
             this.txt_url.Location = new System.Drawing.Point(12, 41);
             this.txt_url.Multiline = true;
             this.txt_url.Name = "txt_url";
-            this.txt_url.Size = new System.Drawing.Size(211, 31);
+            this.txt_url.Size = new System.Drawing.Size(350, 30);
             this.txt_url.TabIndex = 8;
             // 
             // txt_url_encrypt
             // 
-            this.txt_url_encrypt.Location = new System.Drawing.Point(298, 41);
+            this.txt_url_encrypt.Location = new System.Drawing.Point(437, 42);
             this.txt_url_encrypt.Multiline = true;
             this.txt_url_encrypt.Name = "txt_url_encrypt";
-            this.txt_url_encrypt.Size = new System.Drawing.Size(288, 31);
+            this.txt_url_encrypt.Size = new System.Drawing.Size(350, 30);
             this.txt_url_encrypt.TabIndex = 9;
             // 
             // txt_url_decrypt
             // 
-            this.txt_url_decrypt.Location = new System.Drawing.Point(661, 44);
+            this.txt_url_decrypt.Location = new System.Drawing.Point(862, 44);
             this.txt_url_decrypt.Multiline = true;
             this.txt_url_decrypt.Name = "txt_url_decrypt";
-            this.txt_url_decrypt.Size = new System.Drawing.Size(288, 28);
+            this.txt_url_decrypt.Size = new System.Drawing.Size(350, 30);
             this.txt_url_decrypt.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 253);
+            this.ClientSize = new System.Drawing.Size(1224, 441);
             this.Controls.Add(this.txt_url_decrypt);
             this.Controls.Add(this.txt_url_encrypt);
             this.Controls.Add(this.txt_url);
@@ -153,7 +156,7 @@
             this.Controls.Add(this.txt_pass);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Mã hóa và Giải mã File - http://laptrinhvb.net";
+            this.Text = "Mã hóa và Giải mã File";
             this.ResumeLayout(false);
             this.PerformLayout();
 

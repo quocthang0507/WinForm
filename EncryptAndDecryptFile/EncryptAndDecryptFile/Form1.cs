@@ -39,16 +39,12 @@ namespace EncryptAndDecryptFile
         private void btn_encrypt_Click(object sender, EventArgs e)
         {
             CryptoStuff.EncryptFile(txt_pass.Text, txt_url.Text, txt_url_encrypt.Text);
-
-
             txtCiphertextFile.Text = File.ReadAllBytes(txt_url_encrypt.Text).ToHex(' ');
         }
 
         private void btn_decrypt_Click(object sender, EventArgs e)
         {
             CryptoStuff.DecryptFile(txt_pass.Text, txt_url_encrypt.Text, txt_url_decrypt.Text);
-
-            // Display the result.
             txtDecipheredFile.Text = File.ReadAllText(txt_url_decrypt.Text);
         }
     }

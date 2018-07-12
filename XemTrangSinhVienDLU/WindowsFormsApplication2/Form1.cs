@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Collections.Specialized;
 using System.IO;
+using EncryptAndDecryptFile;
 
 namespace WindowsFormsApplication2
 {
@@ -27,12 +28,17 @@ namespace WindowsFormsApplication2
             }
         }
 
+        string pass = "12345679";
+        string mssv, password;
+
+
         public SinhVienOnline()
         {
             InitializeComponent();
-            if (!File.Exists("data.txt"))
-                File.CreateText("data.txt");
-            else Doc_DuLieu();
+            if (File.Exists("data.dat"))
+            {
+                Doc_DuLieu();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,37 +51,41 @@ namespace WindowsFormsApplication2
                 }
                 else
                 {
-                    Ghi_DuLieu();
+                    if (!File.Exists("data.dat") || mssv != tbx_UserName.Text || password != tbx_Password.Text)
+                    {
+                        File.Delete("data.dat");
+                        Ghi_DuLieu();
+                    }
                     var values = new NameValueCollection { { "txtTaiKhoan", tbx_UserName.Text }, { "txtMatKhau", tbx_Password.Text } };
                     client.Encoding = Encoding.UTF8;
                     client.UploadValues(new Uri("http://online.dlu.edu.vn/Login"), "POST", values);
                     var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/DrawingStudentSchedule?StudentId=1610207&YearId=2017-2018&TermId=HK02&WeekId=3");
-                    webBrowser1.DocumentText = html;
+                    if (html.Contains("<title>Đăng nhập</title>"))
+                        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else webBrowser1.DocumentText = html;
                 }
             }
         }
 
         private void Doc_DuLieu()
         {
-            string path = "data.txt";
-            StreamReader sr = new StreamReader(path);
-            string data = sr.ReadLine();
-            if (data != "")
-            {
-                tbx_UserName.Text = data;
-                tbx_Password.Text = sr.ReadLine();
-                sr.Close();
-            }
-            else Ghi_DuLieu();
+            string path = "data.dat";
+            CryptoStuff.DecryptFile(pass, path, "temp.txt");
+            string data = File.ReadAllText("temp.txt");
+            File.Delete("temp.txt");
+            string[] temp = data.Split(' ');
+            mssv = temp[0];
+            tbx_UserName.Text = temp[0];
+            password = temp[1];
+            tbx_Password.Text = temp[1];
         }
 
         private void Ghi_DuLieu()
         {
-            string path = "data.txt";
-            StreamWriter sw = new StreamWriter(path);
-            sw.WriteLine(tbx_UserName.Text);
-            sw.Write(tbx_Password.Text);
-            sw.Close();
+            string data_de = string.Concat(tbx_UserName.Text, " ", tbx_Password.Text);
+            File.WriteAllText("temp.txt", data_de, Encoding.UTF8);
+            CryptoStuff.EncryptFile(pass, "temp.txt", "data.dat");
+            File.Delete("temp.txt");
         }
     }
 }
