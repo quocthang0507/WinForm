@@ -54,7 +54,15 @@ namespace ThongTinSinhVien_DLU
                     }
                     var values = new NameValueCollection { { "txtTaiKhoan", tbx_UserName.Text }, { "txtMatKhau", tbx_Password.Text } };
                     client.Encoding = Encoding.UTF8;
-                    client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+                    try
+                    {
+                        client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Lỗi kết nối với máy chủ! Vui lòng kiểm tra kết nối mạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw;
+                    }
                     var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
                     if (html.Contains("<title>Đăng nhập</title>"))
                         MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
