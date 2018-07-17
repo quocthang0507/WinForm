@@ -63,6 +63,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.webBrowser3 = new System.Windows.Forms.WebBrowser();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_Xuat_RL = new System.Windows.Forms.Button();
+            this.cbx_HocKy_RL = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbx_NamHoc_RL = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.webBrowser4 = new System.Windows.Forms.WebBrowser();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.webBrowser5 = new System.Windows.Forms.WebBrowser();
@@ -70,16 +75,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_Xuat_RL = new System.Windows.Forms.Button();
-            this.cbx_HocKy_RL = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbx_NamHoc_RL = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btn_Xuat_HP = new System.Windows.Forms.Button();
-            this.cbx_HocKy_HP = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbx_NamHoc_HP = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Tuan_TKB)).BeginInit();
@@ -219,6 +214,7 @@
             this.cbx_HocKy_TKB.Name = "cbx_HocKy_TKB";
             this.cbx_HocKy_TKB.Size = new System.Drawing.Size(50, 21);
             this.cbx_HocKy_TKB.TabIndex = 5;
+            this.cbx_HocKy_TKB.SelectedIndexChanged += new System.EventHandler(this.cbx_HocKy_TKB_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -237,6 +233,7 @@
             this.cbx_NamHoc_TKB.Name = "cbx_NamHoc_TKB";
             this.cbx_NamHoc_TKB.Size = new System.Drawing.Size(87, 21);
             this.cbx_NamHoc_TKB.TabIndex = 4;
+            this.cbx_NamHoc_TKB.SelectedIndexChanged += new System.EventHandler(this.cbx_NamHoc_TKB_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -467,81 +464,6 @@
             this.tabPage4.Text = "Xem đánh giá rèn luyện";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // webBrowser4
-            // 
-            this.webBrowser4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser4.Location = new System.Drawing.Point(6, 34);
-            this.webBrowser4.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser4.Name = "webBrowser4";
-            this.webBrowser4.Size = new System.Drawing.Size(838, 443);
-            this.webBrowser4.TabIndex = 2;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.btn_Xuat_HP);
-            this.tabPage5.Controls.Add(this.cbx_HocKy_HP);
-            this.tabPage5.Controls.Add(this.label12);
-            this.tabPage5.Controls.Add(this.cbx_NamHoc_HP);
-            this.tabPage5.Controls.Add(this.label13);
-            this.tabPage5.Controls.Add(this.webBrowser5);
-            this.tabPage5.ImageIndex = 4;
-            this.tabPage5.Location = new System.Drawing.Point(4, 34);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(850, 495);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Học phí";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser5
-            // 
-            this.webBrowser5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser5.Location = new System.Drawing.Point(6, 33);
-            this.webBrowser5.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser5.Name = "webBrowser5";
-            this.webBrowser5.Size = new System.Drawing.Size(838, 444);
-            this.webBrowser5.TabIndex = 2;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "calendar.png");
-            this.imageList1.Images.SetKeyName(1, "test.png");
-            this.imageList1.Images.SetKeyName(2, "a-mark.png");
-            this.imageList1.Images.SetKeyName(3, "three-men-conference.png");
-            this.imageList1.Images.SetKeyName(4, "tuition-and-fees.png");
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
             // btn_Xuat_RL
             // 
             this.btn_Xuat_RL.Location = new System.Drawing.Point(309, 4);
@@ -592,55 +514,75 @@
             this.label11.TabIndex = 14;
             this.label11.Text = "Năm học:";
             // 
-            // btn_Xuat_HP
+            // webBrowser4
             // 
-            this.btn_Xuat_HP.Location = new System.Drawing.Point(309, 4);
-            this.btn_Xuat_HP.Name = "btn_Xuat_HP";
-            this.btn_Xuat_HP.Size = new System.Drawing.Size(75, 23);
-            this.btn_Xuat_HP.TabIndex = 21;
-            this.btn_Xuat_HP.Text = "Xuất";
-            this.btn_Xuat_HP.UseVisualStyleBackColor = true;
-            this.btn_Xuat_HP.Click += new System.EventHandler(this.btn_Xuat_HP_Click);
+            this.webBrowser4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser4.Location = new System.Drawing.Point(6, 34);
+            this.webBrowser4.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser4.Name = "webBrowser4";
+            this.webBrowser4.Size = new System.Drawing.Size(838, 443);
+            this.webBrowser4.TabIndex = 2;
             // 
-            // cbx_HocKy_HP
+            // tabPage5
             // 
-            this.cbx_HocKy_HP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbx_HocKy_HP.FormattingEnabled = true;
-            this.cbx_HocKy_HP.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cbx_HocKy_HP.Location = new System.Drawing.Point(231, 6);
-            this.cbx_HocKy_HP.Name = "cbx_HocKy_HP";
-            this.cbx_HocKy_HP.Size = new System.Drawing.Size(65, 21);
-            this.cbx_HocKy_HP.TabIndex = 18;
+            this.tabPage5.Controls.Add(this.webBrowser5);
+            this.tabPage5.ImageIndex = 4;
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(850, 495);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Học phí";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // webBrowser5
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(181, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 13);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Học kỳ:";
+            this.webBrowser5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser5.Location = new System.Drawing.Point(6, 6);
+            this.webBrowser5.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser5.Name = "webBrowser5";
+            this.webBrowser5.Size = new System.Drawing.Size(838, 471);
+            this.webBrowser5.TabIndex = 2;
             // 
-            // cbx_NamHoc_HP
+            // imageList1
             // 
-            this.cbx_NamHoc_HP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbx_NamHoc_HP.FormattingEnabled = true;
-            this.cbx_NamHoc_HP.Location = new System.Drawing.Point(75, 6);
-            this.cbx_NamHoc_HP.Name = "cbx_NamHoc_HP";
-            this.cbx_NamHoc_HP.Size = new System.Drawing.Size(87, 21);
-            this.cbx_NamHoc_HP.TabIndex = 17;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "calendar.png");
+            this.imageList1.Images.SetKeyName(1, "test.png");
+            this.imageList1.Images.SetKeyName(2, "a-mark.png");
+            this.imageList1.Images.SetKeyName(3, "three-men-conference.png");
+            this.imageList1.Images.SetKeyName(4, "tuition-and-fees.png");
             // 
-            // label13
+            // menuStrip1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Năm học:";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // SinhVienDLU
             // 
@@ -667,7 +609,6 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -722,10 +663,5 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbx_NamHoc_RL;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btn_Xuat_HP;
-        private System.Windows.Forms.ComboBox cbx_HocKy_HP;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cbx_NamHoc_HP;
-        private System.Windows.Forms.Label label13;
     }
 }
