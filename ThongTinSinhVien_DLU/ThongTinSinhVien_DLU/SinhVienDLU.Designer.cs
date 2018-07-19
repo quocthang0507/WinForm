@@ -1,6 +1,6 @@
 ﻿namespace ThongTinSinhVien_DLU
 {
-    partial class SinhVienDLU
+    partial class Form_SinhVienDLU
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinhVienDLU));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_SinhVienDLU));
             this.lbl_YourName = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -178,7 +178,7 @@
             // 
             // btn_Xuat_TKB
             // 
-            this.btn_Xuat_TKB.Location = new System.Drawing.Point(769, 4);
+            this.btn_Xuat_TKB.Location = new System.Drawing.Point(598, 4);
             this.btn_Xuat_TKB.Name = "btn_Xuat_TKB";
             this.btn_Xuat_TKB.Size = new System.Drawing.Size(75, 23);
             this.btn_Xuat_TKB.TabIndex = 9;
@@ -192,6 +192,7 @@
             this.nud_Tuan_TKB.Name = "nud_Tuan_TKB";
             this.nud_Tuan_TKB.Size = new System.Drawing.Size(55, 20);
             this.nud_Tuan_TKB.TabIndex = 6;
+            this.nud_Tuan_TKB.Enter += new System.EventHandler(this.nud_Tuan_TKB_Enter);
             // 
             // label3
             // 
@@ -584,7 +585,7 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // SinhVienDLU
+            // Form_SinhVienDLU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -594,9 +595,10 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "SinhVienDLU";
+            this.Name = "Form_SinhVienDLU";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cổng thông tin Sinh Viên DLU";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SinhVienDLU_FormClosing);
             this.Load += new System.EventHandler(this.SinhVienDLU_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

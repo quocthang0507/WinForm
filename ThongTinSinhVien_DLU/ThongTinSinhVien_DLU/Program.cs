@@ -16,7 +16,7 @@ namespace ThongTinSinhVien_DLU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SinhVienDLU());
+            Application.Run(new Form_SinhVienDLU());
         }
     }
 }

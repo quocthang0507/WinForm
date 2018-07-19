@@ -18,10 +18,19 @@ namespace ThongTinSinhVien_DLU
         public Form_DangNhap()
         {
             InitializeComponent();
-            tbx_UserName.Focus();
+        }
+
+        private void Form_DangNhap_Load(object sender, EventArgs e)
+        {
             if (File.Exists("data.dat"))
             {
+                chk_Luu.Checked = true;
                 Doc_DuLieu();
+                btn_LogIn.Focus();
+            }
+            else
+            {
+                chk_Luu.Checked = false; tbx_UserName.Focus();
             }
         }
 
@@ -38,6 +47,13 @@ namespace ThongTinSinhVien_DLU
             tbx_Password.Text = temp[1];
         }
 
+        private void Ghi_DuLieu()
+        {
+            string data_de = string.Concat(tbx_UserName.Text, " ", tbx_Password.Text);
+            File.WriteAllText("temp.txt", data_de, Encoding.UTF8);
+            CryptoStuff.EncryptFile(pass, "temp.txt", "data.dat");
+            File.Delete("temp.txt");
+        }
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
@@ -60,18 +76,19 @@ namespace ThongTinSinhVien_DLU
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Lỗi kết nối với máy chủ! Vui lòng kiểm tra kết nối mạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        label3.Text = "Lỗi kết nối với máy chủ!";
                         throw;
                     }
                     var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
                     if (html.Contains("<title>Đăng nhập</title>"))
-                        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        label3.Text = "Bạn nhập sai tên đăng nhập hoặc mật khẩu";
                     else
                     {
                         yourName = Regex.Match(html, "<span>(?<Content>([^<]*))</span>").Value;
                         yourName = yourName.Replace("<span>", "");
                         yourName = yourName.Replace("</span>", "");
-                        MessageBox.Show(string.Concat("Xin chào ", yourName), "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        yourName = yourName.Replace("#224;", "à");
+                        label3.Text = "";
                         isSuccess = true;
                         this.Close();
                     }
@@ -90,12 +107,28 @@ namespace ThongTinSinhVien_DLU
                 Application.Exit();
         }
 
-        private void Ghi_DuLieu()
+        private void Form_DangNhap_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string data_de = string.Concat(tbx_UserName.Text, " ", tbx_Password.Text);
-            File.WriteAllText("temp.txt", data_de, Encoding.UTF8);
-            CryptoStuff.EncryptFile(pass, "temp.txt", "data.dat");
-            File.Delete("temp.txt");
+            if (e.KeyChar == (char)13)
+                btn_LogIn.PerformClick();
         }
+
+        private void tbx_UserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Form_DangNhap_KeyPress(sender, e);
+        }
+
+        private void tbx_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Form_DangNhap_KeyPress(sender, e);
+        }
+
+        private void chk_Luu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_Luu.Checked == true)
+                Form_SinhVienDLU.rememberLogin = true;
+            else Form_SinhVienDLU.rememberLogin = false;
+        }
+
     }
 }

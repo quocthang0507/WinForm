@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnDonate = new System.Windows.Forms.Button();
             this.imageBoxFrameGrabber = new Emgu.CV.UI.ImageBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
@@ -165,19 +165,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnDonate
-            // 
-            this.btnDonate.BackgroundImage = global::MultiFaceRec.Properties.Resources.Donate;
-            this.btnDonate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDonate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDonate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnDonate.Location = new System.Drawing.Point(12, 256);
-            this.btnDonate.Name = "btnDonate";
-            this.btnDonate.Size = new System.Drawing.Size(95, 30);
-            this.btnDonate.TabIndex = 10;
-            this.btnDonate.UseVisualStyleBackColor = true;
-            this.btnDonate.Click += new System.EventHandler(this.button3_Click);
-            // 
             // imageBoxFrameGrabber
             // 
             this.imageBoxFrameGrabber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -192,7 +179,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 290);
-            this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.imageBoxFrameGrabber);
@@ -222,7 +208,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnDonate;
     }
 }
 

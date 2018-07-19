@@ -9,8 +9,9 @@ using System.Windows.Forms;
 
 namespace ThongTinSinhVien_DLU
 {
-    public partial class SinhVienDLU : Form
+    public partial class Form_SinhVienDLU : Form
     {
+        public static bool rememberLogin = false;
         string mssv, password;
         string pass = "12345679";
         List<string> listWeek;
@@ -18,35 +19,29 @@ namespace ThongTinSinhVien_DLU
 
         CookieAwareWebClient client = new CookieAwareWebClient();
 
-
-        public SinhVienDLU()
+        public Form_SinhVienDLU()
         {
-            InitializeComponent();
             Form login = new Form_DangNhap();
             login.ShowDialog();
+            InitializeComponent();
         }
 
         private void SinhVienDLU_Load(object sender, EventArgs e)
         {
             Doc_DuLieu();
-            SendInfoLogin();
-            lbl_YourName.Text = Form_DangNhap.yourName;
-            week = GetNumWeek();
-            rbn_SinhVien.Checked = true;
-            AddSchoolYearList(cbx_NamHoc_TKB);
-            AutoSelectSchoolYear(cbx_NamHoc_TKB);
-            AutoSelectTerm(cbx_HocKy_TKB);
-            GetWeek();
-            AutoSelectWeek();
+            SendInfoLoginCookie();
             label4.Visible = label5.Visible = false;
             tbx_GiangVien.Visible = tbx_Lop.Visible = false;
-        }
-
-        void SendInfoLogin()
-        {
-            var values = new NameValueCollection { { "txtTaiKhoan", mssv }, { "txtMatKhau", password } };
-            client.Encoding = Encoding.UTF8;
-            client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+            lbl_YourName.Text = Form_DangNhap.yourName;
+            week = GetCurrentNumWeek();
+            rbn_SinhVien.Checked = true;
+            AddSchoolYearsList(cbx_NamHoc_TKB);
+            AutoSelectSchoolYear(cbx_NamHoc_TKB);
+            AutoSelectTerm(cbx_HocKy_TKB);
+            GetWeekofTerm();
+            AutoSelectWeek();
+            btn_XuatTKB_Click(sender, e);
+            GetRangeWeekofTerm();
         }
 
         void Doc_DuLieu()
@@ -60,7 +55,14 @@ namespace ThongTinSinhVien_DLU
             password = temp[1];
         }
 
-        int GetNumWeek()
+        void SendInfoLoginCookie()
+        {
+            var values = new NameValueCollection { { "txtTaiKhoan", mssv }, { "txtMatKhau", password } };
+            client.Encoding = Encoding.UTF8;
+            client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+        }
+
+        int GetCurrentNumWeek()
         {
             using (var client = new CookieAwareWebClient())
             {
@@ -73,7 +75,7 @@ namespace ThongTinSinhVien_DLU
             }
         }
 
-        string GetSchoolYear()
+        string GetCurrentSchoolYear()
         {
             DateTime dt = DateTime.Now;
             string schoolYear;
@@ -87,7 +89,6 @@ namespace ThongTinSinhVien_DLU
 
         string GetStudyPrograms()
         {
-            client.Encoding = Encoding.UTF8;
             var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/StudyPrograms");
             html = Regex.Match(html, "<option value=\"(.*?)\">").Value;
             html = Regex.Match(html, "\"(.*?)\"").Value;
@@ -95,19 +96,16 @@ namespace ThongTinSinhVien_DLU
             return html;
         }
 
-        void AddSchoolYearList(ComboBox x)
+        void AddSchoolYearsList(ComboBox x)
         {
             int yearStart = int.Parse(string.Concat("20", mssv[0], mssv[1]));
-
             for (int i = 0; i < 4; i++)
-            {
                 x.Items.Insert(i, string.Concat(yearStart, '-', ++yearStart));
-            }
         }
 
         void AutoSelectSchoolYear(ComboBox x)
         {
-            string yearNow = GetSchoolYear();
+            string yearNow = GetCurrentSchoolYear();
             foreach (var item in cbx_NamHoc_TKB.Items)
             {
                 if (item.ToString() == yearNow)
@@ -134,7 +132,7 @@ namespace ThongTinSinhVien_DLU
             DialogResult dr = MessageBox.Show("CHƯƠNG TRÌNH QUẢN LÝ TRANG CÁ NHÂN SINH VIÊN DLU \r\n\nTác giả: La Quốc Thắng \r\nMọi góp ý vui lòng gửi về Email : quocthang0507@gmail.com", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        void GetWeek()
+        void GetWeekofTerm()
         {
             string link = string.Concat("http://qlgd.dlu.edu.vn/Public/GetWeek/", cbx_NamHoc_TKB.Text, "$HK0", cbx_HocKy_TKB.Text);
             var data = client.DownloadString(link);
@@ -150,12 +148,22 @@ namespace ThongTinSinhVien_DLU
             }
         }
 
+        void GetRangeWeekofTerm()
+        {
+            string[] t = listWeek[0].Split(' ');
+            int min = int.Parse(t[1]);
+            t = listWeek[listWeek.Count - 1].Split(' ');
+            int max = int.Parse(t[1]);
+            nud_Tuan_TKB.Minimum = min;
+            nud_Tuan_TKB.Maximum = max;
+        }
+
         void AutoSelectWeek()
         {
             foreach (var item in listWeek)
             {
                 string[] t = item.Split(' ');
-                if (GetNumWeek() == int.Parse(t[0]))
+                if (GetCurrentNumWeek() == int.Parse(t[0]))
                 {
                     nud_Tuan_TKB.Value = int.Parse(t[1]);
                     return;
@@ -195,11 +203,13 @@ namespace ThongTinSinhVien_DLU
             {
                 label4.Visible = true;
                 tbx_Lop.Visible = true;
+                btn_Xuat_TKB.Location = new System.Drawing.Point(769, 4);
             }
             else
             {
                 label4.Visible = false;
                 tbx_Lop.Visible = false;
+                btn_Xuat_TKB.Location = new System.Drawing.Point(598, 4);
             }
         }
 
@@ -209,11 +219,13 @@ namespace ThongTinSinhVien_DLU
             {
                 label5.Visible = true;
                 tbx_GiangVien.Visible = true;
+                btn_Xuat_TKB.Location = new System.Drawing.Point(769, 4);
             }
             else
             {
                 label5.Visible = false;
                 tbx_GiangVien.Visible = false;
+                btn_Xuat_TKB.Location = new System.Drawing.Point(598, 4);
             }
         }
 
@@ -232,47 +244,42 @@ namespace ThongTinSinhVien_DLU
         {
             if (tabControl1.SelectedIndex == 0)
             {
-
+                btn_XuatTKB_Click(sender, e);
             }
             else if (tabControl1.SelectedIndex == 1)
             {
                 if (cbx_NamHoc_LichThi.Items.Count == 0)
                 {
-                    AddSchoolYearList(cbx_NamHoc_LichThi);
+                    AddSchoolYearsList(cbx_NamHoc_LichThi);
                     AutoSelectTerm(cbx_HocKy_LichThi);
                     AutoSelectSchoolYear(cbx_NamHoc_LichThi);
+                    btn_Xuat_LichThi_Click(sender, e);
                 }
             }
             else if (tabControl1.SelectedIndex == 2)
             {
                 if (cbx_NamHoc_Diem.Items.Count == 0)
                 {
-                    AddSchoolYearList(cbx_NamHoc_Diem);
+                    AddSchoolYearsList(cbx_NamHoc_Diem);
                     AutoSelectTerm(cbx_HocKy_Diem);
                     AutoSelectSchoolYear(cbx_NamHoc_Diem);
                     cbx_HocKy_Diem.Items.Add("Tất cả");
                     cbx_NamHoc_Diem.Items.Add("Tất cả");
+                    btn_Xuat_Diem_Click(sender, e);
                 }
             }
             else if (tabControl1.SelectedIndex == 3)
             {
                 if (cbx_NamHoc_RL.Items.Count == 0)
                 {
-                    AddSchoolYearList(cbx_NamHoc_RL);
+                    AddSchoolYearsList(cbx_NamHoc_RL);
                     AutoSelectTerm(cbx_HocKy_RL);
                     AutoSelectSchoolYear(cbx_NamHoc_RL);
+                    btn_Xuat_RL_Click(sender, e);
                 }
             }
             else if (tabControl1.SelectedIndex == 4)
-            {
-                //if (cbx_NamHoc_HP.Items.Count == 0)
-                //{
-                //    AddSchoolYearList(cbx_NamHoc_HP);
-                //    AutoSelectTerm(cbx_HocKy_HP);
-                //    AutoSelectSchoolYear(cbx_NamHoc_HP);
-                //}
                 btn_Xuat_HP_Click(sender, e);
-            }
         }
         string Marks()
         {
@@ -302,37 +309,56 @@ namespace ThongTinSinhVien_DLU
             else { label9.Visible = true; cbx_HocKy_Diem.Visible = true; }
         }
 
-        string Behavior()
+        string Behaviors()
         {
             return string.Concat("http://online.dlu.edu.vn/Home/BehaviorByStudent?yearStudy=", cbx_NamHoc_RL.Text, "&termID=HK0", cbx_HocKy_RL.Text);
         }
 
         private void btn_Xuat_RL_Click(object sender, EventArgs e)
         {
-            var html = client.DownloadString(Behavior());
+            var html = client.DownloadString(Behaviors());
+            var clearedScript = Regex.Match(html, "<script[^>]*>(?:[^<]+|<(?!\n/script>))+").Value;
+            html = html.Replace(clearedScript, "");
             html = html.Replace(".error {\r\n        border-color: red;\r\n    }", ".error {\r\n        border-color: red;\r\n    }   table {\r\n    width:100%;\r\n    }");
             webBrowser4.DocumentText = html;
         }
 
-        string SchoolFee()
+        string SchoolFees()
         {
-            //return string.Concat("http://online.dlu.edu.vn/Home/ShowFees?YearStudy=", cbx_NamHoc_HP.Text, "&TermID=HK0", cbx_HocKy_HP.Text);
-            return string.Concat("http://online.dlu.edu.vn/Home/ShowFees?YearStudy=", GetSchoolYear(), "&TermID=HK00");
+            return string.Concat("http://online.dlu.edu.vn/Home/ShowFees?YearStudy=", GetCurrentSchoolYear(), "&TermID=HK00");
         }
 
         private void cbx_NamHoc_TKB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetWeek();
+            GetWeekofTerm();
+            if (listWeek.Count != 0)
+                GetRangeWeekofTerm();
         }
 
         private void cbx_HocKy_TKB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetWeek();
+            GetWeekofTerm();
+            if (listWeek.Count != 0)
+                GetRangeWeekofTerm();
+        }
+
+        private void SinhVienDLU_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!rememberLogin)
+                File.Delete("data.dat");
+        }
+
+        private void nud_Tuan_TKB_Enter(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.InitialDelay = 0;
+            tt.IsBalloon = true;
+            tt.Show(string.Concat("Chỉ được nhập giá trị trong phạm vi từ ", nud_Tuan_TKB.Minimum, " đến ", nud_Tuan_TKB.Maximum), nud_Tuan_TKB, 5000);
         }
 
         private void btn_Xuat_HP_Click(object sender, EventArgs e)
         {
-            var html = client.DownloadString(SchoolFee());
+            var html = client.DownloadString(SchoolFees());
             webBrowser5.DocumentText = html;
         }
     }

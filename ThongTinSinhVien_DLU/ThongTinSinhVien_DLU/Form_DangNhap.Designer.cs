@@ -35,6 +35,8 @@
             this.tbx_UserName = new System.Windows.Forms.TextBox();
             this.btn_LogIn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chk_Luu = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +69,7 @@
             this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(100, 25);
             this.tbx_Password.TabIndex = 2;
+            this.tbx_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_Password_KeyPress);
             // 
             // tbx_UserName
             // 
@@ -76,15 +79,16 @@
             this.tbx_UserName.Name = "tbx_UserName";
             this.tbx_UserName.Size = new System.Drawing.Size(100, 25);
             this.tbx_UserName.TabIndex = 1;
+            this.tbx_UserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_UserName_KeyPress);
             // 
             // btn_LogIn
             // 
             this.btn_LogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_LogIn.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_LogIn.Location = new System.Drawing.Point(96, 189);
+            this.btn_LogIn.Location = new System.Drawing.Point(96, 222);
             this.btn_LogIn.Name = "btn_LogIn";
             this.btn_LogIn.Size = new System.Drawing.Size(102, 33);
-            this.btn_LogIn.TabIndex = 3;
+            this.btn_LogIn.TabIndex = 4;
             this.btn_LogIn.Text = "Đăng nhập";
             this.btn_LogIn.UseVisualStyleBackColor = true;
             this.btn_LogIn.Click += new System.EventHandler(this.btn_LogIn_Click);
@@ -100,12 +104,34 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(12, 196);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(269, 23);
+            this.label3.TabIndex = 12;
+            // 
+            // chk_Luu
+            // 
+            this.chk_Luu.AutoSize = true;
+            this.chk_Luu.Location = new System.Drawing.Point(156, 177);
+            this.chk_Luu.Name = "chk_Luu";
+            this.chk_Luu.Size = new System.Drawing.Size(44, 17);
+            this.chk_Luu.TabIndex = 3;
+            this.chk_Luu.Text = "Lưu";
+            this.chk_Luu.UseVisualStyleBackColor = true;
+            this.chk_Luu.CheckedChanged += new System.EventHandler(this.chk_Luu_CheckedChanged);
+            // 
             // Form_DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(293, 251);
+            this.ClientSize = new System.Drawing.Size(293, 267);
+            this.Controls.Add(this.chk_Luu);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -121,6 +147,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đăng nhập vào trang sinh viên";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_DangNhap_FormClosing);
+            this.Load += new System.EventHandler(this.Form_DangNhap_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form_DangNhap_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,6 +163,8 @@
         private System.Windows.Forms.TextBox tbx_UserName;
         private System.Windows.Forms.Button btn_LogIn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chk_Luu;
     }
 }
 
