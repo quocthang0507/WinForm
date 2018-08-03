@@ -29,9 +29,7 @@ namespace ThongTinSinhVien_DLU
                 btn_LogIn.Focus();
             }
             else
-            {
                 chk_Luu.Checked = false; tbx_UserName.Focus();
-            }
         }
 
         private void Doc_DuLieu()
@@ -129,6 +127,5 @@ namespace ThongTinSinhVien_DLU
                 Form_SinhVienDLU.rememberLogin = true;
             else Form_SinhVienDLU.rememberLogin = false;
         }
-
     }
 }
