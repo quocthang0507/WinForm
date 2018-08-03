@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChuongTrinhThiTracNghiem
@@ -30,13 +23,14 @@ namespace ChuongTrinhThiTracNghiem
             remainingTime = int.Parse(frm.tbx_ThoiGian.Text);
             if (frm.chk_Random.Checked)
                 isRandom = true;
+            frm.Close();
         }
 
         private void Form_Question_Load(object sender, EventArgs e)
         {
-            LoadQuestions();
             label1.Text = "Thí sinh: " + username;
             lbl_Remaining.Text = remainingTime + " phút";
+            LoadQuestions();
             ShowQuestion();
             timer1.Start();
         }
@@ -47,8 +41,10 @@ namespace ChuongTrinhThiTracNghiem
             lbl_Remaining.Text = remainingTime + " phút";
             if (remainingTime == 0)
             {
-                MessageBox.Show("Hết giờ!!");
                 timer1.Stop();
+                MessageBox.Show("Hết giờ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GetResult();
+                btn_NopBai.PerformClick();
             }
         }
 
@@ -57,7 +53,7 @@ namespace ChuongTrinhThiTracNghiem
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
-        void Shuffle<T>(IList<T> list)
+        static void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
             Random rng = new Random();
@@ -71,6 +67,9 @@ namespace ChuongTrinhThiTracNghiem
             }
         }
 
+        /// <summary>
+        /// Load entire questions ready
+        /// </summary>
         void LoadQuestions()
         {
             Microsoft_Excel xls = new Microsoft_Excel();
@@ -87,6 +86,9 @@ namespace ChuongTrinhThiTracNghiem
             list = lq;
         }
 
+        /// <summary>
+        /// Show question and multi choice answers to group box
+        /// </summary>
         void ShowQuestion()
         {
             Question q = list[n];
@@ -96,9 +98,10 @@ namespace ChuongTrinhThiTracNghiem
             radioButton2.Text = q.answers[1];
             radioButton3.Text = q.answers[2];
             radioButton4.Text = q.answers[3];
-            ShowYourAnswer();
+            ShowYourAnswer();   //If you chosen the answer
         }
 
+        //Record your current answer
         void RecordYourAnswer()
         {
             if (radioButton1.Checked)
@@ -111,9 +114,12 @@ namespace ChuongTrinhThiTracNghiem
                 list[n].selectedAns = 4;
         }
 
+        /// <summary>
+        /// Show your answer of this question
+        /// </summary>
         void ShowYourAnswer()
         {
-            if (list[n].selectedAns == 0)
+            if (list[n].selectedAns == 0)   //Not choose any answer
                 radioButton1.Checked = radioButton2.Checked = radioButton3.Checked = radioButton4.Checked = false;
             else if (list[n].selectedAns == 1)
                 radioButton1.Checked = true;
@@ -124,6 +130,11 @@ namespace ChuongTrinhThiTracNghiem
             else radioButton4.Checked = true;
         }
 
+        /// <summary>
+        /// Move on to the next question
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Sau_Click(object sender, EventArgs e)
         {
             if (n < t)
@@ -134,6 +145,11 @@ namespace ChuongTrinhThiTracNghiem
             }
         }
 
+        /// <summary>
+        /// Move on to the previous question
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Truoc_Click(object sender, EventArgs e)
         {
             if (n > 0)
@@ -144,6 +160,10 @@ namespace ChuongTrinhThiTracNghiem
             }
         }
 
+        /// <summary>
+        /// Calculate and return your score
+        /// </summary>
+        /// <returns>Your score</returns>
         float GetResult()
         {
             float mark = 10f / t;
@@ -160,6 +180,11 @@ namespace ChuongTrinhThiTracNghiem
             Application.Exit();
         }
 
+        /// <summary>
+        /// Finish the exam
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_NopBai_Click(object sender, EventArgs e)
         {
             GetResult();

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -26,7 +22,7 @@ namespace ChuongTrinhThiTracNghiem
                 OpenFileDialog open_file = new OpenFileDialog();
                 open_file.InitialDirectory = Directory.GetCurrentDirectory();
                 open_file.Title = "Duyệt đến tập tin thư viện câu hỏi";
-                open_file.Filter = "Thư viện|thuvien.xlsx";
+                open_file.Filter = "Thư viện câu hỏi|thuvien.xlsx";
                 open_file.RestoreDirectory = true;
                 if (open_file.ShowDialog() == DialogResult.OK)
                 {
@@ -36,8 +32,8 @@ namespace ChuongTrinhThiTracNghiem
                 }
                 else if (open_file.ShowDialog() == DialogResult.Cancel)
                 {
-                    MessageBox.Show("Không có dữ liệu câu hỏi nên không thể tiếp tục được, vui lòng liên hệ với tác giả để lấy file mẫu!!!");
-                    Application.Exit();
+                    MessageBox.Show("Không có dữ liệu câu hỏi nên không thể tiếp tục được, vui lòng liên hệ với tác giả để lấy file mẫu!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
             }
             return "thuvien.xlsx";
@@ -50,8 +46,10 @@ namespace ChuongTrinhThiTracNghiem
         public object[,] GetDataFromExcel()
         {
             //Create COM Objects. Create a COM object for everything that is referenced
-            Excel.Application xlsApp = new Excel.Application();
             string path = OpenFile();
+            if (path == null)
+                Application.Exit();
+            Excel.Application xlsApp = new Excel.Application();
             Excel.Workbook xlsWorkbook = xlsApp.Workbooks.Open(path);
             Excel.Worksheet xlsWorksheet = xlsWorkbook.Sheets[1]; //excel is not zero based
             Excel.Range xlsRange = xlsWorksheet.UsedRange;

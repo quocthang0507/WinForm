@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChuongTrinhThiTracNghiem
 {
     public partial class Form_Welcome : Form
     {
-        Microsoft_Excel me = new Microsoft_Excel();
         bool isSuccess = false;
 
         public Form_Welcome()

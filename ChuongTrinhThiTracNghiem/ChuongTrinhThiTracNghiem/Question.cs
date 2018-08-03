@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ChuongTrinhThiTracNghiem
 {
     class Question
     {
-        public string question;
-        public List<string> answers = new List<string>();
-        public int correctAns;
-        public int selectedAns = 0;
+        public string question;     //A content question
+        public List<string> answers = new List<string>();   //The answer list of the above question
+        public int correctAns;      //The correct answer
+        public int selectedAns = 0; //Your answer
 
         public Question()
         {
 
         }
 
-        public Question(int id, string question, List<string> answers, char correctAns)
+        public Question(string question, List<string> answers, char correctAns)
         {
             this.question = question;
             this.answers = answers;
