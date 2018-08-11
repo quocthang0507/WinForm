@@ -11,8 +11,16 @@ namespace EncryptAndDecryptFile
 {
     static class CryptoStuff
     {
-        // Use the password to generate key bytes.
-        private static void MakeKeyAndIV(string password, byte[] salt, int key_size_bits, int block_size_bits, out byte[] key, out byte[] iv)
+		/// <summary>
+		/// Use the password to generate key bytes.
+		/// </summary>
+		/// <param name="password"></param>
+		/// <param name="salt"></param>
+		/// <param name="key_size_bits"></param>
+		/// <param name="block_size_bits"></param>
+		/// <param name="key"></param>
+		/// <param name="iv"></param>
+		private static void MakeKeyAndIV(string password, byte[] salt, int key_size_bits, int block_size_bits, out byte[] key, out byte[] iv)
         {
             Rfc2898DeriveBytes derive_bytes = new Rfc2898DeriveBytes(password, salt, 1000);
 
@@ -20,10 +28,15 @@ namespace EncryptAndDecryptFile
             iv = derive_bytes.GetBytes(block_size_bits / 8);
         }
 
-        #region "Encrypt Files and Streams"
+		#region "Encrypt Files and Streams"
 
-        // Encrypt or decrypt a file, saving the results in another file.
-        public static void EncryptFile(string password, string in_file, string out_file)
+		/// <summary>
+		/// Encrypt or decrypt a file, saving the results in another file.
+		/// </summary>
+		/// <param name="password"></param>
+		/// <param name="in_file"></param>
+		/// <param name="out_file"></param>
+		public static void EncryptFile(string password, string in_file, string out_file)
         {
             CryptFile(password, in_file, out_file, true);
         }
@@ -44,8 +57,14 @@ namespace EncryptAndDecryptFile
             }
         }
 
-        // Encrypt the data in the input stream into the output stream.
-        public static void CryptStream(string password, Stream in_stream, Stream out_stream, bool encrypt)
+		/// <summary>
+		/// Encrypt the data in the input stream into the output stream.
+		/// </summary>
+		/// <param name="password"></param>
+		/// <param name="in_stream"></param>
+		/// <param name="out_stream"></param>
+		/// <param name="encrypt"></param>
+		public static void CryptStream(string password, Stream in_stream, Stream out_stream, bool encrypt)
         {
             // Make an AES service provider.
             AesCryptoServiceProvider aes_provider = new AesCryptoServiceProvider();
@@ -83,7 +102,7 @@ namespace EncryptAndDecryptFile
                 crypto_transform = aes_provider.CreateDecryptor(key, iv);
             }
 
-            // Attach a crypto stream to the output stream.
+            // Attach a crypto_stream to the output stream.
             // Closing crypto_stream sometimes throws an
             // exception if the decryption didn't work
             // (e.g. if we use the wrong password).

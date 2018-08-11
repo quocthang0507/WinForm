@@ -11,8 +11,9 @@ namespace ThongTinSinhVien_DLU
     public partial class Form_DangNhap : Form
     {
         string mssv, password;
-        string pass = "12345679";
+		string pass = "12345679";
         bool isSuccess = false;
+
         public static string yourName;
 
         public Form_DangNhap()
@@ -22,19 +23,26 @@ namespace ThongTinSinhVien_DLU
 
         private void Form_DangNhap_Load(object sender, EventArgs e)
         {
-            if (File.Exists("data.dat"))
-            {
-                chk_Luu.Checked = true;
-                Doc_DuLieu();
-                btn_LogIn.Focus();
-            }
-            else
-                chk_Luu.Checked = false; tbx_UserName.Focus();
+			if (File.Exists("data.dat"))
+			{
+				chk_Luu.Checked = true;
+				Doc_DuLieu();
+				btn_LogIn.Focus();
+			}
+			else
+			{
+				chk_Luu.Checked = false;
+				tbx_UserName.Focus();
+			}
         }
 
+		/// <summary>
+		/// Read login information from a existed data.dat
+		/// </summary>
         private void Doc_DuLieu()
         {
             string path = "data.dat";
+			//Because decrypt string has gone wrong, so I must call decrypt file
             CryptoStuff.DecryptFile(pass, path, "temp.txt");
             string data = File.ReadAllText("temp.txt");
             File.Delete("temp.txt");
@@ -45,6 +53,9 @@ namespace ThongTinSinhVien_DLU
             tbx_Password.Text = temp[1];
         }
 
+		/// <summary>
+		/// Write login information to file
+		/// </summary>
         private void Ghi_DuLieu()
         {
             string data_de = string.Concat(tbx_UserName.Text, " ", tbx_Password.Text);
@@ -57,40 +68,41 @@ namespace ThongTinSinhVien_DLU
         {
             using (var client = new CookieAwareWebClient())
             {
-                if (tbx_UserName.Text == "" || tbx_Password.Text == "")
-                    MessageBox.Show("Bạn chưa nhập đủ thông tin", "Lỗi");
-                else
-                {
-                    if (!File.Exists("data.dat") || mssv != tbx_UserName.Text || password != tbx_Password.Text)
-                    {
-                        File.Delete("data.dat");
-                        Ghi_DuLieu();
-                    }
-                    var values = new NameValueCollection { { "txtTaiKhoan", tbx_UserName.Text }, { "txtMatKhau", tbx_Password.Text } };
-                    client.Encoding = Encoding.UTF8;
-                    try
-                    {
-                        client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
-                    }
-                    catch (Exception)
-                    {
-                        label3.Text = "Lỗi kết nối với máy chủ!";
-                        throw;
-                    }
-                    var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
-                    if (html.Contains("<title>Đăng nhập</title>"))
-                        label3.Text = "Bạn nhập sai tên đăng nhập hoặc mật khẩu";
-                    else
-                    {
-                        yourName = Regex.Match(html, "<span>(?<Content>([^<]*))</span>").Value;
-                        yourName = yourName.Replace("<span>", "");
-                        yourName = yourName.Replace("</span>", "");
-                        yourName = yourName.Replace("#224;", "à");
-                        label3.Text = "";
-                        isSuccess = true;
-                        this.Close();
-                    }
-                }
+				if (tbx_UserName.Text == "" || tbx_Password.Text == "")
+					label3.Text = "Bạn chưa nhập đủ thông tin";
+				else
+				{
+					if (!File.Exists("data.dat") || mssv != tbx_UserName.Text || password != tbx_Password.Text)
+					{
+						//Replace existed file
+						File.Delete("data.dat");
+						Ghi_DuLieu();
+					}
+					var values = new NameValueCollection { { "txtTaiKhoan", tbx_UserName.Text }, { "txtMatKhau", tbx_Password.Text } };
+					client.Encoding = Encoding.UTF8;
+					try
+					{
+						client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+					}
+					catch (Exception)
+					{
+						label3.Text = "Lỗi kết nối với máy chủ!";
+						throw;
+					}
+					var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
+					if (html.Contains("<title>Đăng nhập</title>"))
+						label3.Text = "Bạn nhập sai tên đăng nhập hoặc mật khẩu";
+					else
+					{
+						yourName = Regex.Match(html, "<span>(?<Content>([^<]*))</span>").Value;
+						yourName = yourName.Replace("<span>", "");
+						yourName = yourName.Replace("</span>", "");
+						yourName = yourName.Replace("#224;", "à");
+						label3.Text = "";
+						isSuccess = true;
+						this.Close();
+					}
+				}
             }
         }
 

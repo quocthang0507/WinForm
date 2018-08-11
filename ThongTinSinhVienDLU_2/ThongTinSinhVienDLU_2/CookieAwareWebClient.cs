@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Net;
 
-namespace ThongTinSinhVien_DLU
+namespace ThongTinSinhVienDLU_2
 {
-	/// <summary>
-	/// Send and get web request with cookie
-	/// </summary>
 	class CookieAwareWebClient : WebClient
 	{
 		private int? _timeout = null;
@@ -26,6 +23,5 @@ namespace ThongTinSinhVien_DLU
 			if (_timeout.HasValue) { request.Timeout = _timeout.Value; }
 			return request;
 		}
-
 	}
 }
