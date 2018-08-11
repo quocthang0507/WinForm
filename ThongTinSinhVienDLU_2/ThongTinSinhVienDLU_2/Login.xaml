@@ -20,7 +20,7 @@
                                             Margin="0,0,0,0" Height="30" DockPanel.Dock="Top"
                                             Background="GreenYellow" MouseLeftButtonDown="PART_TITLEBAR_MouseLeftButtonDown">
 										<DockPanel LastChildFill="False" >
-											<Image Source="Resources/logo.ico" DockPanel.Dock="Left"></Image>
+											<Image Source="Resources/logo.ico" DockPanel.Dock="Left" Margin="10,0,0,0"/>
 											<TextBlock Margin="10,5,0,0" VerticalAlignment="Top"  TextWrapping="Wrap"
                                                        Foreground="Black" Text="Đăng nhập" FontSize="15" HorizontalAlignment="Center" Width="200" Height="20" TextAlignment="Center"/>
 											<Button x:Name="PART_CLOSE" DockPanel.Dock="Right" 
