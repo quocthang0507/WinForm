@@ -61,6 +61,8 @@ namespace ThongTinSinhVienDLU_2
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
+			if (chk_Luu.IsChecked == false)
+				File.Delete("data.dat");
 			if (!isSuccess)
 				Environment.Exit(1);
 		}
@@ -101,6 +103,19 @@ namespace ThongTinSinhVienDLU_2
 			MainWindow.rememberLogin = false;
 		}
 
+		private void GuestMode_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			isSuccess = true;
+			this.Close();
+			GuestForm form = new GuestForm();
+			form.ShowDialog();
+		}
+
+		private void logo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			System.Diagnostics.Process.Start(@"http://dlu.edu.vn");
+		}
+
 		private void btn_LogIn_Click(object sender, RoutedEventArgs e)
 		{
 			using (var client = new CookieAwareWebClient())
@@ -109,11 +124,6 @@ namespace ThongTinSinhVienDLU_2
 					label3.Content = "Bạn chưa nhập đủ thông tin";
 				else
 				{
-					if (!File.Exists("data.dat") || mssv != tbx_UserName.Text || password != tbx_Password.Password)
-					{
-						File.Delete("data.dat");
-						Ghi_DuLieu();
-					}
 					var values = new NameValueCollection { { "txtTaiKhoan", tbx_UserName.Text }, { "txtMatKhau", tbx_Password.Password } };
 					client.Encoding = Encoding.UTF8;
 					try
@@ -135,6 +145,8 @@ namespace ThongTinSinhVienDLU_2
 						yourName = yourName.Replace("</span>", "");
 						yourName = yourName.Replace("#224;", "à");
 						label3.Content = "";
+						File.Delete("data.dat");
+						Ghi_DuLieu();
 						isSuccess = true;
 						this.Close();
 					}

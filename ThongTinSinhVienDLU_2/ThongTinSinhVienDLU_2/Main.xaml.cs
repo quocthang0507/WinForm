@@ -44,7 +44,6 @@ namespace ThongTinSinhVienDLU_2
 			SetValueRangeNUD();
 		}
 
-
 		private void PART_TITLEBAR_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
 			DragMove();
@@ -147,7 +146,7 @@ namespace ThongTinSinhVienDLU_2
 
 		void GetWeekofTerm()
 		{
-			string link = string.Concat("http://qlgd.dlu.edu.vn/Public/GetWeek/", cbx_NamHoc_TKB.Text, "$HK0", cbx_HocKy_TKB.Text);
+			string link = string.Concat(@"http://qlgd.dlu.edu.vn/Public/GetWeek/", cbx_NamHoc_TKB.Text, "$HK0", cbx_HocKy_TKB.Text);
 			var data = client.DownloadString(link);
 			string pattern = "\"Week\"(.*?),\"DisPlayWeek\"(.*?),";
 			Regex rgx = new Regex(pattern);
@@ -200,10 +199,10 @@ namespace ThongTinSinhVienDLU_2
 		string GetScheduleLink()
 		{
 			if (rbn_SinhVien.IsChecked == true)
-				return string.Concat("http://online.dlu.edu.vn/Home/DrawingStudentSchedule?StudentId=", mssv, "&YearId=", cbx_NamHoc_TKB.Text, "&TermId=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&WeekId=", DisplayWeek2RealWeek());
+				return string.Concat(@"http://online.dlu.edu.vn/Home/DrawingStudentSchedule?StudentId=", mssv, "&YearId=", cbx_NamHoc_TKB.Text, "&TermId=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&WeekId=", DisplayWeek2RealWeek());
 			else if (rbn_Lop.IsChecked == true)
-				return string.Concat("http://online.dlu.edu.vn/Home/DrawingClassStudentSchedules_Mau2?YearStudy=", cbx_NamHoc_TKB.Text, "&TermID=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&Week=", DisplayWeek2RealWeek(), "&ClassStudentID=", tbx_Lop.Text);
-			else return string.Concat("http://online.dlu.edu.vn/Home/DrawingProfessorSchedule?YearStudy=", cbx_NamHoc_TKB.Text, "&TermID=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&Week=", DisplayWeek2RealWeek(), "&ProfessorID=", tbx_GiangVien.Text);
+				return string.Concat(@"http://online.dlu.edu.vn/Home/DrawingClassStudentSchedules_Mau2?YearStudy=", cbx_NamHoc_TKB.Text, "&TermID=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&Week=", DisplayWeek2RealWeek(), "&ClassStudentID=", tbx_Lop.Text);
+			else return string.Concat(@"http://online.dlu.edu.vn/Home/DrawingProfessorSchedule?YearStudy=", cbx_NamHoc_TKB.Text, "&TermID=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&Week=", DisplayWeek2RealWeek(), "&ProfessorID=", tbx_GiangVien.Text);
 		}
 
 
@@ -243,7 +242,7 @@ namespace ThongTinSinhVienDLU_2
 
 		string ExamSchedule()
 		{
-			return string.Concat("http://online.dlu.edu.vn/Home/ShowExam?YearStudy=", cbx_NamHoc_LichThi.Text, "&TermID=HK0", cbx_HocKy_LichThi.SelectedIndex + 1);
+			return string.Concat(@"http://online.dlu.edu.vn/Home/ShowExam?YearStudy=", cbx_NamHoc_LichThi.Text, "&TermID=HK0", cbx_HocKy_LichThi.SelectedIndex + 1);
 		}
 
 		private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -267,7 +266,6 @@ namespace ThongTinSinhVienDLU_2
 					AutoSelectSchoolYear(cbx_NamHoc_Diem);
 					cbx_HocKy_Diem.Items.Add("Tất cả");
 					cbx_NamHoc_Diem.Items.Add("Tất cả");
-					btn_Xuat_LichThi_Click(sender, e);
 				}
 			}
 			else if (tabControl.SelectedIndex == 3)
@@ -354,6 +352,16 @@ namespace ThongTinSinhVienDLU_2
 		string SchoolFees()
 		{
 			return string.Concat("http://online.dlu.edu.vn/Home/ShowFees?YearStudy=", GetCurrentSchoolYear(), "&TermID=HK00");
+		}
+
+		private void nud_Tuan_TKB_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+		{
+			btn_Xuat_TKB_Click(sender, null);
+		}
+
+		private void cbx_HocKy_Diem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			btn_Xuat_Diem_Click(sender, null);
 		}
 
 		private void btn_Xuat_HP_Click(object sender, EventArgs e)

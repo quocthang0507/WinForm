@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThongTinSinhVienDLU_2"
-        mc:Ignorable="d" Height="322" Width="300" Icon="Resources/logo.ico" Title="Đăng nhập" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="Window_KeyDown" WindowStyle="None" Style="{DynamicResource MetroWindowStyle}">
+        mc:Ignorable="d" Height="333" Width="286.5" Icon="Resources/logo.ico" Title="Đăng nhập" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False" Loaded="Window_Loaded" Closing="Window_Closing" KeyDown="Window_KeyDown" WindowStyle="None" Style="{DynamicResource MetroWindowStyle}">
 	<Window.Resources>
 		<Style x:Key="MetroWindowStyle" TargetType="{x:Type Window}">
 			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
@@ -122,13 +122,16 @@
 		</Style>
 	</Window.Resources>
 	<Grid>
-		<Image x:Name="logo" HorizontalAlignment="Left" Height="115" Margin="25,10,0,0" VerticalAlignment="Top" Width="243" Source="Resources/logo_DLU.png" Stretch="Fill" />
+		<Image x:Name="logo" HorizontalAlignment="Left" Height="115" Margin="25,10,0,0" VerticalAlignment="Top" Width="243" Source="Resources/logo_DLU.png" Stretch="Fill"  ToolTip="Logo trường Đại học Đà Lạt" MouseLeftButtonDown="logo_MouseLeftButtonDown" Cursor="Hand"/>
 		<Label x:Name="label" Content="Mã số sinh viên:" HorizontalAlignment="Left" Margin="25,130,0,0" VerticalAlignment="Top" FontSize="13"/>
 		<TextBox x:Name="tbx_UserName" HorizontalAlignment="Left" Height="23" Margin="148,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="3" ToolTip="Nhập mã số sinh viên được cấp" TabIndex="1" MaxLength="10" FontSize="13" KeyDown="tbx_UserName_KeyDown"/>
 		<Label x:Name="label_Copy" Content="Mật khẩu:" HorizontalAlignment="Left" Margin="25,161,0,0" VerticalAlignment="Top" FontSize="13"/>
 		<PasswordBox x:Name="tbx_Password" HorizontalAlignment="Left" Margin="148,161,0,0" VerticalAlignment="Top" Width="120" Height="23" MaxLength="20" TabIndex="2" FontSize="13" ToolTip="Nhập mật khẩu tài khoản sinh viên của bạn" KeyDown="tbx_Password_KeyDown"/>
-		<Button x:Name="btn_LogIn" Content="Đăng nhập" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Margin="113,244,0,0" TabIndex="4" FontSize="13" Height="27" ToolTip="Đăng nhập" Click="btn_LogIn_Click"/>
+		<Button x:Name="btn_LogIn" Content="Đăng nhập" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Margin="105,244,0,0" TabIndex="4" FontSize="13" Height="27" ToolTip="Đăng nhập vào hệ thống" Click="btn_LogIn_Click"/>
 		<CheckBox x:Name="chk_Luu" Content="Lưu" HorizontalAlignment="Left" Margin="149,192,0,0" VerticalAlignment="Top" TabIndex="3" FontSize="13" ToolTip="Bạn có muốn lưu thông tin đăng nhập cho lần sau không?" Checked="chk_Luu_Checked" Unchecked="chk_Luu_Unchecked"/>
-		<Label x:Name="label3" HorizontalAlignment="Center" Margin="10,213,13,0" VerticalAlignment="Top" RenderTransformOrigin="-1.1,-0.8" Height="27" Width="271" FontSize="13" Foreground="Red"/>
+		<Label x:Name="label3" HorizontalContentAlignment="Center" Margin="10,213,13,0" VerticalAlignment="Top" RenderTransformOrigin="-1.1,-0.8" Height="27" Width="271" FontSize="13" Foreground="Red"/>
+		<DockPanel>
+			<Label x:Name="GuestMode" Content="Chế độ khách vãng lai" DockPanel.Dock="Bottom" Height="30" HorizontalAlignment="Center" Margin="0,270,0,0" FontWeight="Bold" ToolTip="Nhấn vào đây nếu không muốn đăng nhập" MouseLeftButtonDown="GuestMode_MouseLeftButtonDown" Cursor="Hand"/>
+		</DockPanel>
 	</Grid>
 </Window>

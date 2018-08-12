@@ -84,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GuestForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CryptoStuff.cs" />
+    <Compile Include="GuestForm.xaml.cs">
+      <DependentUpon>GuestForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -149,6 +156,12 @@
     <Resource Include="Resources\money.png" />
     <Resource Include="Resources\schedule.png" />
     <Resource Include="Resources\score.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\class.png" />
+    <Resource Include="Resources\classroom.png" />
+    <Resource Include="Resources\department.png" />
+    <Resource Include="Resources\lecturer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
