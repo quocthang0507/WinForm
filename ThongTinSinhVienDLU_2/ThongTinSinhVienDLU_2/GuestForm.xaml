@@ -143,7 +143,7 @@
 		</Style>
 	</Window.Resources>
 	<DockPanel >
-		<TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Bottom">
+		<TabControl x:Name="tabControl" TabStripPlacement="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Bottom" SelectionChanged="tabControl_SelectionChanged">
 			<TabItem IsSelected="True" TabIndex="1" ToolTip="Xem thời khoá biểu lớp">
 				<TabItem.Header>
 					<StackPanel Orientation="Horizontal">
@@ -155,18 +155,18 @@
 					<DockPanel>
 						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="25">
 							<Label x:Name="label" Content="Năm học:" Margin="20,0,0,0"/>
-							<ComboBox x:Name="cbx_NamHoc_Lop" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách"/>
+							<ComboBox x:Name="cbx_NamHoc_Lop" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_Lop_SelectionChanged"/>
 							<Label x:Name="label1" Content="Học kỳ:"/>
-							<ComboBox x:Name="cbx_HocKy_Lop" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ">
+							<ComboBox x:Name="cbx_HocKy_Lop" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ" SelectionChanged="cbx_HocKy_Lop_SelectionChanged">
 								<System:String>1</System:String>
 								<System:String>2</System:String>
 								<System:String>3</System:String>
 							</ComboBox>
 							<Label x:Name="label2" Content="Tuần:"/>
-							<xctk:IntegerUpDown x:Name="nud_Tuan_Lop" TabIndex="3"/>
+							<xctk:IntegerUpDown x:Name="nud_Tuan_Lop" TabIndex="3" ValueChanged="nud_Tuan_Lop_ValueChanged" GotFocus="nud_Tuan_Lop_GotFocus"/>
 							<Label x:Name="label3" Content="Lớp:"/>
 							<TextBox x:Name="tbx_Lop" Height="20" Width="60" MaxLength="10" TabIndex="4" ToolTip="Nhập tên lớp cần tìm"/>
-							<Button x:Name="btn_Xuat_TKB_Lop" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5"/>
+							<Button x:Name="btn_Xuat_TKB_Lop" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5" Click="btn_Xuat_TKB_Lop_Click"/>
 						</StackPanel>
 						<WindowsFormsHost>
 							<wf:WebBrowser x:Name="webBrowser1"/>
@@ -185,18 +185,18 @@
 					<DockPanel>
 						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="25">
 							<Label x:Name="labe4" Content="Năm học:" Margin="20,0,0,0"/>
-							<ComboBox x:Name="cbx_NamHoc_GV" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách"/>
+							<ComboBox x:Name="cbx_NamHoc_GV" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_GV_SelectionChanged"/>
 							<Label x:Name="label5" Content="Học kỳ:"/>
-							<ComboBox x:Name="cbx_HocKy_GV" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ">
+							<ComboBox x:Name="cbx_HocKy_GV" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ" SelectionChanged="cbx_HocKy_GV_SelectionChanged">
 								<System:String>1</System:String>
 								<System:String>2</System:String>
 								<System:String>3</System:String>
 							</ComboBox>
 							<Label x:Name="label6" Content="Tuần:"/>
-							<xctk:IntegerUpDown x:Name="nud_Tuan_GV" TabIndex="3"/>
-							<Label x:Name="label7" Content="Mã giảng viên:"/>
-							<TextBox x:Name="tbx_GV" Height="20" Width="100" MaxLength="30" TabIndex="4" ToolTip="Nhập mã giảng viên cần tìm"/>
-							<Button x:Name="btn_Xuat_TKB_GV" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5"/>
+							<xctk:IntegerUpDown x:Name="nud_Tuan_GV" TabIndex="3" ValueChanged="nud_Tuan_GV_ValueChanged" GotFocus="nud_Tuan_GV_GotFocus"/>
+							<Label x:Name="label7" Content="Mã giảng viên:" Height="auto"/>
+							<TextBox x:Name="tbx_GV" Height="20" Width="110" MaxLength="30" TabIndex="4" ToolTip="Nhập mã giảng viên cần tìm"/>
+							<Button x:Name="btn_Xuat_TKB_GV" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5" Click="btn_Xuat_TKB_GV_Click"/>
 						</StackPanel>
 						<WindowsFormsHost>
 							<wf:WebBrowser x:Name="webBrowser2"/>
@@ -215,18 +215,18 @@
 					<DockPanel>
 						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="25">
 							<Label x:Name="labe8" Content="Năm học:" Margin="20,0,0,0"/>
-							<ComboBox x:Name="cbx_NamHoc_Phong" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách"/>
+							<ComboBox x:Name="cbx_NamHoc_Phong" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_Phong_SelectionChanged"/>
 							<Label x:Name="label9" Content="Học kỳ:"/>
-							<ComboBox x:Name="cbx_HocKy_Phong" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ">
+							<ComboBox x:Name="cbx_HocKy_Phong" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ" SelectionChanged="cbx_HocKy_Phong_SelectionChanged">
 								<System:String>1</System:String>
 								<System:String>2</System:String>
 								<System:String>3</System:String>
 							</ComboBox>
 							<Label x:Name="label10" Content="Tuần:"/>
-							<xctk:IntegerUpDown x:Name="nud_Tuan_Phong" TabIndex="3"/>
+							<xctk:IntegerUpDown x:Name="nud_Tuan_Phong" TabIndex="3" ValueChanged="nud_Tuan_Phong_ValueChanged" GotFocus="nud_Tuan_Phong_GotFocus"/>
 							<Label x:Name="label11" Content="Mã phòng:"/>
-							<TextBox x:Name="tbx_Phong" Height="20" Width="60" MaxLength="30" TabIndex="4" ToolTip="Nhập mã phòng cần tìm"/>
-							<Button x:Name="btn_Xuat_TKB_Phong" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5"/>
+							<ComboBox x:Name="cbx_Phong" Height="20" Width="150" Opacity="0.5" TabIndex="4" ToolTip="Chọn phòng trong danh sách"></ComboBox>
+							<Button x:Name="btn_Xuat_TKB_Phong" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="5" Click="btn_Xuat_TKB_Phong_Click"/>
 						</StackPanel>
 						<WindowsFormsHost>
 							<wf:WebBrowser x:Name="webBrowser3"/>
@@ -245,18 +245,18 @@
 					<DockPanel>
 						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="25">
 							<Label x:Name="labe12" Content="Năm học:" Margin="20,0,0,0"/>
-							<ComboBox x:Name="cbx_NamHoc_Khoa" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách"/>
+							<ComboBox x:Name="cbx_NamHoc_Khoa" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="1" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_Khoa_SelectionChanged"/>
 							<Label x:Name="label13" Content="Học kỳ:"/>
-							<ComboBox x:Name="cbx_HocKy_Khoa" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ">
+							<ComboBox x:Name="cbx_HocKy_Khoa" Height="20" Width="50" Opacity="0.5" TabIndex="2" ToolTip="Chọn học kỳ" SelectionChanged="cbx_HocKy_Khoa_SelectionChanged">
 								<System:String>1</System:String>
 								<System:String>2</System:String>
 								<System:String>3</System:String>
 							</ComboBox>
 							<Label x:Name="label14" Content="Tuần:"/>
-							<xctk:IntegerUpDown x:Name="nud_Tuan_Khoa" TabIndex="3"/>
+							<xctk:IntegerUpDown x:Name="nud_Tuan_Khoa" TabIndex="3" GotFocus="nud_Tuan_Khoa_GotFocus" ValueChanged="nud_Tuan_Khoa_ValueChanged"/>
 							<Label x:Name="label15" Content="Khoa:"/>
-							<ComboBox x:Name="cbx_Khoa" Height="20" Width="150" Opacity="0.5" TabIndex="4" ToolTip="Chọn khoa từ danh sách"/>
-							<Button x:Name="btn_Xuat_TKB_Khoa" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="4"/>
+							<ComboBox x:Name="cbx_Khoa" Height="20" Width="200" Opacity="0.5" TabIndex="4" ToolTip="Chọn khoa từ danh sách"/>
+							<Button x:Name="btn_Xuat_TKB_Khoa" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" TabIndex="4" Click="btn_Xuat_TKB_Khoa_Click"/>
 						</StackPanel>
 						<WindowsFormsHost>
 							<wf:WebBrowser x:Name="webBrowser4"/>

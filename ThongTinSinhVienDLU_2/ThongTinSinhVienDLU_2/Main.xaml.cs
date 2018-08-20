@@ -18,9 +18,9 @@ namespace ThongTinSinhVienDLU_2
 		public static bool rememberLogin = false;
 		string mssv, password;
 		string pass = "matkhau";
-		List<string> listWeek;
 		int week;
 		CookieAwareWebClient client = new CookieAwareWebClient();
+		List<string> listWeek;
 
 		public MainWindow()
 		{
@@ -88,13 +88,30 @@ namespace ThongTinSinhVienDLU_2
 		{
 			var values = new NameValueCollection { { "txtTaiKhoan", mssv }, { "txtMatKhau", password } };
 			client.Encoding = Encoding.UTF8;
-			client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+			try
+			{
+				client.UploadValues(new Uri(@"http://online.dlu.edu.vn/Login"), "POST", values);
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 		}
 
 		int GetCurrentNumWeek()
 		{
 			client.Encoding = Encoding.UTF8;
-			var html = client.DownloadString(@"http://vi.weeknumber52.com/getdate.php?lang=vi");
+			string html;
+			try
+			{
+				html = client.DownloadString(@"http://vi.weeknumber52.com/getdate.php?lang=vi");
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, xảy ra lỗi khi lấy thông tin tuần trên internet, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			html = Regex.Match(html, "<li class=\"date1\">*>([^<]*)</li>").Value;
 			html = html.Replace("<li class=\"date1\">Tuần ", "");
 			html = html.Replace("</li>", "");
@@ -115,7 +132,16 @@ namespace ThongTinSinhVienDLU_2
 
 		string GetStudyPrograms()
 		{
-			var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/StudyPrograms");
+			string html;
+			try
+			{
+				html = client.DownloadString(@"http://online.dlu.edu.vn/Home/StudyPrograms");
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			html = Regex.Match(html, "<option value=\"(.*?)\">").Value;
 			html = Regex.Match(html, "\"(.*?)\"").Value;
 			html = html.Replace("\"", "");
@@ -146,8 +172,17 @@ namespace ThongTinSinhVienDLU_2
 
 		void GetWeekofTerm()
 		{
-			string link = string.Concat(@"http://qlgd.dlu.edu.vn/Public/GetWeek/", cbx_NamHoc_TKB.Text, "$HK0", cbx_HocKy_TKB.Text);
-			var data = client.DownloadString(link);
+			string link = string.Concat(@"http://qlgd.dlu.edu.vn/Public/GetWeek/", cbx_NamHoc_TKB.SelectedValue, "$HK0", cbx_HocKy_TKB.SelectedValue);
+			string data;
+			try
+			{
+				data = client.DownloadString(link);
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			string pattern = "\"Week\"(.*?),\"DisPlayWeek\"(.*?),";
 			Regex rgx = new Regex(pattern);
 			listWeek = new List<string>();
@@ -205,10 +240,18 @@ namespace ThongTinSinhVienDLU_2
 			else return string.Concat(@"http://online.dlu.edu.vn/Home/DrawingProfessorSchedule?YearStudy=", cbx_NamHoc_TKB.Text, "&TermID=HK0", cbx_HocKy_TKB.SelectedIndex + 1, "&Week=", DisplayWeek2RealWeek(), "&ProfessorID=", tbx_GiangVien.Text);
 		}
 
-
 		private void btn_Xuat_TKB_Click(object sender, RoutedEventArgs e)
 		{
-			var html = client.DownloadString(GetScheduleLink());
+			string html;
+			try
+			{
+				html = client.DownloadString(GetScheduleLink());
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			webBrowser1.DocumentText = html;
 		}
 
@@ -284,7 +327,16 @@ namespace ThongTinSinhVienDLU_2
 
 		private void btn_Xuat_LichThi_Click(object sender, RoutedEventArgs e)
 		{
-			var html = client.DownloadString(ExamSchedule());
+			string html;
+			try
+			{
+				html = client.DownloadString(ExamSchedule());
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			webBrowser2.DocumentText = (html);
 		}
 
@@ -299,11 +351,20 @@ namespace ThongTinSinhVienDLU_2
 
 		private void btn_Xuat_Diem_Click(object sender, RoutedEventArgs e)
 		{
-			var html = client.DownloadString(Marks());
+			string html;
+			try
+			{
+				html = client.DownloadString(Marks());
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			html = html.Replace("/Content/images/Dau.png", "http://online.dlu.edu.vn/Content/images/Dau.png");
 			html = html.Replace("/Content/images/Rot.png", "http://online.dlu.edu.vn/Content/images/Rot.png");
 			html = html.Replace("/Content/images/detail.png", "http://online.dlu.edu.vn/Content/images/detail.png");
-			webBrowser3.DocumentText = (html);
+			webBrowser3.DocumentText = html;
 		}
 
 		private void cbx_NamHoc_Diem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -323,7 +384,16 @@ namespace ThongTinSinhVienDLU_2
 
 		private void btn_Xuat_RL_Click(object sender, RoutedEventArgs e)
 		{
-			var html = client.DownloadString(Behaviors());
+			string html;
+			try
+			{
+				html = client.DownloadString(Behaviors());
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			var clearedScript = Regex.Match(html, "<script[^>]*>(?:[^<]+|<(?!\n/script>))+").Value;
 			html = html.Replace(clearedScript, "");
 			html = html.Replace(".error {\r\n        border-color: red;\r\n    }", ".error {\r\n        border-color: red;\r\n    }   table {\r\n    width:100%;\r\n    }");
@@ -335,13 +405,13 @@ namespace ThongTinSinhVienDLU_2
 			GetWeekofTerm();
 			if (listWeek.Count != 0)
 				SetValueRangeNUD();
+			if (nud_Tuan_TKB.Value < nud_Tuan_TKB.Minimum || nud_Tuan_TKB.Value > nud_Tuan_TKB.Maximum)
+				nud_Tuan_TKB.Value = nud_Tuan_TKB.Minimum;
 		}
 
 		private void cbx_HocKy_TKB_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			GetWeekofTerm();
-			if (listWeek.Count != 0)
-				SetValueRangeNUD();
+			cbx_NamHoc_TKB_SelectionChanged(sender, e);
 		}
 
 		private void nud_Tuan_TKB_GotFocus(object sender, RoutedEventArgs e)
@@ -366,7 +436,16 @@ namespace ThongTinSinhVienDLU_2
 
 		private void btn_Xuat_HP_Click(object sender, EventArgs e)
 		{
-			var html = client.DownloadString(SchoolFees());
+			string html;
+			try
+			{
+				html = client.DownloadString(SchoolFees());
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+				throw;
+			}
 			webBrowser5.DocumentText = (html);
 		}
 

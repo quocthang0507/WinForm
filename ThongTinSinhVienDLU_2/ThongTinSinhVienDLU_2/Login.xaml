@@ -131,7 +131,7 @@
 		<CheckBox x:Name="chk_Luu" Content="Lưu" HorizontalAlignment="Left" Margin="149,192,0,0" VerticalAlignment="Top" TabIndex="3" FontSize="13" ToolTip="Bạn có muốn lưu thông tin đăng nhập cho lần sau không?" Checked="chk_Luu_Checked" Unchecked="chk_Luu_Unchecked"/>
 		<Label x:Name="label3" HorizontalContentAlignment="Center" Margin="10,213,13,0" VerticalAlignment="Top" RenderTransformOrigin="-1.1,-0.8" Height="27" Width="271" FontSize="13" Foreground="Red"/>
 		<DockPanel>
-			<Label x:Name="GuestMode" Content="Chế độ khách vãng lai" DockPanel.Dock="Bottom" Height="30" HorizontalAlignment="Center" Margin="0,270,0,0" FontWeight="Bold" ToolTip="Nhấn vào đây nếu không muốn đăng nhập" MouseLeftButtonDown="GuestMode_MouseLeftButtonDown" Cursor="Hand"/>
+			<Label x:Name="GuestMode" Content="Chế độ khách vãng lai" DockPanel.Dock="Bottom" Height="30" HorizontalAlignment="Center" Margin="0,270,0,0" FontWeight="Bold" ToolTip="Nhấn vào đây nếu không muốn đăng nhập" MouseLeftButtonDown="GuestMode_MouseLeftButtonDown" Cursor="Hand" Foreground="Green"/>
 		</DockPanel>
 	</Grid>
 </Window>
