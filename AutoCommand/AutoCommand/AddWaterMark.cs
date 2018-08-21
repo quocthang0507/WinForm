@@ -10,18 +10,19 @@ namespace AutoCommand
 		/// Add watermark to image
 		/// </summary>
 		/// <param name="fs">The file stream</param>
+		/// <param name="px"></param>
+		/// <param name="py"></param>
 		/// <param name="watermarkText">The text watermark</param>
 		/// <param name="outputStream">The output stream</param>
-		/// <param name="f">The font name</param>
+		/// <param name="nameFont">The font name</param>
 		/// <param name="size">The font size</param>
-		/// <param name="s">The font style</param>
-		public void AddWatermark(FileStream fs, string watermarkText, Stream outputStream, string f, int size, FontStyle s)
+		/// <param name="style">The font style</param>
+		public static void AddWatermark(FileStream fs, int px, int py, string watermarkText, Stream outputStream, string nameFont, int size, FontStyle style, Color c)
 		{
 			Image img = Image.FromStream(fs);
-			Font font = new Font(f, size, s, GraphicsUnit.Pixel);
-			Color color = Color.Orange;
-			Point pt = new Point(10, 30);
-			SolidBrush sbrush = new SolidBrush(color);
+			Font font = new Font(nameFont, size, style, GraphicsUnit.Pixel);
+			Point pt = new Point(px, py);
+			SolidBrush sbrush = new SolidBrush(c);
 			Graphics gr = null;
 			try
 			{

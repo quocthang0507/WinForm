@@ -23,7 +23,7 @@ namespace AutoCommand
 		{
 			dataGridView1.RowHeadersVisible = false;
 			ShowTooltip();
-			//GetFont();
+			GetFont();
 		}
 
 		void ShowTooltip()
@@ -40,6 +40,7 @@ namespace AutoCommand
 			toolTip1.SetToolTip(label11, "View the history");
 		}
 
+		#region Tab1
 		private void btn_Browse1_Click(object sender, EventArgs e)
 		{
 			openFileDialog1.Title = "Browse for one or more files";
@@ -125,6 +126,11 @@ namespace AutoCommand
 		private void btn_eCounter_Click(object sender, EventArgs e)
 		{
 			tbx_Extension.Text += "[C]";
+		}
+
+		private void label11_Click(object sender, EventArgs e)
+		{
+			Process.Start("log.txt");
 		}
 
 		List<string> DecomposeMask(TextBox t)
@@ -331,25 +337,30 @@ namespace AutoCommand
 
 		private void btn_Start1_Click(object sender, EventArgs e)
 		{
-			int count = dataGridView1.Rows.Count - 1;
-			int step = 1 / count;
-			progressBar1.Value = 0;
-			StreamWriter sw = new StreamWriter("log.txt", true);
-			sw.WriteLine(DateTime.Now.ToString());
-			foreach (DataGridViewRow row in dataGridView1.Rows)
+			if (openFileDialog1.FileNames[0] == "openFileDialog1")
+				MessageBox.Show("Please browse file(s) firstly. Then change the file name and file extenion. Finally press this button", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			else
 			{
-				if (row.Cells[0].Value != null)
+				int count = dataGridView1.Rows.Count - 1;
+				int step = 1 / count;
+				progressBar1.Value = 0;
+				StreamWriter sw = new StreamWriter("log.txt", true);
+				sw.WriteLine(DateTime.Now.ToString());
+				foreach (DataGridViewRow row in dataGridView1.Rows)
 				{
-					string oldPath = string.Concat(row.Cells[4].Value, row.Cells[0].Value);
-					string newPath = string.Concat(row.Cells[4].Value, row.Cells[1].Value);
-					File.Move(oldPath, newPath);
-					sw.WriteLine(string.Concat("\"", oldPath, "\" -> \"", newPath, "\""));
-					row.Cells[0].Value = row.Cells[1].Value;
-					progressBar1.Value += step;
+					if (row.Cells[0].Value != null)
+					{
+						string oldPath = string.Concat(row.Cells[4].Value, row.Cells[0].Value);
+						string newPath = string.Concat(row.Cells[4].Value, row.Cells[1].Value);
+						File.Move(oldPath, newPath);
+						sw.WriteLine(string.Concat("\"", oldPath, "\" -> \"", newPath, "\""));
+						row.Cells[0].Value = row.Cells[1].Value;
+						progressBar1.Value += step;
+					}
 				}
+				progressBar1.Value = 100;
+				sw.Close();
 			}
-			progressBar1.Value = 100;
-			sw.Close();
 		}
 
 		private void label11_MouseHover(object sender, EventArgs e)
@@ -360,6 +371,22 @@ namespace AutoCommand
 		private void label11_MouseLeave(object sender, EventArgs e)
 		{
 			label11.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+		}
+		#endregion
+
+		#region Tab2
+
+		int GetFontStyle()
+		{
+			if (cbx_FontStyle.SelectedIndex == 0)
+				return 0;
+			else if (cbx_FontStyle.SelectedIndex == 1)
+				return 1;
+			else if (cbx_FontStyle.SelectedIndex == 2)
+				return 2;
+			else if (cbx_FontStyle.SelectedIndex == 4)
+				return 4;
+			else return 8;
 		}
 
 		private void listFont_DrawItem(object sender, DrawItemEventArgs e)
@@ -375,7 +402,7 @@ namespace AutoCommand
 			string fullPath = string.Empty;
 			try
 			{
-				string[] imgExtension = { "*.jpg", "*.jpeg", ".gif", "*.bmp" };
+				string[] imgExtension = { "*.jpg", "*.jpeg", ".gif", "*.bmp", "*.png" };
 				List<FileInfo> files = new List<FileInfo>();
 				DirectoryInfo dir = new DirectoryInfo(path);
 				foreach (string ext in imgExtension)
@@ -386,11 +413,10 @@ namespace AutoCommand
 						FileStream fs = file.OpenRead();
 						fullPath = path + @"\" + file.Name;
 						Stream outputStream = new MemoryStream();
-						//AddWaterMark.AddWatermark(fs, text, outputStream);
+						AddWaterMark.AddWatermark(fs, int.Parse(tbx_PX.Text), int.Parse(tbx_PY.Text), tbx_Text.Text, outputStream, listFont.SelectedItem.ToString(), Convert.ToInt32(cbx_Size.Text), (FontStyle)GetFontStyle(), btn_ChoosenColor.BackColor);
 						fs.Close();
 						file.Delete();
 						img = Image.FromStream(outputStream);
-
 						using (Bitmap savingImage = new Bitmap(img.Width, img.Height, img.PixelFormat))
 						{
 							using (Graphics g = Graphics.FromImage(savingImage))
@@ -400,11 +426,11 @@ namespace AutoCommand
 						img.Dispose();
 					}
 				}
-				MessageBox.Show("Processing Completed");
+				MessageBox.Show("Processing Completed", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("There was an error during processing..");
+				MessageBox.Show("There was an error during processing...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -422,21 +448,49 @@ namespace AutoCommand
 					listFont.Items.Add(fa.Name);
 				listFont.DrawMode = DrawMode.OwnerDrawFixed;
 			}
+			listFont.SelectedIndex = 0;
 		}
 
 		private void btn_Browse2_Click(object sender, EventArgs e)
 		{
 			folderBrowserDialog1.Description = "Browse for image folder";
 			folderBrowserDialog1.ShowNewFolderButton = false;
+			ReviewPicture();
+		}
+
+		void GetTheFirstPic()
+		{
+			string[] files = Directory.GetFiles(tbx_Path2.Text);
+			foreach (var item in files)
+			{
+				if (item.ToLower().EndsWith(".jpg") || item.ToLower().EndsWith(".jpeg") ||
+					item.ToLower().EndsWith(".gif") || item.ToLower().EndsWith(".bmp") ||
+					item.ToLower().EndsWith(".png"))
+				{
+					pbx_Before.Image = Image.FromFile(item);
+					pbx_Before.SizeMode = PictureBoxSizeMode.Zoom;
+					return;
+				}
+			}
+
+		}
+
+		void ReviewPicture()
+		{
 			DialogResult result = folderBrowserDialog1.ShowDialog();
 			if (result == DialogResult.OK)
+			{
 				tbx_Path2.Text = folderBrowserDialog1.SelectedPath;
+				GetTheFirstPic();
+			}
 			else tbx_Path2.Text = null;
 		}
 
-		private void label11_Click(object sender, EventArgs e)
+		private void btn_ChoosenColor_Click(object sender, EventArgs e)
 		{
-			Process.Start("log.txt");
+			colorDialog1.ShowDialog();
+			btn_ChoosenColor.BackColor = colorDialog1.Color;
 		}
+		#endregion
 	}
 }

@@ -31,6 +31,7 @@
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.label11 = new System.Windows.Forms.Label();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.btn_Browse1 = new System.Windows.Forms.Button();
 			this.btn_Start1 = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.btn_Browse2 = new System.Windows.Forms.Button();
 			this.btn_Start2 = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.cbx_FontStyle = new System.Windows.Forms.ComboBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.cbx_Size = new System.Windows.Forms.ComboBox();
 			this.label9 = new System.Windows.Forms.Label();
@@ -83,7 +84,14 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pbx_Before = new System.Windows.Forms.PictureBox();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.label11 = new System.Windows.Forms.Label();
+			this.tbx_PX = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.tbx_PY = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.btn_ChoosenColor = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -130,6 +138,21 @@
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Multi-Rename";
 			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+			this.label11.ForeColor = System.Drawing.SystemColors.Highlight;
+			this.label11.Location = new System.Drawing.Point(204, 20);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(39, 13);
+			this.label11.TabIndex = 19;
+			this.label11.Text = "History";
+			this.label11.Click += new System.EventHandler(this.label11_Click);
+			this.label11.MouseLeave += new System.EventHandler(this.label11_MouseLeave);
+			this.label11.MouseHover += new System.EventHandler(this.label11_MouseHover);
 			// 
 			// progressBar1
 			// 
@@ -517,9 +540,16 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.btn_ChoosenColor);
+			this.tabPage2.Controls.Add(this.label15);
+			this.tabPage2.Controls.Add(this.label14);
+			this.tabPage2.Controls.Add(this.tbx_PY);
+			this.tabPage2.Controls.Add(this.label13);
+			this.tabPage2.Controls.Add(this.label12);
+			this.tabPage2.Controls.Add(this.tbx_PX);
 			this.tabPage2.Controls.Add(this.btn_Browse2);
 			this.tabPage2.Controls.Add(this.btn_Start2);
-			this.tabPage2.Controls.Add(this.comboBox1);
+			this.tabPage2.Controls.Add(this.cbx_FontStyle);
 			this.tabPage2.Controls.Add(this.label10);
 			this.tabPage2.Controls.Add(this.cbx_Size);
 			this.tabPage2.Controls.Add(this.label9);
@@ -540,10 +570,11 @@
 			// 
 			// btn_Browse2
 			// 
-			this.btn_Browse2.Location = new System.Drawing.Point(322, 17);
+			this.btn_Browse2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.btn_Browse2.Location = new System.Drawing.Point(322, 6);
 			this.btn_Browse2.Name = "btn_Browse2";
 			this.btn_Browse2.Size = new System.Drawing.Size(26, 20);
-			this.btn_Browse2.TabIndex = 14;
+			this.btn_Browse2.TabIndex = 2;
 			this.btn_Browse2.Text = "...";
 			this.btn_Browse2.UseVisualStyleBackColor = true;
 			this.btn_Browse2.Click += new System.EventHandler(this.btn_Browse2_Click);
@@ -551,33 +582,34 @@
 			// btn_Start2
 			// 
 			this.btn_Start2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.btn_Start2.Location = new System.Drawing.Point(322, 94);
+			this.btn_Start2.Location = new System.Drawing.Point(131, 106);
 			this.btn_Start2.Name = "btn_Start2";
 			this.btn_Start2.Size = new System.Drawing.Size(75, 23);
-			this.btn_Start2.TabIndex = 13;
+			this.btn_Start2.TabIndex = 10;
 			this.btn_Start2.Text = "Start";
 			this.btn_Start2.UseVisualStyleBackColor = true;
 			this.btn_Start2.Click += new System.EventHandler(this.btn_Start2_Click);
 			// 
-			// comboBox1
+			// cbx_FontStyle
 			// 
-			this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.cbx_FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.cbx_FontStyle.FormattingEnabled = true;
+			this.cbx_FontStyle.Items.AddRange(new object[] {
             "Bold",
             "Italic",
             "Regular",
             "Strikeout",
             "Underline"});
-			this.comboBox1.Location = new System.Drawing.Point(243, 67);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(105, 21);
-			this.comboBox1.TabIndex = 12;
+			this.cbx_FontStyle.Location = new System.Drawing.Point(243, 56);
+			this.cbx_FontStyle.Name = "cbx_FontStyle";
+			this.cbx_FontStyle.Size = new System.Drawing.Size(105, 21);
+			this.cbx_FontStyle.TabIndex = 5;
+			this.cbx_FontStyle.Text = "Regular";
 			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(182, 70);
+			this.label10.Location = new System.Drawing.Point(182, 59);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(55, 13);
 			this.label10.TabIndex = 11;
@@ -603,16 +635,23 @@
             "28",
             "36",
             "48",
-            "72"});
-			this.cbx_Size.Location = new System.Drawing.Point(53, 67);
+            "72",
+            "125",
+            "250",
+            "375",
+            "400",
+            "500",
+            "750"});
+			this.cbx_Size.Location = new System.Drawing.Point(53, 56);
 			this.cbx_Size.Name = "cbx_Size";
 			this.cbx_Size.Size = new System.Drawing.Size(57, 21);
-			this.cbx_Size.TabIndex = 10;
+			this.cbx_Size.TabIndex = 4;
+			this.cbx_Size.Text = "14";
 			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(9, 70);
+			this.label9.Location = new System.Drawing.Point(9, 59);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(30, 13);
 			this.label9.TabIndex = 9;
@@ -621,7 +660,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(357, 20);
+			this.label8.Location = new System.Drawing.Point(357, 9);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(31, 13);
 			this.label8.TabIndex = 8;
@@ -629,24 +668,26 @@
 			// 
 			// listFont
 			// 
+			this.listFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.listFont.FormattingEnabled = true;
-			this.listFont.Location = new System.Drawing.Point(400, 20);
+			this.listFont.Location = new System.Drawing.Point(400, 7);
 			this.listFont.Name = "listFont";
-			this.listFont.Size = new System.Drawing.Size(310, 69);
-			this.listFont.TabIndex = 7;
+			this.listFont.Size = new System.Drawing.Size(310, 108);
+			this.listFont.TabIndex = 9;
 			this.listFont.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listFont_DrawItem);
 			// 
 			// tbx_Path2
 			// 
-			this.tbx_Path2.Location = new System.Drawing.Point(53, 17);
+			this.tbx_Path2.Location = new System.Drawing.Point(53, 6);
 			this.tbx_Path2.Name = "tbx_Path2";
 			this.tbx_Path2.Size = new System.Drawing.Size(266, 20);
-			this.tbx_Path2.TabIndex = 6;
+			this.tbx_Path2.TabIndex = 1;
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(9, 19);
+			this.label7.Location = new System.Drawing.Point(9, 8);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(32, 13);
 			this.label7.TabIndex = 5;
@@ -654,16 +695,16 @@
 			// 
 			// tbx_Text
 			// 
-			this.tbx_Text.Location = new System.Drawing.Point(53, 43);
+			this.tbx_Text.Location = new System.Drawing.Point(53, 32);
 			this.tbx_Text.MaxLength = 200;
 			this.tbx_Text.Name = "tbx_Text";
 			this.tbx_Text.Size = new System.Drawing.Size(295, 20);
-			this.tbx_Text.TabIndex = 4;
+			this.tbx_Text.TabIndex = 3;
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(9, 45);
+			this.label6.Location = new System.Drawing.Point(9, 34);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(31, 13);
 			this.label6.TabIndex = 3;
@@ -671,29 +712,33 @@
 			// 
 			// groupBox6
 			// 
+			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox6.Controls.Add(this.pictureBox1);
 			this.groupBox6.Controls.Add(this.pbx_Before);
-			this.groupBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.groupBox6.Location = new System.Drawing.Point(3, 116);
+			this.groupBox6.Location = new System.Drawing.Point(3, 135);
 			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(714, 255);
+			this.groupBox6.Size = new System.Drawing.Size(714, 236);
 			this.groupBox6.TabIndex = 2;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Preview";
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(365, 14);
+			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.pictureBox1.Location = new System.Drawing.Point(369, 16);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(342, 235);
+			this.pictureBox1.Size = new System.Drawing.Size(342, 217);
 			this.pictureBox1.TabIndex = 1;
 			this.pictureBox1.TabStop = false;
 			// 
 			// pbx_Before
 			// 
-			this.pbx_Before.Location = new System.Drawing.Point(3, 15);
+			this.pbx_Before.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pbx_Before.Location = new System.Drawing.Point(3, 16);
 			this.pbx_Before.Name = "pbx_Before";
-			this.pbx_Before.Size = new System.Drawing.Size(342, 235);
+			this.pbx_Before.Size = new System.Drawing.Size(342, 217);
 			this.pbx_Before.TabIndex = 0;
 			this.pbx_Before.TabStop = false;
 			// 
@@ -701,20 +746,69 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// label11
+			// tbx_PX
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-			this.label11.ForeColor = System.Drawing.SystemColors.Highlight;
-			this.label11.Location = new System.Drawing.Point(204, 20);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(39, 13);
-			this.label11.TabIndex = 19;
-			this.label11.Text = "History";
-			this.label11.Click += new System.EventHandler(this.label11_Click);
-			this.label11.MouseLeave += new System.EventHandler(this.label11_MouseLeave);
-			this.label11.MouseHover += new System.EventHandler(this.label11_MouseHover);
+			this.tbx_PX.Location = new System.Drawing.Point(83, 80);
+			this.tbx_PX.MaxLength = 10;
+			this.tbx_PX.Name = "tbx_PX";
+			this.tbx_PX.Size = new System.Drawing.Size(37, 20);
+			this.tbx_PX.TabIndex = 6;
+			this.tbx_PX.Text = "10";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(9, 83);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(47, 13);
+			this.label12.TabIndex = 16;
+			this.label12.Text = "Position:";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(62, 83);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(15, 13);
+			this.label13.TabIndex = 17;
+			this.label13.Text = "x:";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(128, 83);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(15, 13);
+			this.label14.TabIndex = 19;
+			this.label14.Text = "y:";
+			// 
+			// tbx_PY
+			// 
+			this.tbx_PY.Location = new System.Drawing.Point(149, 80);
+			this.tbx_PY.MaxLength = 10;
+			this.tbx_PY.Name = "tbx_PY";
+			this.tbx_PY.Size = new System.Drawing.Size(37, 20);
+			this.tbx_PY.TabIndex = 7;
+			this.tbx_PY.Text = "30";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(203, 83);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(34, 13);
+			this.label15.TabIndex = 21;
+			this.label15.Text = "Color:";
+			// 
+			// btn_ChoosenColor
+			// 
+			this.btn_ChoosenColor.Location = new System.Drawing.Point(243, 78);
+			this.btn_ChoosenColor.Name = "btn_ChoosenColor";
+			this.btn_ChoosenColor.Size = new System.Drawing.Size(75, 23);
+			this.btn_ChoosenColor.TabIndex = 22;
+			this.btn_ChoosenColor.Text = "Choose...";
+			this.btn_ChoosenColor.UseVisualStyleBackColor = true;
+			this.btn_ChoosenColor.Click += new System.EventHandler(this.btn_ChoosenColor_Click);
 			// 
 			// Form1
 			// 
@@ -795,7 +889,7 @@
 		private System.Windows.Forms.ComboBox cbx_Size;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Button btn_Start2;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cbx_FontStyle;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Button btn_Browse2;
 		private System.Windows.Forms.Button btn_Browse1;
@@ -807,6 +901,14 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Col_Location;
 		private System.Windows.Forms.ProgressBar progressBar1;
 		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.TextBox tbx_PY;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.TextBox tbx_PX;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Button btn_ChoosenColor;
+		private System.Windows.Forms.ColorDialog colorDialog1;
 	}
 }
 
