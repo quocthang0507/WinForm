@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -68,6 +69,13 @@
 			this.btn_Name = new System.Windows.Forms.Button();
 			this.tbx_fileName = new System.Windows.Forms.TextBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.btn_ChoosenColor = new System.Windows.Forms.Button();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.tbx_PY = new System.Windows.Forms.TextBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.tbx_PX = new System.Windows.Forms.TextBox();
 			this.btn_Browse2 = new System.Windows.Forms.Button();
 			this.btn_Start2 = new System.Windows.Forms.Button();
 			this.cbx_FontStyle = new System.Windows.Forms.ComboBox();
@@ -81,17 +89,11 @@
 			this.tbx_Text = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pbx_Before = new System.Windows.Forms.PictureBox();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.tbx_PX = new System.Windows.Forms.TextBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.tbx_PY = new System.Windows.Forms.TextBox();
-			this.label15 = new System.Windows.Forms.Label();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.btn_ChoosenColor = new System.Windows.Forms.Button();
+			this.pbx_After = new System.Windows.Forms.PictureBox();
+			this.btn_Review = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -104,8 +106,8 @@
 			this.groupBox1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbx_Before)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbx_After)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -270,6 +272,7 @@
 			this.cbx_Digits.Size = new System.Drawing.Size(40, 21);
 			this.cbx_Digits.TabIndex = 16;
 			this.cbx_Digits.Text = "1";
+			this.cbx_Digits.SelectedIndexChanged += new System.EventHandler(this.cbx_Digits_SelectedIndexChanged);
 			// 
 			// label5
 			// 
@@ -296,6 +299,7 @@
             0,
             0,
             0});
+			this.nud_Step.ValueChanged += new System.EventHandler(this.nud_Step_ValueChanged);
 			// 
 			// label4
 			// 
@@ -327,6 +331,7 @@
             0,
             0,
             0});
+			this.nud_Start.ValueChanged += new System.EventHandler(this.nud_Start_ValueChanged);
 			// 
 			// label3
 			// 
@@ -540,6 +545,7 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.btn_Review);
 			this.tabPage2.Controls.Add(this.btn_ChoosenColor);
 			this.tabPage2.Controls.Add(this.label15);
 			this.tabPage2.Controls.Add(this.label14);
@@ -568,6 +574,70 @@
 			this.tabPage2.Text = "Multi-Watermark";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// btn_ChoosenColor
+			// 
+			this.btn_ChoosenColor.Location = new System.Drawing.Point(243, 78);
+			this.btn_ChoosenColor.Name = "btn_ChoosenColor";
+			this.btn_ChoosenColor.Size = new System.Drawing.Size(75, 23);
+			this.btn_ChoosenColor.TabIndex = 22;
+			this.btn_ChoosenColor.Text = "Choose...";
+			this.btn_ChoosenColor.UseVisualStyleBackColor = true;
+			this.btn_ChoosenColor.Click += new System.EventHandler(this.btn_ChoosenColor_Click);
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(203, 83);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(34, 13);
+			this.label15.TabIndex = 21;
+			this.label15.Text = "Color:";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(128, 83);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(15, 13);
+			this.label14.TabIndex = 19;
+			this.label14.Text = "y:";
+			// 
+			// tbx_PY
+			// 
+			this.tbx_PY.Location = new System.Drawing.Point(149, 80);
+			this.tbx_PY.MaxLength = 10;
+			this.tbx_PY.Name = "tbx_PY";
+			this.tbx_PY.Size = new System.Drawing.Size(37, 20);
+			this.tbx_PY.TabIndex = 7;
+			this.tbx_PY.Text = "30";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(62, 83);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(15, 13);
+			this.label13.TabIndex = 17;
+			this.label13.Text = "x:";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(9, 83);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(47, 13);
+			this.label12.TabIndex = 16;
+			this.label12.Text = "Position:";
+			// 
+			// tbx_PX
+			// 
+			this.tbx_PX.Location = new System.Drawing.Point(83, 80);
+			this.tbx_PX.MaxLength = 10;
+			this.tbx_PX.Name = "tbx_PX";
+			this.tbx_PX.Size = new System.Drawing.Size(37, 20);
+			this.tbx_PX.TabIndex = 6;
+			this.tbx_PX.Text = "10";
+			// 
 			// btn_Browse2
 			// 
 			this.btn_Browse2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -582,7 +652,7 @@
 			// btn_Start2
 			// 
 			this.btn_Start2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.btn_Start2.Location = new System.Drawing.Point(131, 106);
+			this.btn_Start2.Location = new System.Drawing.Point(206, 106);
 			this.btn_Start2.Name = "btn_Start2";
 			this.btn_Start2.Size = new System.Drawing.Size(75, 23);
 			this.btn_Start2.TabIndex = 10;
@@ -715,7 +785,7 @@
 			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox6.Controls.Add(this.pictureBox1);
+			this.groupBox6.Controls.Add(this.pbx_After);
 			this.groupBox6.Controls.Add(this.pbx_Before);
 			this.groupBox6.Location = new System.Drawing.Point(3, 135);
 			this.groupBox6.Name = "groupBox6";
@@ -724,21 +794,13 @@
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Preview";
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.pictureBox1.Location = new System.Drawing.Point(369, 16);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(342, 217);
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
-			// 
 			// pbx_Before
 			// 
 			this.pbx_Before.Dock = System.Windows.Forms.DockStyle.Left;
 			this.pbx_Before.Location = new System.Drawing.Point(3, 16);
 			this.pbx_Before.Name = "pbx_Before";
 			this.pbx_Before.Size = new System.Drawing.Size(342, 217);
+			this.pbx_Before.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbx_Before.TabIndex = 0;
 			this.pbx_Before.TabStop = false;
 			// 
@@ -746,69 +808,26 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// tbx_PX
+			// pbx_After
 			// 
-			this.tbx_PX.Location = new System.Drawing.Point(83, 80);
-			this.tbx_PX.MaxLength = 10;
-			this.tbx_PX.Name = "tbx_PX";
-			this.tbx_PX.Size = new System.Drawing.Size(37, 20);
-			this.tbx_PX.TabIndex = 6;
-			this.tbx_PX.Text = "10";
+			this.pbx_After.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbx_After.Location = new System.Drawing.Point(345, 16);
+			this.pbx_After.Name = "pbx_After";
+			this.pbx_After.Size = new System.Drawing.Size(366, 217);
+			this.pbx_After.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pbx_After.TabIndex = 1;
+			this.pbx_After.TabStop = false;
 			// 
-			// label12
+			// btn_Review
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(9, 83);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(47, 13);
-			this.label12.TabIndex = 16;
-			this.label12.Text = "Position:";
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(62, 83);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(15, 13);
-			this.label13.TabIndex = 17;
-			this.label13.Text = "x:";
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(128, 83);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(15, 13);
-			this.label14.TabIndex = 19;
-			this.label14.Text = "y:";
-			// 
-			// tbx_PY
-			// 
-			this.tbx_PY.Location = new System.Drawing.Point(149, 80);
-			this.tbx_PY.MaxLength = 10;
-			this.tbx_PY.Name = "tbx_PY";
-			this.tbx_PY.Size = new System.Drawing.Size(37, 20);
-			this.tbx_PY.TabIndex = 7;
-			this.tbx_PY.Text = "30";
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(203, 83);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(34, 13);
-			this.label15.TabIndex = 21;
-			this.label15.Text = "Color:";
-			// 
-			// btn_ChoosenColor
-			// 
-			this.btn_ChoosenColor.Location = new System.Drawing.Point(243, 78);
-			this.btn_ChoosenColor.Name = "btn_ChoosenColor";
-			this.btn_ChoosenColor.Size = new System.Drawing.Size(75, 23);
-			this.btn_ChoosenColor.TabIndex = 22;
-			this.btn_ChoosenColor.Text = "Choose...";
-			this.btn_ChoosenColor.UseVisualStyleBackColor = true;
-			this.btn_ChoosenColor.Click += new System.EventHandler(this.btn_ChoosenColor_Click);
+			this.btn_Review.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+			this.btn_Review.Location = new System.Drawing.Point(83, 106);
+			this.btn_Review.Name = "btn_Review";
+			this.btn_Review.Size = new System.Drawing.Size(75, 23);
+			this.btn_Review.TabIndex = 23;
+			this.btn_Review.Text = "Preview";
+			this.btn_Review.UseVisualStyleBackColor = true;
+			this.btn_Review.Click += new System.EventHandler(this.btn_Review_Click);
 			// 
 			// Form1
 			// 
@@ -816,6 +835,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(728, 400);
 			this.Controls.Add(this.tabControl1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form1";
 			this.Text = "AutoCommand";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -837,8 +857,8 @@
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage2.PerformLayout();
 			this.groupBox6.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbx_Before)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbx_After)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -882,7 +902,6 @@
 		private System.Windows.Forms.TextBox tbx_Text;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pbx_Before;
 		private System.Windows.Forms.ListBox listFont;
 		private System.Windows.Forms.Label label8;
@@ -909,6 +928,8 @@
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Button btn_ChoosenColor;
 		private System.Windows.Forms.ColorDialog colorDialog1;
+		private System.Windows.Forms.PictureBox pbx_After;
+		private System.Windows.Forms.Button btn_Review;
 	}
 }
 

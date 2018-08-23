@@ -1,6 +1,6 @@
-# WinForm
+﻿# WinForm
 Winform applications
 
-Đây là nơi lưu trữ source code của Winform nằm ngooài chương trình học
+Đây là nơi lưu trữ source code của Winform và WPF tự học
 
-Mọi cá nhân sử dụng lại source code này vui lòng ghi rõ nguồn
+Có một số project sưu tầm ở trên mạng, đặc biệt là laptrinhvb.net

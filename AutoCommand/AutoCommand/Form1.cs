@@ -38,6 +38,7 @@ namespace AutoCommand
 			toolTip1.SetToolTip(btn_Browse2, "Browse for image folder");
 			toolTip1.SetToolTip(btn_Start2, "Start add watermark to all pictures in folder");
 			toolTip1.SetToolTip(label11, "View the history");
+			toolTip1.SetToolTip(btn_Review, "Review the effectiveness of adding watermark to first image");
 		}
 
 		#region Tab1
@@ -167,7 +168,7 @@ namespace AutoCommand
 							n += modification.ToString("hhmmss");
 							break;
 						case "[N#-#]":
-							n += string.Concat(name, id + 1, "-", total - 1);
+							n += string.Concat(id + 1, "-", total - 1);
 							break;
 						case "[D]":
 							n += modification.ToString("yyyyMdd");
@@ -198,7 +199,7 @@ namespace AutoCommand
 							e += ext;
 							break;
 						case "[E#-#]":
-							e += string.Concat(ext, id + 1, "-", total - 1);
+							e += string.Concat(id + 1, "-", total - 1);
 							break;
 						default:
 							e += item;
@@ -372,6 +373,25 @@ namespace AutoCommand
 		{
 			label11.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
 		}
+
+		private void nud_Start_ValueChanged(object sender, EventArgs e)
+		{
+			if (tbx_fileName.Text.Contains("[C]") || tbx_fileName.Text.Contains("[N#-#]"))
+				tbx_fileName_TextChanged(sender, e);
+			if (tbx_Extension.Text.Contains("[E#-#]") || tbx_Extension.Text.Contains("[C]"))
+				tbx_Extension_TextChanged(sender, e);
+		}
+
+		private void nud_Step_ValueChanged(object sender, EventArgs e)
+		{
+			nud_Start_ValueChanged(sender, e);
+		}
+
+		private void cbx_Digits_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			nud_Start_ValueChanged(sender, e);
+		}
+
 		#endregion
 
 		#region Tab2
@@ -415,13 +435,14 @@ namespace AutoCommand
 						Stream outputStream = new MemoryStream();
 						AddWaterMark.AddWatermark(fs, int.Parse(tbx_PX.Text), int.Parse(tbx_PY.Text), tbx_Text.Text, outputStream, listFont.SelectedItem.ToString(), Convert.ToInt32(cbx_Size.Text), (FontStyle)GetFontStyle(), btn_ChoosenColor.BackColor);
 						fs.Close();
-						file.Delete();
+						//file.Delete();
 						img = Image.FromStream(outputStream);
 						using (Bitmap savingImage = new Bitmap(img.Width, img.Height, img.PixelFormat))
 						{
 							using (Graphics g = Graphics.FromImage(savingImage))
 								g.DrawImage(img, new Point(0, 0));
-							savingImage.Save(fullPath, ImageFormat.Jpeg);
+							string[] t = file.Name.Split('.');
+							savingImage.Save(string.Concat(path, @"\", t[0], "_new.", t[1]), ImageFormat.Jpeg);
 						}
 						img.Dispose();
 					}
@@ -458,7 +479,7 @@ namespace AutoCommand
 			ReviewPicture();
 		}
 
-		void GetTheFirstPic()
+		string GetTheFirstPic()
 		{
 			string[] files = Directory.GetFiles(tbx_Path2.Text);
 			foreach (var item in files)
@@ -466,13 +487,9 @@ namespace AutoCommand
 				if (item.ToLower().EndsWith(".jpg") || item.ToLower().EndsWith(".jpeg") ||
 					item.ToLower().EndsWith(".gif") || item.ToLower().EndsWith(".bmp") ||
 					item.ToLower().EndsWith(".png"))
-				{
-					pbx_Before.Image = Image.FromFile(item);
-					pbx_Before.SizeMode = PictureBoxSizeMode.Zoom;
-					return;
-				}
+					return item;
 			}
-
+			return null;
 		}
 
 		void ReviewPicture()
@@ -481,7 +498,11 @@ namespace AutoCommand
 			if (result == DialogResult.OK)
 			{
 				tbx_Path2.Text = folderBrowserDialog1.SelectedPath;
-				GetTheFirstPic();
+				string r = GetTheFirstPic();
+				if (r == null)
+					MessageBox.Show("Can't find any pictures on this folder", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				else
+					pbx_Before.Image = Image.FromFile(r);
 			}
 			else tbx_Path2.Text = null;
 		}
@@ -491,6 +512,17 @@ namespace AutoCommand
 			colorDialog1.ShowDialog();
 			btn_ChoosenColor.BackColor = colorDialog1.Color;
 		}
-		#endregion
+
+		private void btn_Review_Click(object sender, EventArgs e)
+		{
+			string fullPath = GetTheFirstPic();
+			FileInfo file = new FileInfo(fullPath);
+			FileStream fs = file.OpenRead();
+			Stream outputStream = new MemoryStream();
+			AddWaterMark.AddWatermark(fs, int.Parse(tbx_PX.Text), int.Parse(tbx_PY.Text), tbx_Text.Text, outputStream, listFont.SelectedItem.ToString(), Convert.ToInt32(cbx_Size.Text), (FontStyle)GetFontStyle(), btn_ChoosenColor.BackColor);
+			pbx_After.Image = Image.FromStream(outputStream);
+			fs.Close();
+		}
 	}
+	#endregion
 }
