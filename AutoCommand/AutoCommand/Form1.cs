@@ -14,6 +14,9 @@ namespace AutoCommand
 {
 	public partial class Form1 : Form
 	{
+		string path1 = "log.txt", path2 = "backup.txt";
+		bool canReplace = true;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -37,20 +40,12 @@ namespace AutoCommand
 			toolTip1.SetToolTip(btn_Start1, "Start rename all files");
 			toolTip1.SetToolTip(btn_Browse2, "Browse for image folder");
 			toolTip1.SetToolTip(btn_Start2, "Start add watermark to all pictures in folder");
-			toolTip1.SetToolTip(label11, "View the history");
+			toolTip1.SetToolTip(label11, "View the log");
+			toolTip1.SetToolTip(label16, "Backup these file names and open file .txt");
 			toolTip1.SetToolTip(btn_Review, "Review the effectiveness of adding watermark to first image");
 		}
 
 		#region Tab1
-		private void btn_Browse1_Click(object sender, EventArgs e)
-		{
-			openFileDialog1.Title = "Browse for one or more files";
-			openFileDialog1.RestoreDirectory = true;
-			openFileDialog1.Multiselect = true;
-			openFileDialog1.Filter = "All files (*.*)|*.*";
-			ShowSelectedfiles();
-		}
-
 		string ConvertFileLength(double len)
 		{
 			string[] sizes = { "B", "KB", "MB", "GB", "TB" };
@@ -63,10 +58,20 @@ namespace AutoCommand
 			return string.Format("{0:0.##} {1}", len, sizes[order]);
 		}
 
+		private void btn_Browse1_Click(object sender, EventArgs e)
+		{
+			openFileDialog1.Title = "Browse for one or more files";
+			openFileDialog1.RestoreDirectory = true;
+			openFileDialog1.Multiselect = true;
+			openFileDialog1.Filter = "All files (*.*)|*.*";
+			ShowSelectedfiles();
+		}
+
 		void ShowSelectedfiles()
 		{
 			DialogResult r = openFileDialog1.ShowDialog();
-			dataGridView1.Rows.Clear();
+			if (r == DialogResult.OK)
+				dataGridView1.Rows.Clear();
 			object[] row = new object[5];
 			if (r == DialogResult.OK)
 			{
@@ -85,6 +90,8 @@ namespace AutoCommand
 					dataGridView1.Rows.Add(row);
 					progressBar1.Value += step;
 				}
+				path1 = dataGridView1.Rows[0].Cells[4].Value.ToString() + "log.txt";
+				path2 = dataGridView1.Rows[0].Cells[4].Value.ToString() + "backup.txt";
 				progressBar1.Value = 100;
 			}
 		}
@@ -131,7 +138,38 @@ namespace AutoCommand
 
 		private void label11_Click(object sender, EventArgs e)
 		{
-			Process.Start("log.txt");
+			if (!File.Exists(path1))
+				File.CreateText(path1);
+			Process.Start(path1);
+		}
+
+		private void label16_Click(object sender, EventArgs e)
+		{
+			string[] names = openFileDialog1.FileNames;
+			if (names[0] == "openFileDialog1")
+				MessageBox.Show("You must browse for file(s) firstly", "Announcement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			else
+			{
+				StreamWriter sw = new StreamWriter(path2, true);
+				sw.WriteLine(DateTime.Now.ToString());
+				foreach (var item in names)
+				{
+					sw.WriteLine(item);
+				}
+				sw.WriteLine();
+				sw.Close();
+				Process.Start(path2);
+			}
+		}
+
+		private void tbx_fileName_DoubleClick(object sender, EventArgs e)
+		{
+			tbx_fileName.SelectAll();
+		}
+
+		private void tbx_Extension_DoubleClick(object sender, EventArgs e)
+		{
+			tbx_Extension.SelectAll();
 		}
 
 		List<string> DecomposeMask(TextBox t)
@@ -159,18 +197,23 @@ namespace AutoCommand
 					switch (item)
 					{
 						case "[N]":
+						case "[n]":
 							n += name;
 							break;
 						case "[C]":
+						case "[c]":
 							n += count.ToString("D" + digit);
 							break;
 						case "[T]":
+						case "[t]":
 							n += modification.ToString("hhmmss");
 							break;
 						case "[N#-#]":
+						case "[n#-#]":
 							n += string.Concat(id + 1, "-", total - 1);
 							break;
 						case "[D]":
+						case "[d]":
 							n += modification.ToString("yyyyMdd");
 							break;
 						default:
@@ -193,12 +236,15 @@ namespace AutoCommand
 					switch (item)
 					{
 						case "[C]":
+						case "[c]":
 							e += count.ToString("D" + digit);
 							break;
 						case "[E]":
+						case "[e]":
 							e += ext;
 							break;
 						case "[E#-#]":
+						case "[e#-#]":
 							e += string.Concat(id + 1, "-", total - 1);
 							break;
 						default:
@@ -209,130 +255,118 @@ namespace AutoCommand
 			return e;
 		}
 
-		private void tbx_fileName_TextChanged(object sender, EventArgs e)
+		string[] SplitByDot(string text)
+		{
+			string[] r = new string[2];
+			int i = text.LastIndexOf('.');
+			r[0] = text.Remove(i);
+			r[1] = text.Substring(i + 1);
+			return r;
+		}
+
+		void MaskProcessing()
 		{
 			int count = Convert.ToInt32(nud_Start.Value), id = 0;
 			foreach (DataGridViewRow row in dataGridView1.Rows)
 			{
 				if (row.Cells[0].Value != null)
 				{
-					string[] t = row.Cells[0].Value.ToString().Split('.');
-					row.Cells[1].Value = string.Concat(NameProcessing(t[0], id, count, dataGridView1.RowCount, int.Parse(cbx_Digits.SelectedItem.ToString())), '.', t[1]);
+					string[] t = SplitByDot(row.Cells[0].Value.ToString());
+					string r = string.Concat(NameProcessing(t[0], id, count, dataGridView1.RowCount, int.Parse(cbx_Digits.SelectedItem.ToString())), '.', ExtProcessing(t[1], id, count, dataGridView1.RowCount, int.Parse(cbx_Digits.SelectedItem.ToString())));
+					r = ChangeCase(r, cbx_Case.SelectedIndex);
+					if (tbx_Find.Text != "" && canReplace)
+					{
+						t = SplitByDot(r);
+						t[0] = t[0].Replace(tbx_Find.Text, tbx_Replace.Text);
+						t[1] = t[1].Replace(tbx_Find.Text, tbx_Replace.Text);
+						row.Cells[1].Value = string.Concat(t[0], ".", t[1]);
+					}
+					else row.Cells[1].Value = r;
 					count += Convert.ToInt32(nud_Step.Value);
 					id++;
 				}
 			}
+		}
+
+		private void tbx_fileName_TextChanged(object sender, EventArgs e)
+		{
+			MaskProcessing();
 		}
 
 		private void tbx_Extension_TextChanged(object sender, EventArgs e)
 		{
-			int count = Convert.ToInt32(nud_Start.Value), id = 0;
-			foreach (DataGridViewRow row in dataGridView1.Rows)
-			{
-				if (row.Cells[0].Value != null)
-				{
-					string[] t = row.Cells[0].Value.ToString().Split('.');
-					row.Cells[1].Value = string.Concat(t[0], '.', ExtProcessing(t[1], id, count, dataGridView1.RowCount, int.Parse(cbx_Digits.SelectedItem.ToString())));
-					count += Convert.ToInt32(nud_Step.Value);
-					id++;
-				}
-			}
+			MaskProcessing();
 		}
 
-		List<string> backup;
-
-		void BackupName()
+		void ReloadMask()
 		{
-			backup = new List<string>();
-			foreach (DataGridViewRow row in dataGridView1.Rows)
-			{
-				if (row.Cells[0].Value != null)
-				{
-					backup.Add(row.Cells[1].Value.ToString());
-				}
-			}
+			MaskProcessing();
 		}
 
-		void RestoreName()
+		string ChangeCase(string text, int id)
 		{
-			int i = 0;
-			foreach (DataGridViewRow row in dataGridView1.Rows)
+			if (id == 0)
+				return text;
+			else if (id == 1)
+				return text.ToLower();
+			else if (id == 2)
+				return text.ToUpper();
+			else if (id == 3)
+				return char.ToUpper(text.First()) + text.Substring(1).ToLower();
+			else
 			{
-				if (row.Cells[0].Value != null)
-				{
-					row.Cells[1].Value = backup[i];
-					i++;
-				}
+				TextInfo t = new CultureInfo("en-US", false).TextInfo;
+				return t.ToTitleCase(text);
 			}
 		}
 
 		private void cbx_Case_SelectedValueChanged(object sender, EventArgs e)
 		{
-			BackupName();
-			int i = 0;
-			foreach (DataGridViewRow row in dataGridView1.Rows)
-			{
-				if (row.Cells[0].Value != null)
-				{
-					if (cbx_Case.SelectedIndex == 0)
-						row.Cells[1].Value = backup[i];
-					else if (cbx_Case.SelectedIndex == 1)
-						row.Cells[1].Value = backup[i].ToLower();
-					else if (cbx_Case.SelectedIndex == 2)
-						row.Cells[1].Value = backup[i].ToUpper();
-					else if (cbx_Case.SelectedIndex == 3)
-						row.Cells[1].Value = char.ToUpper(backup[i].First()) + backup[i].Substring(1).ToLower();
-					else
-					{
-						TextInfo t = new CultureInfo("en-US", false).TextInfo;
-						row.Cells[1].Value = t.ToTitleCase(backup[i]);
-					}
-				}
-				i++;
-			}
-		}
-
-		private void tbx_Extension_Click(object sender, EventArgs e)
-		{
-			tbx_Extension.SelectAll();
-		}
-
-		private void tbx_fileName_Click(object sender, EventArgs e)
-		{
-			tbx_fileName.SelectAll();
+			if (cbx_Case.SelectedIndex == 0)
+				ReloadMask();
+			else
+				foreach (DataGridViewRow row in dataGridView1.Rows)
+					if (row.Cells[0].Value != null)
+						row.Cells[1].Value = ChangeCase(row.Cells[1].Value.ToString(), cbx_Case.SelectedIndex);
 		}
 
 		private void tbx_Find_TextChanged(object sender, EventArgs e)
 		{
+			canReplace = false;
+			ReloadMask();
 			if (tbx_Find.Text != "")
 			{
-				BackupName();
-				int i = 0;
 				foreach (DataGridViewRow row in dataGridView1.Rows)
 				{
 					if (row.Cells[0].Value != null)
 					{
-						row.Cells[1].Value = backup[i].Replace(tbx_Find.Text, tbx_Replace.Text);
-						i++;
+						string[] t = SplitByDot(row.Cells[1].Value.ToString());
+						t[0] = t[0].Replace(tbx_Find.Text, tbx_Replace.Text);
+						t[1] = t[1].Replace(tbx_Find.Text, tbx_Replace.Text);
+						row.Cells[1].Value = string.Concat(t[0], ".", t[1]);
 					}
 				}
 			}
-			else RestoreName();
+			canReplace = true;
 		}
 
 		private void tbx_Replace_TextChanged(object sender, EventArgs e)
 		{
-			if (tbx_Replace.Text != null)
+			if (tbx_Find.Text != "")
 			{
-				int i = 0;
+				canReplace = false;
+				ReloadMask();
 				foreach (DataGridViewRow row in dataGridView1.Rows)
 				{
 					if (row.Cells[0].Value != null)
 					{
-						row.Cells[1].Value = backup[i].Replace(tbx_Find.Text, tbx_Replace.Text);
-						i++;
+						string[] t = SplitByDot(row.Cells[1].Value.ToString());
+						t[0] = t[0].Replace(tbx_Find.Text, tbx_Replace.Text);
+						t[1] = t[1].Replace(tbx_Find.Text, tbx_Replace.Text);
+						row.Cells[1].Value = string.Concat(t[0], ".", t[1]);
 					}
 				}
+				canReplace = true;
 			}
 		}
 
@@ -345,7 +379,7 @@ namespace AutoCommand
 				int count = dataGridView1.Rows.Count - 1;
 				int step = 1 / count;
 				progressBar1.Value = 0;
-				StreamWriter sw = new StreamWriter("log.txt", true);
+				StreamWriter sw = new StreamWriter(path1, true);
 				sw.WriteLine(DateTime.Now.ToString());
 				foreach (DataGridViewRow row in dataGridView1.Rows)
 				{
@@ -360,6 +394,7 @@ namespace AutoCommand
 					}
 				}
 				progressBar1.Value = 100;
+				sw.WriteLine();
 				sw.Close();
 			}
 		}
@@ -374,11 +409,21 @@ namespace AutoCommand
 			label11.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
 		}
 
+		private void label16_MouseHover(object sender, EventArgs e)
+		{
+			label16.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Underline, GraphicsUnit.Point, ((byte)(163)));
+		}
+
+		private void label16_MouseLeave(object sender, EventArgs e)
+		{
+			label16.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(163)));
+		}
+
 		private void nud_Start_ValueChanged(object sender, EventArgs e)
 		{
-			if (tbx_fileName.Text.Contains("[C]") || tbx_fileName.Text.Contains("[N#-#]"))
+			if (tbx_fileName.Text.Contains("[C]") || tbx_fileName.Text.Contains("[c]"))
 				tbx_fileName_TextChanged(sender, e);
-			if (tbx_Extension.Text.Contains("[E#-#]") || tbx_Extension.Text.Contains("[C]"))
+			if (tbx_Extension.Text.Contains("[C]") || tbx_fileName.Text.Contains("[c]"))
 				tbx_Extension_TextChanged(sender, e);
 		}
 
@@ -435,7 +480,6 @@ namespace AutoCommand
 						Stream outputStream = new MemoryStream();
 						AddWaterMark.AddWatermark(fs, int.Parse(tbx_PX.Text), int.Parse(tbx_PY.Text), tbx_Text.Text, outputStream, listFont.SelectedItem.ToString(), Convert.ToInt32(cbx_Size.Text), (FontStyle)GetFontStyle(), btn_ChoosenColor.BackColor);
 						fs.Close();
-						//file.Delete();
 						img = Image.FromStream(outputStream);
 						using (Bitmap savingImage = new Bitmap(img.Width, img.Height, img.PixelFormat))
 						{
@@ -483,13 +527,11 @@ namespace AutoCommand
 		{
 			string[] files = Directory.GetFiles(tbx_Path2.Text);
 			foreach (var item in files)
-			{
 				if (item.ToLower().EndsWith(".jpg") || item.ToLower().EndsWith(".jpeg") ||
 					item.ToLower().EndsWith(".gif") || item.ToLower().EndsWith(".bmp") ||
 					item.ToLower().EndsWith(".png"))
 					return item;
-			}
-			return null;
+			return "";
 		}
 
 		void ReviewPicture()
@@ -499,12 +541,12 @@ namespace AutoCommand
 			{
 				tbx_Path2.Text = folderBrowserDialog1.SelectedPath;
 				string r = GetTheFirstPic();
-				if (r == null)
+				if (r == "")
 					MessageBox.Show("Can't find any pictures on this folder", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				else
 					pbx_Before.Image = Image.FromFile(r);
 			}
-			else tbx_Path2.Text = null;
+			else tbx_Path2.Text = "";
 		}
 
 		private void btn_ChoosenColor_Click(object sender, EventArgs e)
