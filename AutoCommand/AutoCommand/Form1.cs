@@ -16,11 +16,94 @@ namespace AutoCommand
 	{
 		string path1 = "log.txt", path2 = "backup.txt";
 		bool canReplace = true;
+		bool tiengViet = false;
 
 		public Form1()
 		{
 			InitializeComponent();
 		}
+
+		private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			tiengViet = false;
+			tabPage2.Text = "Multi-Watermark Tool";
+			groupBox6.Text = "Preview";
+			label6.Text = "Text:";
+			label7.Text = "Path:";
+			label8.Text = "Font:";
+			label9.Text = "Size:";
+			label10.Text = "Font style:";
+			btn_Start2.Text = "Start";
+			label12.Text = "Position:";
+			label15.Text = "Color:";
+			btn_ChoosenColor.Text = "Choose...";
+			btn_Review.Text = "Preview";
+			tabPage1.Text = "Multi-Rename Tool";
+			groupBox1.Text = "Rename mask: File name";
+			chk_Diacritical.Text = "Remove diacritical marks";
+			groupBox2.Text = "Extension";
+			groupBox3.Text = "Find and Replace";
+			label1.Text = "Find:";
+			label2.Text = "Replace with:";
+			groupBox4.Text = "Change case";
+			label3.Text = "Start at:";
+			label4.Text = "Step by:";
+			label5.Text = "Digits:";
+			Col_Location.HeaderText = "Location";
+			Col_Date.HeaderText = "Date modification";
+			Size.HeaderText = "Size";
+			Col_NewName.HeaderText = "New name";
+			Col_OldName.HeaderText = "Old name";
+			btn_Start1.Text = "Start";
+			btn_Browse1.Text = "Browse...";
+			label11.Text = "View log";
+			label16.Text = "Backup";
+			ShowTooltip();
+		}
+
+		private void tiếngViệtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			tiengViet = true;
+			tabPage2.Text = "Chèn ảnh mờ";
+			groupBox6.Text = "Xem trước";
+			label6.Text = "Chữ:";
+			label7.Text = "Đdẫn:";
+			label8.Text = "Phông:";
+			label9.Text = "Cỡ:";
+			label10.Text = "Kiểu:";
+			btn_Start2.Text = "B.đầu";
+			label12.Text = "Vị trí:";
+			label15.Text = "Màu:";
+			btn_ChoosenColor.Text = "Chọn...";
+			btn_Review.Text = "Xem trước";
+			tabPage1.Text = "Đổi tên";
+			groupBox1.Text = "Mặt nạ: Tên";
+			chk_Diacritical.Text = "Loại bỏ thanh điệu";
+			groupBox2.Text = "Phần mở rộng";
+			groupBox3.Text = "T.kiếm và T.thế";
+			label1.Text = "Tìm:";
+			label2.Text = "Thay bằng:";
+			groupBox4.Text = "Đổi chữ hoa";
+			label3.Text = "B.đầu tại:";
+			label4.Text = "K.cách:";
+			label5.Text = "T.phân:";
+			Col_Location.HeaderText = "Vị trí";
+			Col_Date.HeaderText = "Ngày chỉnh sửa";
+			Col_NewName.HeaderText = "Tên mới";
+			Size.HeaderText = "Cỡ";
+			Col_OldName.HeaderText = "Tên cũ";
+			btn_Start1.Text = "B.đầu";
+			btn_Browse1.Text = "Duyệt...";
+			label11.Text = "Xem n.ký";
+			label16.Text = "Sao lưu";
+			ShowTooltip();
+		}
+
+		private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("CHƯƠNG TRÌNH HỖ TRỢ ĐỔI TÊN ĐA TẬP TIN VÀ THÊM ẢNH MỜ (WATERMARK) VÀO ẢNH\r\nTác giả: LA QUỐC THẮNG\r\nChi tiết liên hệ: quocthang0507@gmail.com", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
@@ -32,17 +115,32 @@ namespace AutoCommand
 		void ShowTooltip()
 		{
 			ToolTip toolTip1 = new ToolTip();
-			toolTip1.AutoPopDelay = 5000;
+			toolTip1.AutoPopDelay = 10000;
 			toolTip1.InitialDelay = 1000;
 			toolTip1.ReshowDelay = 500;
 			toolTip1.ShowAlways = true;
-			toolTip1.SetToolTip(btn_Browse1, "Browse for file(s)");
-			toolTip1.SetToolTip(btn_Start1, "Start rename all files");
-			toolTip1.SetToolTip(btn_Browse2, "Browse for image folder");
-			toolTip1.SetToolTip(btn_Start2, "Start add watermark to all pictures in folder");
-			toolTip1.SetToolTip(label11, "View the log");
-			toolTip1.SetToolTip(label16, "Backup these file names and open file .txt");
-			toolTip1.SetToolTip(btn_Review, "Review the effectiveness of adding watermark to first image");
+			if (!tiengViet)
+			{
+				toolTip1.SetToolTip(btn_Browse1, "Browse for file(s)");
+				toolTip1.SetToolTip(btn_Start1, "Start rename all files");
+				toolTip1.SetToolTip(btn_Browse2, "Browse for image folder");
+				toolTip1.SetToolTip(btn_Start2, "Start add watermark to all pictures in folder");
+				toolTip1.SetToolTip(label11, "View the log");
+				toolTip1.SetToolTip(label16, "Backup these file names and open file backup");
+				toolTip1.SetToolTip(btn_Review, "Review the effectiveness of adding watermark to first image");
+				toolTip1.SetToolTip(chk_Diacritical, "Remove diacritical marks if exists, such as ắ -> a, ươ -> uo, đ -> d,...");
+			}
+			else
+			{
+				toolTip1.SetToolTip(btn_Browse1, "Duyệt  đến (các) tập tin");
+				toolTip1.SetToolTip(btn_Start1, "Thực thi việc đổi tên");
+				toolTip1.SetToolTip(btn_Browse2, "Duyệt đến thư mục có chứa hình ảnh");
+				toolTip1.SetToolTip(btn_Start2, "Thực thi việc chèn watermark vào các ảnh trong thư mục");
+				toolTip1.SetToolTip(label11, "Xem nhật ký đổi tên");
+				toolTip1.SetToolTip(label16, "Sao lưu tên tập tin và mở tập sao lưu");
+				toolTip1.SetToolTip(btn_Review, "Xem trước sự ảnh hưởng của việc chèn watermark vào ảnh đầu tiên");
+				toolTip1.SetToolTip(chk_Diacritical, "Loại bỏ các thanh điệu, ví dụ ắ -> a, ươ -> uo, đ -> d,...");
+			}
 		}
 
 		#region Tab1
@@ -60,21 +158,38 @@ namespace AutoCommand
 
 		private void btn_Browse1_Click(object sender, EventArgs e)
 		{
-			openFileDialog1.Title = "Browse for one or more files";
+			if (!tiengViet)
+				openFileDialog1.Title = "Browse for one or more files";
+			else openFileDialog1.Title = "Duyệt đến một hoặc nhiều tập tin";
 			openFileDialog1.RestoreDirectory = true;
 			openFileDialog1.Multiselect = true;
-			openFileDialog1.Filter = "All files (*.*)|*.*";
+			if (!tiengViet)
+				openFileDialog1.Filter = "All files (*.*)|*.*";
+			else openFileDialog1.Filter = "Tất cả (*.*)|*.*";
 			ShowSelectedfiles();
+		}
+
+		void Reset()
+		{
+			dataGridView1.Rows.Clear();
+			tbx_fileName.Text = "[N]";
+			tbx_Extension.Text = "[E]";
+			tbx_Find.Text = "";
+			tbx_Replace.Text = "";
+			cbx_Case.SelectedIndex = 0;
+			nud_Start.Value = 1;
+			nud_Step.Value = 1;
+			cbx_Digits.SelectedIndex = 0;
+			chk_Diacritical.Checked = false;
 		}
 
 		void ShowSelectedfiles()
 		{
 			DialogResult r = openFileDialog1.ShowDialog();
 			if (r == DialogResult.OK)
-				dataGridView1.Rows.Clear();
-			object[] row = new object[5];
-			if (r == DialogResult.OK)
 			{
+				Reset();
+				object[] row = new object[5];
 				int count = openFileDialog1.FileNames.Length;
 				int step = 1 / count;
 				progressBar1.Value = 0;
@@ -85,7 +200,9 @@ namespace AutoCommand
 					row[0] = name;
 					row[1] = name;
 					row[2] = ConvertFileLength(new FileInfo(item).Length);
-					row[3] = modification.ToString("yyyy/M/dd");
+					if (!tiengViet)
+						row[3] = modification.ToString("yyyy/M/dd");
+					else row[3] = modification.ToString("dd/M/yyyy");
 					row[4] = item.Replace(name, "");
 					dataGridView1.Rows.Add(row);
 					progressBar1.Value += step;
@@ -147,15 +264,17 @@ namespace AutoCommand
 		{
 			string[] names = openFileDialog1.FileNames;
 			if (names[0] == "openFileDialog1")
-				MessageBox.Show("You must browse for file(s) firstly", "Announcement", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (!tiengViet)
+					MessageBox.Show("You have to firstly browse for file(s) ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				else MessageBox.Show("Bạn phải duyệt tập tin trước", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			else
 			{
 				StreamWriter sw = new StreamWriter(path2, true);
-				sw.WriteLine(DateTime.Now.ToString());
+				if (!tiengViet)
+					sw.WriteLine(DateTime.Now.ToString("yyyy/M/dd"));
+				else sw.WriteLine(DateTime.Now.ToString("dd/M/yyyy"));
 				foreach (var item in names)
-				{
 					sw.WriteLine(item);
-				}
 				sw.WriteLine();
 				sw.Close();
 				Process.Start(path2);
@@ -214,12 +333,16 @@ namespace AutoCommand
 							break;
 						case "[D]":
 						case "[d]":
-							n += modification.ToString("yyyyMdd");
+							if (!tiengViet)
+								n += modification.ToString("yyyyMdd");
+							else n += modification.ToString("ddMyyyy");
 							break;
 						default:
 							n += item;
 							break;
 					}
+					if (chk_Diacritical.Checked)
+						n = Retitle(n);
 				}
 			return n;
 		}
@@ -320,6 +443,16 @@ namespace AutoCommand
 			}
 		}
 
+		string Retitle(string t)
+		{
+			var from = "àáảãạăằắẳẵặâầấẩẫậđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ·/_,:;";
+			var to = "aaaaaaaaaaaaaaaaadeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyy------";
+			var r = t;
+			for (int i = 0, l = from.Length; i < l; i++)
+				r = r.Replace(from[i].ToString(), to[i].ToString()).Replace(from[i].ToString().ToUpper(), to[i].ToString().ToUpper());
+			return r;
+		}
+
 		private void cbx_Case_SelectedValueChanged(object sender, EventArgs e)
 		{
 			if (cbx_Case.SelectedIndex == 0)
@@ -373,7 +506,9 @@ namespace AutoCommand
 		private void btn_Start1_Click(object sender, EventArgs e)
 		{
 			if (openFileDialog1.FileNames[0] == "openFileDialog1")
-				MessageBox.Show("Please browse file(s) firstly. Then change the file name and file extenion. Finally press this button", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				if (!tiengViet)
+					MessageBox.Show("Please firstly browse file(s). Then change the file name and file extenion. Finally press this button", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				else MessageBox.Show("Đầu tiên duyệt đến các tập tin. Sau đó thay đổi tên và phần mở rộng. Cuối cùng mới nhấn nút này", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			else
 			{
 				int count = dataGridView1.Rows.Count - 1;
@@ -382,7 +517,6 @@ namespace AutoCommand
 				StreamWriter sw = new StreamWriter(path1, true);
 				sw.WriteLine(DateTime.Now.ToString());
 				foreach (DataGridViewRow row in dataGridView1.Rows)
-				{
 					if (row.Cells[0].Value != null)
 					{
 						string oldPath = string.Concat(row.Cells[4].Value, row.Cells[0].Value);
@@ -392,7 +526,6 @@ namespace AutoCommand
 						row.Cells[0].Value = row.Cells[1].Value;
 						progressBar1.Value += step;
 					}
-				}
 				progressBar1.Value = 100;
 				sw.WriteLine();
 				sw.Close();
@@ -435,6 +568,21 @@ namespace AutoCommand
 		private void cbx_Digits_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			nud_Start_ValueChanged(sender, e);
+		}
+
+		private void tbx_fileName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			btn_Start1.PerformClick();
+		}
+
+		private void tbx_Extension_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			btn_Start1.PerformClick();
+		}
+
+		private void chk_Diacritical_CheckedChanged(object sender, EventArgs e)
+		{
+			ReloadMask();
 		}
 
 		#endregion
@@ -491,11 +639,15 @@ namespace AutoCommand
 						img.Dispose();
 					}
 				}
-				MessageBox.Show("Processing Completed", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				if (!tiengViet)
+					MessageBox.Show("Processing Completed", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				else MessageBox.Show("Xử lý xong", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("There was an error during processing...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				if (!tiengViet)
+					MessageBox.Show("There was an error during processing...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				else MessageBox.Show("Có một lỗi trong quá trình xử lý", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
@@ -518,7 +670,9 @@ namespace AutoCommand
 
 		private void btn_Browse2_Click(object sender, EventArgs e)
 		{
-			folderBrowserDialog1.Description = "Browse for image folder";
+			if (!tiengViet)
+				folderBrowserDialog1.Description = "Browse for image folder";
+			else folderBrowserDialog1.Description = "Duyệt đến thư mục có chứa hình ảnh";
 			folderBrowserDialog1.ShowNewFolderButton = false;
 			ReviewPicture();
 		}
@@ -542,7 +696,9 @@ namespace AutoCommand
 				tbx_Path2.Text = folderBrowserDialog1.SelectedPath;
 				string r = GetTheFirstPic();
 				if (r == "")
-					MessageBox.Show("Can't find any pictures on this folder", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					if (!tiengViet)
+						MessageBox.Show("Can't find any pictures on this folder", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					else MessageBox.Show("Không tìm thấy hình ảnh trong thư mục này", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				else
 					pbx_Before.Image = Image.FromFile(r);
 			}
