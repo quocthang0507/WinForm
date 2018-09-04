@@ -161,9 +161,9 @@
 								<RadioButton x:Name="rbn_Lop" Content="Lớp" Height="17" Width="43" Checked="rbn_Lop_CheckedChanged" Unchecked="rbn_Lop_CheckedChanged" TabIndex="2" ToolTip="Thời khoá biểu lớp"/>
 								<RadioButton x:Name="rbn_GiangVien" Content="Giảng viên" Height="17" Width="76" Checked="rbn_GiangVien_CheckedChanged" Unchecked="rbn_GiangVien_CheckedChanged" TabIndex="3" ToolTip="Thời khoá biểu giảng viên (cần biết mã giảng viên)"/>
 								<Label x:Name="label" Content="Năm học:" Margin="20,0,0,0"/>
-								<ComboBox x:Name="cbx_NamHoc_TKB" Height="20" Width="87" Opacity="0.5" SelectionChanged="cbx_NamHoc_TKB_SelectionChanged" IsTabStop="False" TabIndex="4" ToolTip="Chọn năm học trong danh sách"/>
+								<ComboBox x:Name="cbx_NamHoc_TKB" Height="20" Width="87" Opacity="0.5" IsTabStop="False" TabIndex="4" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_TKB_SelectionChanged"/>
 								<Label x:Name="label1" Content="Học kỳ:"/>
-								<ComboBox x:Name="cbx_HocKy_TKB" Height="20" Width="50" Opacity="0.5" SelectionChanged="cbx_HocKy_TKB_SelectionChanged" TabIndex="5" ToolTip="Chọn học kỳ">
+								<ComboBox x:Name="cbx_HocKy_TKB" Height="20" Width="50" Opacity="0.5" TabIndex="5" ToolTip="Chọn học kỳ" SelectionChanged="cbx_HocKy_TKB_SelectionChanged">
 									<System:String>1</System:String>
 									<System:String>2</System:String>
 									<System:String>3</System:String>
@@ -171,9 +171,9 @@
 								<Label x:Name="label2" Content="Tuần:"/>
 								<xctk:IntegerUpDown x:Name="nud_Tuan_TKB" GotFocus="nud_Tuan_TKB_GotFocus" TabIndex="6" ValueChanged="nud_Tuan_TKB_ValueChanged"/>
 								<Label x:Name="label3" Content="Lớp:" Visibility="Hidden"/>
+								<Label x:Name="label4" Content="Mã GV:" Visibility="Hidden" Margin="-35,0,0,0"/>
 								<TextBox x:Name="tbx_Lop" Height="20" Width="60" MaxLength="10" Visibility="Hidden" TabIndex="7" ToolTip="Nhập tên lớp của bạn"/>
-								<Label x:Name="label4" Content="Mã GV:" Visibility="Hidden"/>
-								<TextBox x:Name="tbx_GiangVien" Height="20" Width="100" MaxLength="30" Visibility="Hidden" TabIndex="8" ToolTip="Nhập mã giảng viên"/>
+								<TextBox x:Name="tbx_GiangVien" Height="20" Width="100" MaxLength="30" Margin="-55,0,0,0" Visibility="Hidden" TabIndex="8" ToolTip="Nhập mã giảng viên"/>
 								<Button x:Name="btn_Xuat_TKB" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" Click="btn_Xuat_TKB_Click" TabIndex="9"/>
 							</StackPanel>
 							<WindowsFormsHost>
@@ -219,9 +219,9 @@
 						<DockPanel>
 							<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="25">
 								<Label x:Name="label7" Content="Năm học:" Margin="20,0,0,0"/>
-								<ComboBox x:Name="cbx_NamHoc_Diem" Height="20" Width="87" Opacity="0.5" SelectionChanged="cbx_NamHoc_Diem_SelectionChanged" TabIndex="1" ToolTip="Chọn năm học trong danh sách"/>
+								<ComboBox x:Name="cbx_NamHoc_Diem" Height="20" Width="87" Opacity="0.5" TabIndex="1" ToolTip="Chọn năm học trong danh sách" SelectionChanged="cbx_NamHoc_Diem_SelectionChanged"/>
 								<Label x:Name="label8" Content="Học kỳ:"/>
-								<ComboBox x:Name="cbx_HocKy_Diem" Height="20" Width="87" Opacity="0.5" DataContext="" TabIndex="2" SelectionChanged="cbx_HocKy_Diem_SelectionChanged" ToolTip="Chọn học kỳ">
+								<ComboBox x:Name="cbx_HocKy_Diem" Height="20" Width="87" Opacity="0.5" DataContext="" TabIndex="2" ToolTip="Chọn học kỳ">
 									<System:String>1</System:String>
 									<System:String>2</System:String>
 									<System:String>3</System:String>

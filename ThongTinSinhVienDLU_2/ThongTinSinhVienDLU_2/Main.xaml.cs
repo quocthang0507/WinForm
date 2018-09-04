@@ -17,7 +17,7 @@ namespace ThongTinSinhVienDLU_2
 	{
 		public static bool rememberLogin = false;
 		string mssv, password;
-		string pass = "matkhau";
+		string pass = "M@tKh@u";
 		int week;
 		CookieAwareWebClient client = new CookieAwareWebClient();
 		List<string> listWeek;
@@ -309,6 +309,7 @@ namespace ThongTinSinhVienDLU_2
 					AutoSelectSchoolYear(cbx_NamHoc_Diem);
 					cbx_HocKy_Diem.Items.Add("Tất cả");
 					cbx_NamHoc_Diem.Items.Add("Tất cả");
+					btn_Xuat_Diem_Click(sender, e);
 				}
 			}
 			else if (tabControl.SelectedIndex == 3)
@@ -337,7 +338,7 @@ namespace ThongTinSinhVienDLU_2
 				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
 				throw;
 			}
-			webBrowser2.DocumentText = (html);
+			webBrowser2.DocumentText = html;
 		}
 
 		string Marks()
@@ -374,7 +375,11 @@ namespace ThongTinSinhVienDLU_2
 				label8.Visibility = Visibility.Hidden;
 				cbx_HocKy_Diem.Visibility = Visibility.Hidden;
 			}
-			else { label8.Visibility = Visibility.Visible; cbx_HocKy_Diem.Visibility = Visibility.Visible; }
+			else
+			{
+				label8.Visibility = Visibility.Visible;
+				cbx_HocKy_Diem.Visibility = Visibility.Visible;
+			}
 		}
 
 		string Behaviors()
@@ -394,10 +399,10 @@ namespace ThongTinSinhVienDLU_2
 				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
 				throw;
 			}
-			var clearedScript = Regex.Match(html, "<script[^>]*>(?:[^<]+|<(?!\n/script>))+").Value;
-			html = html.Replace(clearedScript, "");
+			var clearScript = Regex.Match(html, "<script[^>]*>(?:[^<]+|<(?!\n/script>))+").Value;
+			html = html.Replace(clearScript, "");
 			html = html.Replace(".error {\r\n        border-color: red;\r\n    }", ".error {\r\n        border-color: red;\r\n    }   table {\r\n    width:100%;\r\n    }");
-			webBrowser4.DocumentText = (html);
+			webBrowser4.DocumentText = html;
 		}
 
 		private void cbx_NamHoc_TKB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -446,8 +451,7 @@ namespace ThongTinSinhVienDLU_2
 				MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
 				throw;
 			}
-			webBrowser5.DocumentText = (html);
+			webBrowser5.DocumentText = html;
 		}
-
 	}
 }

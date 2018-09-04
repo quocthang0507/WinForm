@@ -14,7 +14,7 @@ namespace ThongTinSinhVienDLU_2
 	public partial class Login : Window
 	{
 		string mssv, password;
-		string pass = "matkhau";
+		string pass = "M@tKh@u";
 		bool isSuccess = false;
 		public static string yourName;
 
@@ -145,7 +145,6 @@ namespace ThongTinSinhVienDLU_2
 						yourName = yourName.Replace("</span>", "");
 						yourName = yourName.Replace("#224;", "à");
 						label3.Content = "";
-						File.Delete("data.dat");
 						Ghi_DuLieu();
 						isSuccess = true;
 						this.Close();
