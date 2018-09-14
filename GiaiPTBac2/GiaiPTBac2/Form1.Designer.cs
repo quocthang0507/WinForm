@@ -62,7 +62,6 @@
 			this.txtA.Name = "txtA";
 			this.txtA.Size = new System.Drawing.Size(178, 20);
 			this.txtA.TabIndex = 1;
-			this.txtA.TextChanged += new System.EventHandler(this.txtA_TextChanged);
 			// 
 			// label2
 			// 
@@ -80,7 +79,6 @@
 			this.txtB.Name = "txtB";
 			this.txtB.Size = new System.Drawing.Size(178, 20);
 			this.txtB.TabIndex = 1;
-			this.txtB.TextChanged += new System.EventHandler(this.txtB_TextChanged);
 			// 
 			// label3
 			// 
@@ -98,7 +96,6 @@
 			this.txtC.Name = "txtC";
 			this.txtC.Size = new System.Drawing.Size(178, 20);
 			this.txtC.TabIndex = 1;
-			this.txtC.TextChanged += new System.EventHandler(this.txtC_TextChanged);
 			// 
 			// btnStart
 			// 
@@ -120,7 +117,6 @@
 			this.lblKetqua.TabIndex = 3;
 			this.lblKetqua.Text = "label4";
 			this.lblKetqua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblKetqua.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// lblX1
 			// 
@@ -131,7 +127,6 @@
 			this.lblX1.Size = new System.Drawing.Size(35, 13);
 			this.lblX1.TabIndex = 3;
 			this.lblX1.Text = "label4";
-			this.lblX1.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// lblX2
 			// 
@@ -142,7 +137,6 @@
 			this.lblX2.Size = new System.Drawing.Size(35, 13);
 			this.lblX2.TabIndex = 3;
 			this.lblX2.Text = "label4";
-			this.lblX2.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// btnThoat
 			// 
@@ -176,7 +170,6 @@
 			this.lblTieude.TabIndex = 6;
 			this.lblTieude.Text = "CHƯƠNG TRÌNH GIẢI PHƯƠNG TRÌNH BẬC 2";
 			this.lblTieude.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.lblTieude.Click += new System.EventHandler(this.lblTieude_Click);
 			// 
 			// groupBoxKetqua
 			// 
@@ -190,7 +183,6 @@
 			this.groupBoxKetqua.TabIndex = 7;
 			this.groupBoxKetqua.TabStop = false;
 			this.groupBoxKetqua.Text = "Kết quả";
-			this.groupBoxKetqua.Enter += new System.EventHandler(this.groupBox1_Enter);
 			// 
 			// Form1
 			// 

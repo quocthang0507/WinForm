@@ -104,7 +104,6 @@ namespace AutoCommand
 			MessageBox.Show("CHƯƠNG TRÌNH HỖ TRỢ ĐỔI TÊN ĐA TẬP TIN VÀ THÊM ẢNH MỜ (WATERMARK) VÀO ẢNH\r\nTác giả: LA QUỐC THẮNG\r\nChi tiết liên hệ: quocthang0507@gmail.com", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
-
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			dataGridView1.RowHeadersVisible = false;
@@ -112,9 +111,10 @@ namespace AutoCommand
 			GetFont();
 		}
 
+		ToolTip toolTip1 = new ToolTip();
+
 		void ShowTooltip()
 		{
-			ToolTip toolTip1 = new ToolTip();
 			toolTip1.AutoPopDelay = 10000;
 			toolTip1.InitialDelay = 1000;
 			toolTip1.ReshowDelay = 500;
@@ -141,6 +141,7 @@ namespace AutoCommand
 				toolTip1.SetToolTip(btn_Review, "Xem trước sự ảnh hưởng của việc chèn watermark vào ảnh đầu tiên");
 				toolTip1.SetToolTip(chk_Diacritical, "Loại bỏ các thanh điệu, ví dụ ắ -> a, ươ -> uo, đ -> d,...");
 			}
+			
 		}
 
 		#region Tab1
@@ -171,7 +172,6 @@ namespace AutoCommand
 
 		void Reset()
 		{
-			dataGridView1.Rows.Clear();
 			tbx_fileName.Text = "[N]";
 			tbx_Extension.Text = "[E]";
 			tbx_Find.Text = "";
@@ -188,6 +188,7 @@ namespace AutoCommand
 			DialogResult r = openFileDialog1.ShowDialog();
 			if (r == DialogResult.OK)
 			{
+				dataGridView1.Rows.Clear();
 				Reset();
 				object[] row = new object[5];
 				int count = openFileDialog1.FileNames.Length;
@@ -196,7 +197,7 @@ namespace AutoCommand
 				foreach (var item in openFileDialog1.FileNames)
 				{
 					DateTime modification = File.GetLastWriteTime(item);
-					string name = Path.GetFileName(item);
+					string name = Path.GetFileName(item).TrimStart(' ');
 					row[0] = name;
 					row[1] = name;
 					row[2] = ConvertFileLength(new FileInfo(item).Length);
@@ -529,6 +530,7 @@ namespace AutoCommand
 				progressBar1.Value = 100;
 				sw.WriteLine();
 				sw.Close();
+				Reset();
 			}
 		}
 
@@ -572,12 +574,14 @@ namespace AutoCommand
 
 		private void tbx_fileName_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			btn_Start1.PerformClick();
+			if (e.KeyChar == (char)Keys.Enter)
+				btn_Start1.PerformClick();
 		}
 
 		private void tbx_Extension_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			btn_Start1.PerformClick();
+			if (e.KeyChar == (char)Keys.Enter)
+				btn_Start1.PerformClick();
 		}
 
 		private void chk_Diacritical_CheckedChanged(object sender, EventArgs e)

@@ -172,7 +172,7 @@ namespace ThongTinSinhVienDLU_2
 					catch
 					{
 						// Re-throw this exception.
-						throw;
+
 					}
 
 					// return the result.

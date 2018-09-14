@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GiaiPTBac2
@@ -17,11 +10,6 @@ namespace GiaiPTBac2
 			InitializeComponent();
 			lblKetqua.Text = lblX1.Text = lblX2.Text = "";
 			txtA.Select();
-		}
-
-		private void label4_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -71,35 +59,10 @@ namespace GiaiPTBac2
 			Application.Exit();
 		}
 
-		private void txtA_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
 			txtA.Text = txtB.Text = txtC.Text = "";
 			lblKetqua.Text = lblX1.Text = lblX2.Text = "";
-		}
-
-		private void lblTieude_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtB_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtC_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void groupBox1_Enter(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

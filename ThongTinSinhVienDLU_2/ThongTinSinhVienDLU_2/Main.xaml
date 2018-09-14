@@ -7,7 +7,7 @@
 		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 	    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ThongTinSinhVienDLU_2.MainWindow"
-        mc:Ignorable="d" Height="589" Width="1042" Icon="Resources/logo.ico" Title="Cổng thông tin Sinh Viên DLU" WindowStyle="None" Style="{DynamicResource MetroWindowStyle}" ContentRendered="Window_ContentRendered" BorderThickness="0" >
+        mc:Ignorable="d" Height="589" Width="1042" Icon="Resources/logo.ico" Title="Cổng thông tin Sinh Viên DLU" WindowStyle="None" Style="{DynamicResource MetroWindowStyle}" ContentRendered="Window_ContentRendered" BorderThickness="0" SnapsToDevicePixels="True" >
 	<Window.Resources>
 		<Style x:Key="MetroWindowStyle" TargetType="{x:Type Window}">
 			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
@@ -177,7 +177,7 @@
 								<Button x:Name="btn_Xuat_TKB" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" Click="btn_Xuat_TKB_Click" TabIndex="9"/>
 							</StackPanel>
 							<WindowsFormsHost>
-								<wf:WebBrowser x:Name="webBrowser1"/>
+								<wf:WebBrowser x:Name="webBrowser1" ScriptErrorsSuppressed="True"/>
 							</WindowsFormsHost>
 						</DockPanel>
 					</Grid>
@@ -203,7 +203,7 @@
 								<Button x:Name="btn_Xuat_LichThi" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" Click="btn_Xuat_LichThi_Click" TabIndex="3" ToolTip="Xuất lịch thi"/>
 							</StackPanel>
 							<WindowsFormsHost>
-								<wf:WebBrowser x:Name="webBrowser2"/>
+								<wf:WebBrowser x:Name="webBrowser2" ScriptErrorsSuppressed="True"/>
 							</WindowsFormsHost>
 						</DockPanel>
 					</Grid>
@@ -229,7 +229,7 @@
 								<Button x:Name="btn_Xuat_Diem" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" Click="btn_Xuat_Diem_Click" TabIndex="3" ToolTip="Xuất điểm thi"/>
 							</StackPanel>
 							<WindowsFormsHost>
-								<wf:WebBrowser x:Name="webBrowser3"/>
+								<wf:WebBrowser x:Name="webBrowser3" ScriptErrorsSuppressed="True"/>
 							</WindowsFormsHost>
 						</DockPanel>
 					</Grid>
@@ -255,7 +255,7 @@
 								<Button x:Name="btn_Xuat_RL" Content="Xuất" Height="23" Width="75" Margin="10,1,0,1" Click="btn_Xuat_RL_Click" TabIndex="3" ToolTip="Xuất kết quả đánh giá rèn luyện"/>
 							</StackPanel>
 							<WindowsFormsHost>
-								<wf:WebBrowser x:Name="webBrowser4"/>
+								<wf:WebBrowser x:Name="webBrowser4" ScriptErrorsSuppressed="True"/>
 							</WindowsFormsHost>
 						</DockPanel>
 					</Grid>
@@ -270,7 +270,7 @@
 					<Grid>
 						<DockPanel>
 							<WindowsFormsHost>
-								<wf:WebBrowser x:Name="webBrowser5"/>
+								<wf:WebBrowser x:Name="webBrowser5" ScriptErrorsSuppressed="True"/>
 							</WindowsFormsHost>
 						</DockPanel>
 					</Grid>

@@ -17,7 +17,7 @@ namespace ThongTinSinhVienDLU_2
 	{
 		public static bool rememberLogin = false;
 		string mssv, password;
-		string pass = "M@tKh@u";
+		protected string pass = "M@tKh@u";
 		int week;
 		CookieAwareWebClient client = new CookieAwareWebClient();
 		List<string> listWeek;

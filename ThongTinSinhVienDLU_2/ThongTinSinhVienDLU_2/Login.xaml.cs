@@ -14,7 +14,7 @@ namespace ThongTinSinhVienDLU_2
 	public partial class Login : Window
 	{
 		string mssv, password;
-		string pass = "M@tKh@u";
+		protected string pass = "M@tKh@u";
 		bool isSuccess = false;
 		public static string yourName;
 
@@ -118,6 +118,7 @@ namespace ThongTinSinhVienDLU_2
 
 		private void btn_LogIn_Click(object sender, RoutedEventArgs e)
 		{
+			bool error = false;
 			using (var client = new CookieAwareWebClient())
 			{
 				if (tbx_UserName.Text == "" || tbx_Password.Password == "")
@@ -132,22 +133,25 @@ namespace ThongTinSinhVienDLU_2
 					}
 					catch (Exception)
 					{
-						label3.Content = "Lỗi kết nối với máy chủ!";
-						throw;
+						MessageBox.Show("Hừm, có vẻ internet của máy tính không hoạt động hiệu quả, vui lòng kiểm tra lại", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+						error = true;
 					}
-					var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
-					if (html.Contains("<title>Đăng nhập</title>"))
-						label3.Content = "Bạn nhập sai tên đăng nhập hoặc mật khẩu";
-					else
+					if (!error)
 					{
-						yourName = Regex.Match(html, "<span>(?<Content>([^<]*))</span>").Value;
-						yourName = yourName.Replace("<span>", "");
-						yourName = yourName.Replace("</span>", "");
-						yourName = yourName.Replace("#224;", "à");
-						label3.Content = "";
-						Ghi_DuLieu();
-						isSuccess = true;
-						this.Close();
+						var html = client.DownloadString(@"http://online.dlu.edu.vn/Home/Index");
+						if (html.Contains("<title>Đăng nhập</title>"))
+							label3.Content = "Bạn nhập sai tên đăng nhập hoặc mật khẩu";
+						else
+						{
+							yourName = Regex.Match(html, "<span>(?<Content>([^<]*))</span>").Value;
+							yourName = yourName.Replace("<span>", "");
+							yourName = yourName.Replace("</span>", "");
+							yourName = yourName.Replace("#224;", "à");
+							label3.Content = "";
+							Ghi_DuLieu();
+							isSuccess = true;
+							this.Close();
+						}
 					}
 				}
 			}
