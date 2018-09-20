@@ -1,32 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Calendar
 {
 	public partial class Form_Duong_Am : System.Windows.Forms.Form
 	{
-		//public static int ngay, thang, nam;
-
 		public Form_Duong_Am()
 		{
 			InitializeComponent();
-		}
-
-		private void label2_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnTuDong_Click(object sender, EventArgs e)
@@ -53,11 +33,6 @@ namespace Calendar
 				rtbKetQua.Text = Calculate.convertSolar2Lunar(ngay, thang, nam);
 				rtbKetQua.Text += Calculate.Can_Chi(ngay, thang, nam);
 			}
-		}
-
-		private void Form_Load(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnXoa_Click(object sender, EventArgs e)

@@ -120,7 +120,6 @@
 			this.tbxHeso.Name = "tbxHeso";
 			this.tbxHeso.Size = new System.Drawing.Size(118, 20);
 			this.tbxHeso.TabIndex = 9;
-			this.tbxHeso.TextChanged += new System.EventHandler(this.tbxHeso_TextChanged);
 			// 
 			// label1
 			// 

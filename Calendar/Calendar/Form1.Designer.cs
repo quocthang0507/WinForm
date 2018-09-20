@@ -67,7 +67,6 @@
 			this.tbThang.Name = "tbThang";
 			this.tbThang.Size = new System.Drawing.Size(100, 20);
 			this.tbThang.TabIndex = 3;
-			this.tbThang.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// label2
 			// 
@@ -77,7 +76,6 @@
 			this.label2.Size = new System.Drawing.Size(63, 13);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Nhập tháng";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// tbNam
 			// 
@@ -182,7 +180,6 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "Form_Duong_Am";
 			this.Text = "Lịch Dương sang Âm";
-			this.Load += new System.EventHandler(this.Form_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();

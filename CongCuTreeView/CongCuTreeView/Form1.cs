@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CongCuTreeView
@@ -22,7 +15,7 @@ namespace CongCuTreeView
 			treeView.ImageList = ilslcons;
 			////////////////////////
 			TreeNode goc = treeView.Nodes.Add("Kí tự đặc biệt"); //Khởi tạo nút 'goc' đầu tiên trong cây thư mục
-			//Lấy hình cho nút gốc trước và sau khi nhấn nút mở rộng hay thu gọn
+																 //Lấy hình cho nút gốc trước và sau khi nhấn nút mở rộng hay thu gọn
 			goc.ImageIndex = 2;
 			goc.SelectedImageIndex = 2;
 			//Add các node con vào node cha với các kí hiệu +, -, *, /

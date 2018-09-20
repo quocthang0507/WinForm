@@ -102,7 +102,7 @@ namespace ChuongTrinhThiTracNghiem
         }
 
         /// <summary>
-        /// Show question and multi choice answers to group box
+        /// Show questions and multi choice answers to group box
         /// </summary>
         void ShowQuestion()
         {

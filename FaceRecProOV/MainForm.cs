@@ -215,7 +215,7 @@ namespace MultiFaceRec
             {
                 names = names + NamePersons[nnn] + ", ";
             }
-            //Show the faces procesed and recognized
+            //Show the faces processed and recognized
             imageBoxFrameGrabber.Image = currentFrame;
             label4.Text = names;
             names = "";
