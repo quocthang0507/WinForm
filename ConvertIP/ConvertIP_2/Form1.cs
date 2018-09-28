@@ -71,22 +71,25 @@ namespace ConvertIP_2
 		private void txtIP_Leave(object sender, EventArgs e)
 		{
 			if (!btnReset.Focused)
-				if (txtIP.Text != "")
-					if (!CheckValidIP(ip = txtIP.Text.Replace(',', '.').Replace(" ", "")))
-					{
-						MessageBox.Show("Invalid IP address!", "Invalid IP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-						txtIP.Focus();
-					}
+				if (!btnFile.Focused)
+					if (txtIP.Text != "")
+						if (!CheckValidIP(ip = txtIP.Text.Replace(',', '.').Replace(" ", "")))
+						{
+							MessageBox.Show("Invalid IP address!", "Invalid IP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							txtIP.Focus();
+						}
 		}
 
 		private void txtSubnet_Leave(object sender, EventArgs e)
 		{
 			if (txtSubnet.Text != "")
-				if (!CheckSubnetMask(int.Parse(txtSubnet.Text)))
-				{
-					MessageBox.Show("Invalid subnet mask!", "Invalid subnet mask", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-					txtSubnet.Focus();
-				}
+				if (!btnReset.Focused)
+					if (!btnFile.Focused)
+						if (!CheckSubnetMask(int.Parse(txtSubnet.Text)))
+						{
+							MessageBox.Show("Invalid subnet mask!", "Invalid subnet mask", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+							txtSubnet.Focus();
+						}
 		}
 
 		string[] ConvertIt(string IP, string mask)
@@ -151,24 +154,27 @@ namespace ConvertIP_2
 		{
 			string path = FindFile();
 			if (path == null)
-				MessageBox.Show("You haven't chosen file text yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("You haven't chosen text file yet!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			else
 			{
 				StreamReader sr = new StreamReader(path);
 				string p2 = path.Replace(".txt", "_answered.txt");
-				StreamWriter sw = new StreamWriter(p2);
+				StreamWriter sw = new StreamWriter(p2, false, System.Text.Encoding.UTF8);
 				string line;
-				sw.WriteLine(FixedWidth("IP_Addresses/Subnetmask", 25) + FixedWidth("Network_Addresses", 25) + FixedWidth("Broadcast_Addresses", 25));
+				sw.WriteLine("".PadLeft(25) + "CHƯƠNG TRÌNH ĐỔI ĐỊA CHỈ IP");
+				sw.WriteLine("".PadLeft(28) + "TÁC GIẢ: LA QUỐC THẮNG\r\n");
+				sw.WriteLine(FixedWidth("No.", 5) + FixedWidth("IP_Address/SubnetMask", 25) + FixedWidth("Network_Address", 25) + FixedWidth("Broadcast_Address", 25));
+				int stt = 0;
 				while ((line = sr.ReadLine()) != null)
 				{
 					if (line.Contains("/"))
 					{
 						string[] temp = line.Split('/');
-						temp[0] = temp[0].Replace("\t", "");
+						temp[0] = temp[0].Replace("\t", "").Replace(" ", "");
 						if (CheckValidIP(temp[0]))
 						{
 							string[] t = ConvertIt(temp[0], temp[1]);
-							sw.WriteLine(FixedWidth(temp[0] + "/" + temp[1], 25) + FixedWidth(t[0], 25) + FixedWidth(t[1], 25));
+							sw.WriteLine(FixedWidth((++stt).ToString(), 5) + FixedWidth(temp[0] + "/" + temp[1], 25) + FixedWidth(t[0], 25) + FixedWidth(t[1], 25));
 						}
 					}
 				}
