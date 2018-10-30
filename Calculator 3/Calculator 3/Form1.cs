@@ -1,4 +1,4 @@
-﻿using System
+﻿using System;
 using System.Windows.Forms;
 
 namespace Calculator_3
@@ -38,7 +38,7 @@ namespace Calculator_3
 		{
 			if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)37 ||
 				e.KeyChar == (char)43 || e.KeyChar == (char)45 ||
-				e.KeyChar == (char)42 || e.KeyChar == (char)47))
+				e.KeyChar == (char)42 || e.KeyChar == (char)47 || e.KeyChar == (char)40 || e.KeyChar == (char)41))
 				e.Handled = true;
 		}
 	}
