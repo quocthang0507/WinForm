@@ -31,17 +31,17 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.dgvData = new System.Windows.Forms.DataGridView();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbx_ID = new System.Windows.Forms.TextBox();
-			this.tbx_Name = new System.Windows.Forms.TextBox();
-			this.tbx_Class = new System.Windows.Forms.TextBox();
-			this.btn_View = new System.Windows.Forms.Button();
-			this.btn_Add = new System.Windows.Forms.Button();
-			this.btn_Modify = new System.Windows.Forms.Button();
-			this.btn_Delete = new System.Windows.Forms.Button();
 			this.btn_ViewByClass = new System.Windows.Forms.Button();
+			this.btn_Delete = new System.Windows.Forms.Button();
+			this.btn_Modify = new System.Windows.Forms.Button();
+			this.btn_Add = new System.Windows.Forms.Button();
+			this.btn_View = new System.Windows.Forms.Button();
+			this.tbx_Class = new System.Windows.Forms.TextBox();
+			this.tbx_Name = new System.Windows.Forms.TextBox();
+			this.tbx_ID = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +90,7 @@
 			// 
 			// dgvData
 			// 
+			this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvData.Location = new System.Drawing.Point(0, 0);
@@ -97,92 +98,15 @@
 			this.dgvData.Size = new System.Drawing.Size(367, 431);
 			this.dgvData.TabIndex = 0;
 			// 
-			// label2
+			// btn_ViewByClass
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.label2.Location = new System.Drawing.Point(20, 24);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(21, 17);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "ID";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.label3.Location = new System.Drawing.Point(20, 63);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(69, 17);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "Full name";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.label4.Location = new System.Drawing.Point(20, 104);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(42, 17);
-			this.label4.TabIndex = 2;
-			this.label4.Text = "Class";
-			// 
-			// tbx_ID
-			// 
-			this.tbx_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.tbx_ID.Location = new System.Drawing.Point(110, 21);
-			this.tbx_ID.MaxLength = 7;
-			this.tbx_ID.Name = "tbx_ID";
-			this.tbx_ID.Size = new System.Drawing.Size(100, 23);
-			this.tbx_ID.TabIndex = 3;
-			// 
-			// tbx_Name
-			// 
-			this.tbx_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.tbx_Name.Location = new System.Drawing.Point(110, 60);
-			this.tbx_Name.MaxLength = 100;
-			this.tbx_Name.Name = "tbx_Name";
-			this.tbx_Name.Size = new System.Drawing.Size(164, 23);
-			this.tbx_Name.TabIndex = 4;
-			// 
-			// tbx_Class
-			// 
-			this.tbx_Class.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-			this.tbx_Class.Location = new System.Drawing.Point(110, 101);
-			this.tbx_Class.MaxLength = 5;
-			this.tbx_Class.Name = "tbx_Class";
-			this.tbx_Class.Size = new System.Drawing.Size(100, 23);
-			this.tbx_Class.TabIndex = 5;
-			// 
-			// btn_View
-			// 
-			this.btn_View.Location = new System.Drawing.Point(69, 150);
-			this.btn_View.Name = "btn_View";
-			this.btn_View.Size = new System.Drawing.Size(75, 23);
-			this.btn_View.TabIndex = 6;
-			this.btn_View.Text = "View all";
-			this.btn_View.UseVisualStyleBackColor = true;
-			this.btn_View.Click += new System.EventHandler(this.btn_View_Click);
-			// 
-			// btn_Add
-			// 
-			this.btn_Add.Location = new System.Drawing.Point(110, 197);
-			this.btn_Add.Name = "btn_Add";
-			this.btn_Add.Size = new System.Drawing.Size(75, 23);
-			this.btn_Add.TabIndex = 7;
-			this.btn_Add.Text = "Add";
-			this.btn_Add.UseVisualStyleBackColor = true;
-			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
-			// 
-			// btn_Modify
-			// 
-			this.btn_Modify.Location = new System.Drawing.Point(110, 238);
-			this.btn_Modify.Name = "btn_Modify";
-			this.btn_Modify.Size = new System.Drawing.Size(75, 23);
-			this.btn_Modify.TabIndex = 8;
-			this.btn_Modify.Text = "Modify";
-			this.btn_Modify.UseVisualStyleBackColor = true;
-			this.btn_Modify.Click += new System.EventHandler(this.btn_Modify_Click);
+			this.btn_ViewByClass.Location = new System.Drawing.Point(150, 150);
+			this.btn_ViewByClass.Name = "btn_ViewByClass";
+			this.btn_ViewByClass.Size = new System.Drawing.Size(103, 23);
+			this.btn_ViewByClass.TabIndex = 10;
+			this.btn_ViewByClass.Text = "View by Class";
+			this.btn_ViewByClass.UseVisualStyleBackColor = true;
+			this.btn_ViewByClass.Click += new System.EventHandler(this.btn_ViewByClass_Click);
 			// 
 			// btn_Delete
 			// 
@@ -194,15 +118,92 @@
 			this.btn_Delete.UseVisualStyleBackColor = true;
 			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
 			// 
-			// btn_ViewByClass
+			// btn_Modify
 			// 
-			this.btn_ViewByClass.Location = new System.Drawing.Point(150, 150);
-			this.btn_ViewByClass.Name = "btn_ViewByClass";
-			this.btn_ViewByClass.Size = new System.Drawing.Size(103, 23);
-			this.btn_ViewByClass.TabIndex = 10;
-			this.btn_ViewByClass.Text = "View by Class";
-			this.btn_ViewByClass.UseVisualStyleBackColor = true;
-			this.btn_ViewByClass.Click += new System.EventHandler(this.btn_ViewByClass_Click);
+			this.btn_Modify.Location = new System.Drawing.Point(110, 238);
+			this.btn_Modify.Name = "btn_Modify";
+			this.btn_Modify.Size = new System.Drawing.Size(75, 23);
+			this.btn_Modify.TabIndex = 8;
+			this.btn_Modify.Text = "Modify";
+			this.btn_Modify.UseVisualStyleBackColor = true;
+			this.btn_Modify.Click += new System.EventHandler(this.btn_Modify_Click);
+			// 
+			// btn_Add
+			// 
+			this.btn_Add.Location = new System.Drawing.Point(110, 197);
+			this.btn_Add.Name = "btn_Add";
+			this.btn_Add.Size = new System.Drawing.Size(75, 23);
+			this.btn_Add.TabIndex = 7;
+			this.btn_Add.Text = "Add";
+			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+			// 
+			// btn_View
+			// 
+			this.btn_View.Location = new System.Drawing.Point(69, 150);
+			this.btn_View.Name = "btn_View";
+			this.btn_View.Size = new System.Drawing.Size(75, 23);
+			this.btn_View.TabIndex = 6;
+			this.btn_View.Text = "View all";
+			this.btn_View.UseVisualStyleBackColor = true;
+			this.btn_View.Click += new System.EventHandler(this.btn_View_Click);
+			// 
+			// tbx_Class
+			// 
+			this.tbx_Class.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.tbx_Class.Location = new System.Drawing.Point(110, 101);
+			this.tbx_Class.MaxLength = 5;
+			this.tbx_Class.Name = "tbx_Class";
+			this.tbx_Class.Size = new System.Drawing.Size(100, 23);
+			this.tbx_Class.TabIndex = 5;
+			// 
+			// tbx_Name
+			// 
+			this.tbx_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.tbx_Name.Location = new System.Drawing.Point(110, 60);
+			this.tbx_Name.MaxLength = 100;
+			this.tbx_Name.Name = "tbx_Name";
+			this.tbx_Name.Size = new System.Drawing.Size(164, 23);
+			this.tbx_Name.TabIndex = 4;
+			// 
+			// tbx_ID
+			// 
+			this.tbx_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.tbx_ID.Location = new System.Drawing.Point(110, 21);
+			this.tbx_ID.MaxLength = 7;
+			this.tbx_ID.Name = "tbx_ID";
+			this.tbx_ID.Size = new System.Drawing.Size(100, 23);
+			this.tbx_ID.TabIndex = 3;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.label4.Location = new System.Drawing.Point(20, 104);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(42, 17);
+			this.label4.TabIndex = 2;
+			this.label4.Text = "Class";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.label3.Location = new System.Drawing.Point(20, 63);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(69, 17);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "Full name";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+			this.label2.Location = new System.Drawing.Point(20, 24);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(21, 17);
+			this.label2.TabIndex = 0;
+			this.label2.Text = "ID";
 			// 
 			// Form1
 			// 
