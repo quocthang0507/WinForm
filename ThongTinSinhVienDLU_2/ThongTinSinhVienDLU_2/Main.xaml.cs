@@ -17,12 +17,18 @@ namespace ThongTinSinhVienDLU_2
 	{
 		public static bool rememberLogin = false;
 		string mssv, password;
-		protected string pass = "M@tKh@u";
-		int week;
+        private string pass = "M@tKh@u";
+        private string data = "data.dat";
+        private string temp = "temp.txt";
+        int week;
 		CookieAwareWebClient client = new CookieAwareWebClient();
 		List<string> listWeek;
 
-		public MainWindow()
+        protected string Pass { get => pass; set => pass = value; }
+        protected string Temp { get => temp; set => temp = value; }
+        protected string Data { get => data; set => data = value; }
+
+        public MainWindow()
 		{
 			Login form = new Login();
 			form.ShowDialog();
@@ -73,15 +79,14 @@ namespace ThongTinSinhVienDLU_2
 
 		void Doc_DuLieu()
 		{
-			string path = "data.dat";
-			CryptoStuff.DecryptFile(pass, path, "temp.txt");
-			string data = File.ReadAllText("temp.txt");
-			File.Delete("temp.txt");
+			CryptoStuff.DecryptFile(Pass, Data, Temp);
+			string data = File.ReadAllText(Temp);
+			File.Delete(Temp);
 			string[] temp = data.Split(' ');
 			mssv = temp[0];
 			password = temp[1];
 			if (!rememberLogin)
-				File.Delete(path);
+				File.Delete(Data);
 		}
 
 		void SendLoginCookie()
