@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e3a030cb8814c3d96b11992193a0b33" Name="Diagram1">
+        <EntityTypeShape EntityType="DonViHanhChinhModel.Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DonViHanhChinhModel.District" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DonViHanhChinhModel.Province" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DonViHanhChinhModel.Ward" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="DonViHanhChinhModel.FK_Province_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="DonViHanhChinhModel.FK_District_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="DonViHanhChinhModel.FK_Ward_District" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
