@@ -20,7 +20,7 @@ namespace DonViHanhChinh
 			using (var database = new DonViHanhChinhEntities())
 			{
 				var table = from data in database.Countries.Cast<Country>() select data;
-				cbx_country.ItemsSource = table.ToList();
+				cbx_country.ItemsSource = table.ToList().OrderBy(i => i.CommonName);
 				cbx_country.DisplayMemberPath = "CommonName";
 			}
 		}
@@ -30,25 +30,47 @@ namespace DonViHanhChinh
 			using (var database = new DonViHanhChinhEntities())
 			{
 				var table = from data in database.Provinces.Cast<Province>() where data.CountryId.Equals(id) select data;
-				cbx_province.ItemsSource = table.ToList();
+				cbx_province.ItemsSource = table.ToList().OrderBy(i => i.Name);
 				cbx_province.DisplayMemberPath = "Name";
 			}
 		}
 
-		private void Load_District(string province)
+		private void Load_District(int id)
 		{
-
+			using (var database = new DonViHanhChinhEntities())
+			{
+				var table = from data in database.Districts.Cast<District>() where data.ProvinceId.Equals(id) select data;
+				cbx_district.ItemsSource = table.ToList().OrderBy(i => i.Name);
+				cbx_district.DisplayMemberPath = "Name";
+			}
 		}
 
-		private void Load_Ward(string province, string district)
+		private void Load_Ward(int id)
 		{
-
+			using (var database = new DonViHanhChinhEntities())
+			{
+				var table = from data in database.Wards.Cast<Ward>() where data.DistrictID.Equals(id) select data;
+				cbx_ward.ItemsSource = table.ToList().OrderBy(i => i.Name);
+				cbx_ward.DisplayMemberPath = "Name";
+			}
 		}
 
 		private void Cbx_country_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			Country selected = (Country)cbx_country.SelectedItem;
 			Load_Province(selected.Id);
+		}
+
+		private void Cbx_province_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+		{
+			Province selected = (Province)cbx_province.SelectedItem;
+			Load_District(selected.Id);
+		}
+
+		private void Cbx_district_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+		{
+			District selected = (District)cbx_district.SelectedItem;
+			Load_Ward(selected.Id);
 		}
 	}
 }
