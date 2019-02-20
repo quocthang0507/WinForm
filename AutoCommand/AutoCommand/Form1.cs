@@ -14,9 +14,9 @@ namespace AutoCommand
 {
 	public partial class Form1 : Form
 	{
-		string path1 = "log.txt", path2 = "backup.txt";
-		bool canReplace = true;
-		bool tiengViet = false;
+		private string path1 = "log.txt", path2 = "backup.txt";
+		private bool canReplace = true;
+		private bool tiengViet = false;
 
 		public Form1()
 		{
@@ -141,7 +141,7 @@ namespace AutoCommand
 				toolTip1.SetToolTip(btn_Review, "Xem trước sự ảnh hưởng của việc chèn watermark vào ảnh đầu tiên");
 				toolTip1.SetToolTip(chk_Diacritical, "Loại bỏ các thanh điệu, ví dụ ắ -> a, ươ -> uo, đ -> d,...");
 			}
-			
+
 		}
 
 		#region Tab1
