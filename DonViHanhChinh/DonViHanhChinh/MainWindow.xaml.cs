@@ -58,19 +58,22 @@ namespace DonViHanhChinh
 		private void Cbx_country_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			Country selected = (Country)cbx_country.SelectedItem;
-			Load_Province(selected.Id);
+			if (selected != null)
+				Load_Province(selected.Id);
 		}
 
 		private void Cbx_province_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			Province selected = (Province)cbx_province.SelectedItem;
-			Load_District(selected.Id);
+			if (selected != null)
+				Load_District(selected.Id);
 		}
 
 		private void Cbx_district_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			District selected = (District)cbx_district.SelectedItem;
-			Load_Ward(selected.Id);
+			if (selected != null)
+				Load_Ward(selected.Id);
 		}
 	}
 }
