@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:Hook"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+	<Grid Loaded="Grid_Loaded">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="440*"/>
+			<ColumnDefinition Width="91*"/>
+			<ColumnDefinition Width="261*"/>
+		</Grid.ColumnDefinitions>
+		<TextBox x:Name="showResult" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="230" Margin="41,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="682" FontSize="16" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+
+	</Grid>
 </Window>
