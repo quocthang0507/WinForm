@@ -154,8 +154,8 @@
 			// groupBox6
 			// 
 			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      | System.Windows.Forms.AnchorStyles.Left) 
+      | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox6.Controls.Add(this.pbx_After);
 			this.groupBox6.Controls.Add(this.pbx_Before);
 			this.groupBox6.Location = new System.Drawing.Point(3, 135);
@@ -221,7 +221,7 @@
 			// listFont
 			// 
 			this.listFont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      | System.Windows.Forms.AnchorStyles.Right)));
 			this.listFont.FormattingEnabled = true;
 			this.listFont.Location = new System.Drawing.Point(400, 7);
 			this.listFont.Name = "listFont";
@@ -252,28 +252,28 @@
 			this.cbx_Size.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.cbx_Size.FormattingEnabled = true;
 			this.cbx_Size.Items.AddRange(new object[] {
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "14",
-            "16",
-            "18",
-            "20",
-            "22",
-            "24",
-            "26",
-            "28",
-            "36",
-            "48",
-            "72",
-            "125",
-            "250",
-            "375",
-            "400",
-            "500",
-            "750"});
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "14",
+      "16",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26",
+      "28",
+      "36",
+      "48",
+      "72",
+      "125",
+      "250",
+      "375",
+      "400",
+      "500",
+      "750"});
 			this.cbx_Size.Location = new System.Drawing.Point(53, 56);
 			this.cbx_Size.Name = "cbx_Size";
 			this.cbx_Size.Size = new System.Drawing.Size(57, 21);
@@ -294,11 +294,11 @@
 			this.cbx_FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.cbx_FontStyle.FormattingEnabled = true;
 			this.cbx_FontStyle.Items.AddRange(new object[] {
-            "Bold",
-            "Italic",
-            "Regular",
-            "Strikeout",
-            "Underline"});
+      "Bold",
+      "Italic",
+      "Regular",
+      "Strikeout",
+      "Underline"});
 			this.cbx_FontStyle.Location = new System.Drawing.Point(243, 56);
 			this.cbx_FontStyle.Name = "cbx_FontStyle";
 			this.cbx_FontStyle.Size = new System.Drawing.Size(105, 21);
@@ -629,11 +629,11 @@
 			this.cbx_Case.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
 			this.cbx_Case.FormattingEnabled = true;
 			this.cbx_Case.Items.AddRange(new object[] {
-            "Default",
-            "all lowercase",
-            "ALL UPPERCASE",
-            "First letter uppercase",
-            "First Of Each Word Uppercase"});
+      "Default",
+      "all lowercase",
+      "ALL UPPERCASE",
+      "First letter uppercase",
+      "First Of Each Word Uppercase"});
 			this.cbx_Case.Location = new System.Drawing.Point(6, 19);
 			this.cbx_Case.Name = "cbx_Case";
 			this.cbx_Case.Size = new System.Drawing.Size(188, 21);
@@ -669,23 +669,23 @@
 			// 
 			this.nud_Start.Location = new System.Drawing.Point(68, 18);
 			this.nud_Start.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
+      1000,
+      0,
+      0,
+      0});
 			this.nud_Start.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+      1,
+      0,
+      0,
+      0});
 			this.nud_Start.Name = "nud_Start";
 			this.nud_Start.Size = new System.Drawing.Size(40, 20);
 			this.nud_Start.TabIndex = 14;
 			this.nud_Start.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+      1,
+      0,
+      0,
+      0});
 			this.nud_Start.ValueChanged += new System.EventHandler(this.nud_Start_ValueChanged);
 			// 
 			// label4
@@ -701,18 +701,18 @@
 			// 
 			this.nud_Step.Location = new System.Drawing.Point(68, 41);
 			this.nud_Step.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+      1,
+      0,
+      0,
+      0});
 			this.nud_Step.Name = "nud_Step";
 			this.nud_Step.Size = new System.Drawing.Size(40, 20);
 			this.nud_Step.TabIndex = 15;
 			this.nud_Step.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+      1,
+      0,
+      0,
+      0});
 			this.nud_Step.ValueChanged += new System.EventHandler(this.nud_Step_ValueChanged);
 			// 
 			// label5
@@ -729,16 +729,16 @@
 			this.cbx_Digits.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
 			this.cbx_Digits.FormattingEnabled = true;
 			this.cbx_Digits.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"});
 			this.cbx_Digits.Location = new System.Drawing.Point(68, 64);
 			this.cbx_Digits.Name = "cbx_Digits";
 			this.cbx_Digits.Size = new System.Drawing.Size(40, 21);
@@ -749,16 +749,16 @@
 			// dataGridView1
 			// 
 			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      | System.Windows.Forms.AnchorStyles.Left) 
+      | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Col_OldName,
-            this.Col_NewName,
-            this.Size,
-            this.Col_Date,
-            this.Col_Location});
+      this.Col_OldName,
+      this.Col_NewName,
+      this.Size,
+      this.Col_Date,
+      this.Col_Location});
 			this.dataGridView1.Location = new System.Drawing.Point(11, 144);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
@@ -871,8 +871,8 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+      this.optionToolStripMenuItem,
+      this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(728, 24);
@@ -882,7 +882,7 @@
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutAuthorToolStripMenuItem});
+      this.aboutAuthorToolStripMenuItem});
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
 			this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
 			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
@@ -899,7 +899,7 @@
 			// optionToolStripMenuItem
 			// 
 			this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeLanguageToolStripMenuItem});
+      this.changeLanguageToolStripMenuItem});
 			this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
 			this.optionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
 			this.optionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -908,8 +908,8 @@
 			// changeLanguageToolStripMenuItem
 			// 
 			this.changeLanguageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishToolStripMenuItem,
-            this.tiếngViệtToolStripMenuItem});
+      this.englishToolStripMenuItem,
+      this.tiếngViệtToolStripMenuItem});
 			this.changeLanguageToolStripMenuItem.Name = "changeLanguageToolStripMenuItem";
 			this.changeLanguageToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
 			this.changeLanguageToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
@@ -919,7 +919,7 @@
 			// 
 			this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
 			this.englishToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.E)));
+      | System.Windows.Forms.Keys.E)));
 			this.englishToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.englishToolStripMenuItem.Text = "English";
 			this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
@@ -928,7 +928,7 @@
 			// 
 			this.tiếngViệtToolStripMenuItem.Name = "tiếngViệtToolStripMenuItem";
 			this.tiếngViệtToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.V)));
+      | System.Windows.Forms.Keys.V)));
 			this.tiếngViệtToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
 			this.tiếngViệtToolStripMenuItem.Text = "Tiếng Việt";
 			this.tiếngViệtToolStripMenuItem.Click += new System.EventHandler(this.tiếngViệtToolStripMenuItem_Click);

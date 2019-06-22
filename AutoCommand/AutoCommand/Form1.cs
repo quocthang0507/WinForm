@@ -59,6 +59,7 @@ namespace AutoCommand
 			label11.Text = "View log";
 			label16.Text = "Backup";
 			ShowTooltip();
+			ChangeDateFormat(false);
 		}
 
 		private void tiếngViệtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace AutoCommand
 			label11.Text = "Xem n.ký";
 			label16.Text = "Sao lưu";
 			ShowTooltip();
+			ChangeDateFormat(true);
 		}
 
 		private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,6 +114,29 @@ namespace AutoCommand
 		}
 
 		ToolTip toolTip1 = new ToolTip();
+
+		void ChangeDateFormat(bool isVie)
+		{
+			if (isVie)
+			{
+				foreach (DataGridViewRow item in dataGridView1.Rows)
+					if (item.Cells[3].Value != null)
+					{
+						DateTime d = DateTime.ParseExact(item.Cells[3].Value.ToString(), "yyyy/M/dd", System.Globalization.CultureInfo.InvariantCulture);
+						item.Cells[3].Value = d.ToString("dd/M/yyyy");
+					}
+			}
+			else
+			{
+				foreach (DataGridViewRow item in dataGridView1.Rows)
+					if (item.Cells[3].Value != null)
+
+					{
+						DateTime d = DateTime.ParseExact(item.Cells[3].Value.ToString(), "dd/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+						item.Cells[3].Value = d.ToString("yyyy/M/dd");
+					}
+			}
+		}
 
 		void ShowTooltip()
 		{
@@ -132,7 +157,7 @@ namespace AutoCommand
 			}
 			else
 			{
-				toolTip1.SetToolTip(btn_Browse1, "Duyệt  đến (các) tập tin");
+				toolTip1.SetToolTip(btn_Browse1, "Duyệt đến (các) tập tin");
 				toolTip1.SetToolTip(btn_Start1, "Thực thi việc đổi tên");
 				toolTip1.SetToolTip(btn_Browse2, "Duyệt đến thư mục có chứa hình ảnh");
 				toolTip1.SetToolTip(btn_Start2, "Thực thi việc chèn watermark vào các ảnh trong thư mục");
