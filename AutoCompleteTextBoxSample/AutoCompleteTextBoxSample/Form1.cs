@@ -20,16 +20,16 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {          
-            var source = new List<string>();        
-            StreamReader strem = new StreamReader("en-EN.dic");           
-            string line = strem.ReadLine();         
+            List<string> source = new List<string>();        
+            StreamReader stream = new StreamReader("en-EN.dic");           
+            string line = stream.ReadLine();         
             while (line != null)
             {               
                 source.Add(line);               
-                line = strem.ReadLine();
+                line = stream.ReadLine();
             }            
-            strem.Close();
-            strem.Dispose();            
+            stream.Close();
+            stream.Dispose();            
             this.autoCompleteTextbox1.AutoCompleteList = source;
         }
 
