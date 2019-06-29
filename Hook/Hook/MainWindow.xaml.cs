@@ -32,6 +32,8 @@ namespace Hook
 			{
 				MainWindow my = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 				my.showResult.Text += message + "\n";
+				my.showResult.SelectionStart = my.showResult.Text.Length;
+				my.showResult.ScrollToEnd();
 			}));
 		}
 	}

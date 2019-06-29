@@ -140,7 +140,7 @@
 									   //... OEM specific from 0x92 to 0x96
 									   //... Unassigned from 0x97 to 0x9F
 		public const int LEFT_SHIFT = 160; //Left SHIFT key
-		public const int RGIHT_SHIFT = 161; //Right SHIFT key
+		public const int RIGHT_SHIFT = 161; //Right SHIFT key
 		public const int LEFT_CTRL = 162; //Left CONTROL key
 		public const int RIGHT_CTRL = 163; //Right CONTROL key
 		public const int LEFT_MENU = 164; //Left MENU key
@@ -165,11 +165,12 @@
 		public const int APP_2 = 183; //Start Application 2 key
 									  //... Reserved from 0xB8 to 0xB9
 		public const int OEM_1 = 186; //Used for miscellaneous characters
-		public const int OEM_MINUS = 188; //For any country/region, the '-' key
-		public const int OEM_PERIOD = 187; //For any country/region, the '.' key
 		public const int OEM_PLUS = 187; //For any country/region, the '+' key
-		public const int OEM_2 = 188; //For the US standard keyboard, the '/?' key
-		public const int OEM_3 = 189; //For the US standard keyboard, the '`~' key
+		public const int OEM_COMMA = 188; //For any country/region, the ',' key
+		public const int OEM_MINUS = 189; //For any country/region, the '-' key
+		public const int OEM_PERIOD = 190; //For any country/region, the '.' key
+		public const int OEM_2 = 191; //For the US standard keyboard, the '/?' key
+		public const int OEM_3 = 192; //For the US standard keyboard, the '`~' key
 									  //... Reserved from 0xC1 to 0xD7
 									  //... Unsigned from 0xD8 to 0xDA
 		public const int OEM_4 = 219; //For the US standard keyboard, the '[{' key
