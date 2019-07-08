@@ -111,7 +111,7 @@ namespace ThongTinSinhVienDLU_2
 
         private void rbn_GiangVien_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            if (rbn_GiangVien.IsChecked == true)
+            if ((bool)rbn_GiangVien.IsChecked)
             {
                 label4.Visibility = Visibility.Visible;
                 tbx_GiangVien.Visibility = Visibility.Visible;
