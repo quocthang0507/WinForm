@@ -43,11 +43,12 @@ namespace Search
 			object[] row;
 			foreach (var item in list)
 			{
-				row = new object[4];
+				row = new object[5];
 				row[0] = item.Name;
-				row[1] = item.FullName;
-				row[2] = item.CreationTime;
-				row[3] = convertUnit(getSizeDir(item.FullName));
+				row[1] = "Folder";
+				row[2] = item.FullName;
+				row[3] = item.CreationTime;
+				row[4] = convertUnit(getSizeDir(item.FullName));
 				dgv_list.Rows.Add(row);
 			}
 		}
@@ -59,11 +60,12 @@ namespace Search
 			object[] row;
 			foreach (var item in list)
 			{
-				row = new object[4];
+				row = new object[5];
 				row[0] = item.Name;
-				row[1] = item.FullName;
-				row[2] = item.CreationTime;
-				row[3] = item.Length;
+				row[1] = "File";
+				row[2] = item.FullName;
+				row[3] = item.CreationTime;
+				row[4] = convertUnit(item.Length);
 				dgv_list.Rows.Add(row);
 			}
 		}

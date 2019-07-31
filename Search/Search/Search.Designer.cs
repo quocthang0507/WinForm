@@ -38,6 +38,7 @@
 			this.btn_open = new System.Windows.Forms.Button();
 			this.dgv_list = new System.Windows.Forms.DataGridView();
 			this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.col_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.col_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.col_CreationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.col_Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -130,7 +131,7 @@
 			this.tableLayoutPanel3.Name = "tableLayoutPanel3";
 			this.tableLayoutPanel3.RowCount = 1;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
 			this.tableLayoutPanel3.Size = new System.Drawing.Size(228, 28);
 			this.tableLayoutPanel3.TabIndex = 2;
 			// 
@@ -160,12 +161,14 @@
 			this.dgv_list.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_list.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Name,
+            this.col_Type,
             this.col_Location,
             this.col_CreationDate,
             this.col_Size});
 			this.dgv_list.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv_list.Location = new System.Drawing.Point(0, 0);
 			this.dgv_list.Name = "dgv_list";
+			this.dgv_list.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgv_list.Size = new System.Drawing.Size(800, 346);
 			this.dgv_list.TabIndex = 0;
 			// 
@@ -173,6 +176,11 @@
 			// 
 			this.col_Name.HeaderText = "Name";
 			this.col_Name.Name = "col_Name";
+			// 
+			// col_Type
+			// 
+			this.col_Type.HeaderText = "Type";
+			this.col_Type.Name = "col_Type";
 			// 
 			// col_Location
 			// 
@@ -223,6 +231,7 @@
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
 		private System.Windows.Forms.DataGridView dgv_list;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_Name;
+		private System.Windows.Forms.DataGridViewTextBoxColumn col_Type;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_Location;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_CreationDate;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_Size;
