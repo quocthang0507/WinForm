@@ -1,0 +1,26 @@
+﻿<Window x:Class="QuanLyBanHang.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyBanHang"
+        mc:Ignorable="d"
+        Title="Chương trình Quản lý bán hàng" Height="450" Width="800">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="197*"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid Background="Gray" >
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition MaxHeight="15" Height="10*"/>
+			</Grid.RowDefinitions>
+			<Menu x:Name="menu" Height="Auto" Width="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+				<Button Content="Edit" BorderThickness="0" Background="#FFF0F0F0"/>
+				<Button BorderThickness="0" Content="  Templates" Background="#FFF0F0F0"/>
+			</Menu>
+		</Grid>
+
+	</Grid>
+</Window>
