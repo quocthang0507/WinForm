@@ -26,6 +26,8 @@ namespace TypingMaster
 
 		private void load_Text()
 		{
+			index = 0;
+			sec = 0;
 			text = TypingMaster.Properties.Resources.String1;
 			rtbx_text.Text = text;
 			current = text[index];
@@ -82,7 +84,17 @@ namespace TypingMaster
 
 		private double speed()
 		{
-			return ((double)sec / count_words()) * 60;
+			return ((double)count_words() / sec) * 60;
+		}
+
+		private void startAgainToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			load_Text();
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

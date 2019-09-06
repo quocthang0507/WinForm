@@ -66,20 +66,22 @@
 			// startAgainToolStripMenuItem
 			// 
 			this.startAgainToolStripMenuItem.Name = "startAgainToolStripMenuItem";
-			this.startAgainToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+			this.startAgainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.startAgainToolStripMenuItem.Text = "Start again";
+			this.startAgainToolStripMenuItem.Click += new System.EventHandler(this.startAgainToolStripMenuItem_Click);
 			// 
 			// scoresToolStripMenuItem
 			// 
 			this.scoresToolStripMenuItem.Name = "scoresToolStripMenuItem";
-			this.scoresToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+			this.scoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.scoresToolStripMenuItem.Text = "Scores";
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// rtbx_text
 			// 
@@ -116,7 +118,7 @@
 			// stt_username
 			// 
 			this.stt_username.Name = "stt_username";
-			this.stt_username.Size = new System.Drawing.Size(41, 17);
+			this.stt_username.Size = new System.Drawing.Size(40, 17);
 			this.stt_username.Text = "Thắng";
 			// 
 			// timer
