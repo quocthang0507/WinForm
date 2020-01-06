@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanSubnet", "ScanSubnet\ScanSubnet.csproj", "{BE5E51E1-D147-4420-A890-00D8E100621E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE5E51E1-D147-4420-A890-00D8E100621E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5E51E1-D147-4420-A890-00D8E100621E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5E51E1-D147-4420-A890-00D8E100621E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5E51E1-D147-4420-A890-00D8E100621E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3200D376-D771-4480-A259-43774A8A62E6}
+	EndGlobalSection
+EndGlobal
