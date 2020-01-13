@@ -10,7 +10,7 @@ namespace GetStudentsStudyLesson
 {
 	class Program
 	{
-		static string url = @"http://online.dlu.edu.vn/Home/DrawingStudentSchedule?StudentId={0}&YearId=2019-2020&TermId=HK02&WeekId=2";
+		static string url = @"http://online.dlu.edu.vn/Home/DrawingStudentSchedule?StudentId={0}&YearId=2019-2020&TermId=HK02&WeekId=3";
 		static string id = "CT3301D";
 
 		static void Main(string[] args)
@@ -19,8 +19,14 @@ namespace GetStudentsStudyLesson
 			//string username = Console.ReadLine();
 			//Console.Write("Password: ");
 			//string password = Console.ReadLine();
+			Console.OutputEncoding = System.Text.Encoding.UTF8;
 			HasRegistered("1610207", "0_matkhauonlinecuaLQTh@ng", id);
 			Console.ReadKey();
+		}
+
+		static string ProcessString(string str)
+		{
+			return str.Substring(0, 7);
 		}
 
 		static void HasRegistered(string username, string password, string id)
@@ -42,7 +48,7 @@ namespace GetStudentsStudyLesson
 				string mssv;
 				while ((mssv = reader.ReadLine()) != null)
 				{
-					var html = client.DownloadString(string.Format(url, mssv));
+					var html = client.DownloadString(string.Format(url, ProcessString(mssv)));
 					if (html.Contains("<title>Đăng nhập</title>"))
 					{
 						Console.WriteLine("Loi dang nhap");
@@ -50,7 +56,7 @@ namespace GetStudentsStudyLesson
 					}
 					else if (html.Contains(id))
 					{
-						Console.WriteLine(int.Parse(mssv));
+						Console.WriteLine(mssv);
 					}
 				}
 				Console.WriteLine("End");
