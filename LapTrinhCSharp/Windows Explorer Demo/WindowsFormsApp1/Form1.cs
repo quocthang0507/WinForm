@@ -1,16 +1,9 @@
 ﻿using Microsoft.WindowsAPICodePack.Controls;
 using Microsoft.WindowsAPICodePack.Shell;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -65,9 +58,9 @@ namespace WindowsFormsApp1
         }
         public void NavigationLog_NavigationLogChanged(object sender, NavigationLogEventArgs args)
         {
-            
+
             BeginInvoke(new MethodInvoker(delegate ()
-            {              
+            {
                 if (args.CanNavigateBackwardChanged)
                 {
                     this.btn_back.Enabled = explorerBrowser.NavigationLog.CanNavigateBackward;
@@ -79,7 +72,7 @@ namespace WindowsFormsApp1
 
                 if (args.LocationsChanged)
                 {
-                   
+
                     foreach (ShellObject shobj in this.explorerBrowser.NavigationLog.Locations)
                     {
                         if (shobj.ParsingName.Contains(@"\"))
@@ -95,7 +88,7 @@ namespace WindowsFormsApp1
                 }
 
                 if (this.explorerBrowser.NavigationLog.CurrentLocationIndex == -1)
-                   txt_location.Text = "";
+                    txt_location.Text = "";
                 else
                 {
                     if (explorerBrowser.NavigationLog.CurrentLocation.ParsingName.Contains(@"\"))
@@ -107,7 +100,7 @@ namespace WindowsFormsApp1
                         txt_location.Text = explorerBrowser.NavigationLog.CurrentLocation.Name;
 
                     }
-                   
+
                 }
 
             }));
