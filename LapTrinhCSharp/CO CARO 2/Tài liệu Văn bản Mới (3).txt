@@ -1,0 +1,27 @@
+﻿* Tư tưởng thuật toán MinMax áp dụng trò chơi cờ caro
+
+Bàn cờ bao gồm các ô cờ.
+khi người chơi đánh vào 1 ô cờ máy sẽ thực hiện:
++ xét toàn bộ ô cờ trong bàn cờ và xem xét những ô cờ chưa có ai đánh và ô cờ đó có 'ý nghĩa' (cắt tỉa Alpha beta)
++ Tìm giá trị Max. Max ở đây là giá trị lớn hơn giữa điểm tấn công và điểm phòng ngự
++ Sau khi xác định được giá trị Max, máy sẽ đánh vào vị trí ô cờ có giá trị Max đó
+
+* Cấu trúc dữ liệu và thuật toán cài đặt thực tế
+- Cấu trúc dữ liệu:
++ ô cờ: là 1 class gồm thuộc tính vị trí dòng, vị trí cột, và sở hữu
+vị trí dòng để xác định vị trí cửa ô cờ trên bàn cờ
++ bàn cờ là: mảng hai chiều các ô cờ
+
+- giải thuật:
+mặc định khi ô cờ lúc khởi tạo ô cờ ( chưa ai đánh ) sẽ có sở hữu là 0
+khi người chơi đánh vào ô cờ thì sở hữu sẽ là 1
+khi máy đánh vào ô cờ sở hữu sẽ là 2
+dựa vào đó
+khi xét ô cờ cho máy đánh, sẽ xét những ô cờ có sở hữu là 0 (chưa có ai đánh) và ô cờ đó không bị cắt tỉa
+
+Tìm ô cờ có điểm tối ưu nhất cả về tấn công và phòng ngự trong bàn cờ:
++ tính điểm tấn công: xét theo 4 hướng(ngang, dọc, chéo trên, chéo dưới) xét những quân cờ có sở hữu là 2(quân cờ của máy) và sẽ tăng điểm tấn công lên
++ tính điểm phòng ngự: xét theo 4 hướng(ngang, dọc, chéo trên, chéo dưới) xét những quân cờ có sở hữu là 1(quân cờ của người chơi) sẽ tăng điểm phòng ngự lên
++ so sánh giữa điểm tấn công và phòng ngự điểm nào lớn hơn thì sẽ chọn làm điểm đánh cờ
+
+
