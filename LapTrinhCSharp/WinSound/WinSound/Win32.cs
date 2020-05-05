@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace WinSound
@@ -203,8 +200,8 @@ namespace WinSound
 			DATA = 0x03C0
 		}
 
-        public delegate void DelegateWaveOutProc(IntPtr hWaveOut, WOM_Messages msg, IntPtr dwInstance, Win32.WAVEHDR* pWaveHdr, IntPtr lParam);
-        public delegate void DelegateWaveInProc(IntPtr hWaveIn, WIM_Messages msg, IntPtr dwInstance, Win32.WAVEHDR* pWaveHdr, IntPtr lParam);
+		public delegate void DelegateWaveOutProc(IntPtr hWaveOut, WOM_Messages msg, IntPtr dwInstance, Win32.WAVEHDR* pWaveHdr, IntPtr lParam);
+		public delegate void DelegateWaveInProc(IntPtr hWaveIn, WIM_Messages msg, IntPtr dwInstance, Win32.WAVEHDR* pWaveHdr, IntPtr lParam);
 		public delegate void DelegateTimerProc(IntPtr lpParameter, bool TimerOrWaitFired);
 		public delegate void TimerEventHandler(UInt32 id, UInt32 msg, ref UInt32 userCtx, UInt32 rsv1, UInt32 rsv2);
 
@@ -268,11 +265,11 @@ namespace WinSound
 		[DllImport("winmm.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		public static extern MMRESULT waveOutWrite(IntPtr hWaveOut, WAVEHDR* pwh, int cbwh);
 
-        [DllImport("winmm.dll", SetLastError = true, EntryPoint = "waveOutPrepareHeader", CharSet = CharSet.Auto)]
-        public static extern MMRESULT waveOutPrepareHeader(IntPtr hWaveOut, WAVEHDR* lpWaveOutHdr, int uSize);
+		[DllImport("winmm.dll", SetLastError = true, EntryPoint = "waveOutPrepareHeader", CharSet = CharSet.Auto)]
+		public static extern MMRESULT waveOutPrepareHeader(IntPtr hWaveOut, WAVEHDR* lpWaveOutHdr, int uSize);
 
-        [DllImport("winmm.dll", SetLastError = true, EntryPoint = "waveOutUnprepareHeader", CharSet = CharSet.Auto)]
-        public static extern MMRESULT waveOutUnprepareHeader(IntPtr hWaveOut, WAVEHDR* lpWaveOutHdr, int uSize);
+		[DllImport("winmm.dll", SetLastError = true, EntryPoint = "waveOutUnprepareHeader", CharSet = CharSet.Auto)]
+		public static extern MMRESULT waveOutUnprepareHeader(IntPtr hWaveOut, WAVEHDR* lpWaveOutHdr, int uSize);
 
 		[DllImport("winmm.dll", EntryPoint = "waveInStop", SetLastError = true)]
 		public static extern MMRESULT waveInStop(IntPtr hWaveIn);
@@ -283,14 +280,14 @@ namespace WinSound
 		[DllImport("winmm.dll", EntryPoint = "waveOutReset", SetLastError = true)]
 		public static extern MMRESULT waveOutReset(IntPtr hWaveOut);
 
-        [DllImport("winmm.dll", SetLastError = true)]
-        public static extern MMRESULT waveInPrepareHeader(IntPtr hWaveIn, WAVEHDR* pwh, int cbwh);
+		[DllImport("winmm.dll", SetLastError = true)]
+		public static extern MMRESULT waveInPrepareHeader(IntPtr hWaveIn, WAVEHDR* pwh, int cbwh);
 
 		[DllImport("winmm.dll", SetLastError = true)]
 		public static extern MMRESULT waveInUnprepareHeader(IntPtr hWaveIn, WAVEHDR* pwh, int cbwh);
 
-        [DllImport("winmm.dll", EntryPoint = "waveInAddBuffer", SetLastError = true)]
-        public static extern MMRESULT waveInAddBuffer(IntPtr hWaveIn, WAVEHDR* pwh, int cbwh);
+		[DllImport("winmm.dll", EntryPoint = "waveInAddBuffer", SetLastError = true)]
+		public static extern MMRESULT waveInAddBuffer(IntPtr hWaveIn, WAVEHDR* pwh, int cbwh);
 
 		[DllImport("winmm.dll", SetLastError = true)]
 		public static extern Win32.MMRESULT waveInClose(IntPtr hWaveIn);

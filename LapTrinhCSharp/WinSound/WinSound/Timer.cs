@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace WinSound
@@ -130,7 +127,7 @@ namespace WinSound
 			if (m_HandleTimer != IntPtr.Zero)
 			{
 				//QueueTimer beenden
-				global:: WinSound.Win32.DeleteTimerQueueTimer(IntPtr.Zero, m_HandleTimer, IntPtr.Zero);
+				global::WinSound.Win32.DeleteTimerQueueTimer(IntPtr.Zero, m_HandleTimer, IntPtr.Zero);
 				//QueueTimer Resolution beenden
 				global::WinSound.Win32.TimeEndPeriod(m_ResolutionInMilliseconds);
 
@@ -289,7 +286,7 @@ namespace WinSound
 			if (m_TimerId > 0)
 			{
 				//Timer beenden
-				global:: WinSound.Win32.TimeKillEvent(m_TimerId);
+				global::WinSound.Win32.TimeKillEvent(m_TimerId);
 				//Timer Resolution beenden
 				global::WinSound.Win32.TimeEndPeriod(m_ResolutionInMilliseconds);
 

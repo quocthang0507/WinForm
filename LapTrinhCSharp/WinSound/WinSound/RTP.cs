@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Net;
 
 namespace WinSound
 {
@@ -41,7 +38,7 @@ namespace WinSound
 		public uint SourceId = 0;
 		public Byte[] Data;
 		public UInt16 ExtensionHeaderId = 0;
-		public UInt16 ExtensionLengthAsCount = 0; 
+		public UInt16 ExtensionLengthAsCount = 0;
 		public Int32 ExtensionLengthInBytes = 0;
 
 		/// <summary>

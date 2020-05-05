@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using System.IO;
-using System.Collections;
 
 namespace TCPStreamer
 {
@@ -445,7 +443,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					//Anzeigen
 					ShowStreamingFromSounddeviceStopped_Client();
@@ -464,7 +462,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					//Anzeigen
 					ShowStreamingFromSounddeviceStopped_Server();
@@ -1097,7 +1095,7 @@ namespace TCPStreamer
 							int samplePerSecond = Convert.ToInt32(values[1]);
 							m_Config.SamplesPerSecondClient = samplePerSecond;
 
-							this.Invoke(new MethodInvoker(delegate()
+							this.Invoke(new MethodInvoker(delegate ()
 							{
 								//Aufnahme starten
 								StartPlayingToSounddevice_Client();
@@ -1293,7 +1291,7 @@ namespace TCPStreamer
 		/// <param name="tag"></param>
 		private void RemoveControlByTag(Control.ControlCollection controls, object tag)
 		{
-			this.Invoke(new MethodInvoker(delegate()
+			this.Invoke(new MethodInvoker(delegate ()
 			{
 				//Control anhand Tag ermitteln
 				Control existing = null;
@@ -1319,7 +1317,7 @@ namespace TCPStreamer
 		/// <param name="st"></param>
 		private void RemoveControlInAllFlowLayoutPanelsByServerThread(NF.ServerThread st)
 		{
-			this.Invoke(new MethodInvoker(delegate()
+			this.Invoke(new MethodInvoker(delegate ()
 			{
 				//Label
 				Control ctrlLabel = null;
@@ -1395,7 +1393,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerClients.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerClients.Invoke(new MethodInvoker(delegate ()
 				{
 					//Label löschen
 					RemoveControlByTag(FlowLayoutPanelServerClients.Controls, st);
@@ -1415,7 +1413,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerListen.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerListen.Invoke(new MethodInvoker(delegate ()
 				{
 					//Button löschen
 					RemoveControlByTag(FlowLayoutPanelServerListen.Controls, data);
@@ -1434,7 +1432,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerSpeak.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerSpeak.Invoke(new MethodInvoker(delegate ()
 				{
 					//Button löschen
 					RemoveControlByTag(FlowLayoutPanelServerSpeak.Controls, data);
@@ -1453,7 +1451,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerClients.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerClients.Invoke(new MethodInvoker(delegate ()
 				{
 					//Label erstellen
 					Label lab = new Label();
@@ -1484,7 +1482,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerProgressBars.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerProgressBars.Invoke(new MethodInvoker(delegate ()
 				{
 					//ProgressBar erstellen
 					ProgressBar prog = new ProgressBar();
@@ -1512,7 +1510,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					//Button Listen erstellen
 					Button btnListen = new Button();
@@ -1543,7 +1541,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerSpeak.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerSpeak.Invoke(new MethodInvoker(delegate ()
 				{
 					//Button Listen erstellen
 					Button btnSpeak = new Button();
@@ -1638,7 +1636,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				FlowLayoutPanelServerProgressBars.Invoke(new MethodInvoker(delegate()
+				FlowLayoutPanelServerProgressBars.Invoke(new MethodInvoker(delegate ()
 				{
 					//ProgressBar löschen
 					RemoveControlByTag(FlowLayoutPanelServerProgressBars.Controls, data);
@@ -1723,7 +1721,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					ButtonClient.BackColor = Color.DarkGreen;
 					ButtonClient.ForeColor = Color.White;
@@ -1747,7 +1745,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					ButtonClient.BackColor = Color.Gray;
 					ButtonClient.ForeColor = Color.Black;
@@ -1771,7 +1769,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					ButtonServer.BackColor = Color.DarkGreen;
 					ButtonServer.ForeColor = Color.White;
@@ -1796,7 +1794,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				this.Invoke(new MethodInvoker(delegate()
+				this.Invoke(new MethodInvoker(delegate ()
 				{
 					ButtonServer.BackColor = Color.Gray;
 					ButtonServer.ForeColor = Color.Black;
@@ -1827,7 +1825,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromSounddeviceStarted_Client();
 					}));
@@ -1851,7 +1849,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromSounddeviceStopped_Client();
 					}));
@@ -1875,7 +1873,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromSounddeviceStarted_Server();
 					}));
@@ -1899,7 +1897,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromSounddeviceStopped_Server();
 					}));
@@ -1923,7 +1921,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromFileStarted();
 					}));
@@ -1948,7 +1946,7 @@ namespace TCPStreamer
 			{
 				if (this.InvokeRequired)
 				{
-					this.Invoke(new MethodInvoker(delegate()
+					this.Invoke(new MethodInvoker(delegate ()
 					{
 						ShowStreamingFromFileStopped();
 					}));
@@ -1973,7 +1971,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				lb.Invoke(new MethodInvoker(delegate()
+				lb.Invoke(new MethodInvoker(delegate ()
 				{
 					lb.Text = text;
 					lb.ForeColor = Color.Red;
@@ -2003,7 +2001,7 @@ namespace TCPStreamer
 		{
 			try
 			{
-				lb.Invoke(new MethodInvoker(delegate()
+				lb.Invoke(new MethodInvoker(delegate ()
 				{
 					lb.Text = text;
 					lb.ForeColor = Color.Black;
@@ -2284,7 +2282,7 @@ namespace TCPStreamer
 			}
 
 			//Anzeigen
-			ComboboxOutputSoundDeviceNameClient.Invoke(new MethodInvoker(delegate()
+			ComboboxOutputSoundDeviceNameClient.Invoke(new MethodInvoker(delegate ()
 			{
 				ComboboxOutputSoundDeviceNameClient.Enabled = false;
 				NumericUpDownJitterBufferClient.Enabled = false;
@@ -2313,7 +2311,7 @@ namespace TCPStreamer
 			m_TimerProgressBarPlayingClient.Stop();
 
 			//Anzeigen
-			this.Invoke(new MethodInvoker(delegate()
+			this.Invoke(new MethodInvoker(delegate ()
 			{
 				ComboboxOutputSoundDeviceNameClient.Enabled = true;
 				NumericUpDownJitterBufferClient.Enabled = true;
