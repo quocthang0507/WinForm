@@ -119,37 +119,7 @@ namespace WindowsFormsApp1
 				}
 
 				lbl_fileName_select.Text = itemsText.ToString();
-				//this.itemsTabControl.TabPages[1].Text = "Selected Items (Count=" + explorerBrowser.SelectedItems.Count.ToString() + ")";
 			}
-
-			//if (itemsChanged.WaitOne(1))
-			//{
-			//    // update items text box
-			//    StringBuilder itemsText = new StringBuilder();
-
-			//    foreach (ShellObject item in explorerBrowser.Items)
-			//    {
-			//        if (item != null)
-			//            itemsText.AppendLine("\tItem = " + item.GetDisplayName(DisplayNameType.Default));
-			//    }
-
-			//    this.lbl_fileName_select.Text = itemsText.ToString();
-			//    //this.itemsTabControl.TabPages[0].Text = "Items (Count=" + explorerBrowser.Items.Count.ToString() + ")";
-			//}
-		}
-
-
-		private void navigateButton_Click(object sender, EventArgs e)
-		{
-			//try
-			//{
-			//    // navigate to specific folder
-			//    explorerBrowser.Navigate(ShellFileSystemFolder.FromFolderPath(pathEdit.Text));
-			//}
-			//catch (COMException)
-			//{
-			//    MessageBox.Show("Navigation not possible.");
-			//}
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
