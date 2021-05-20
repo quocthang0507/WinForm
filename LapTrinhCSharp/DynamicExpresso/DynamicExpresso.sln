@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicExpresso", "DynamicExpresso\DynamicExpresso.csproj", "{2CF07FB4-A8A9-4BEA-8397-B98BC2550217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CF07FB4-A8A9-4BEA-8397-B98BC2550217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF07FB4-A8A9-4BEA-8397-B98BC2550217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF07FB4-A8A9-4BEA-8397-B98BC2550217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF07FB4-A8A9-4BEA-8397-B98BC2550217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EE843C1-11BC-4342-AC7A-CEC8134FAF24}
+	EndGlobalSection
+EndGlobal
